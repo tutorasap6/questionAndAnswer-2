@@ -1,16 +1,18 @@
-import React from "react"
-import { Button } from "antd"
+import React from "react";
+import { Button } from "antd";
 
-const onChange = e => {
-  console.log("Change:", e.target.value)
-}
+const onChange = (e) => {
+  console.log("Change:", e.target.value);
+};
 
 const QueInput = () => (
   <div style={{ border: "1px solid #d9d9d9", padding: "16px" }}>
     <div
-      style={{ marginTop: "-40px", display: "flex", justifyContent: "center" }}
+      style={{ marginTop: "-20px", display: "flex", justifyContent: "center" }}
     >
-      <h4 style={{ fontFamily: "awesome", textAlign: "center" }}>
+      <h4
+        style={{ fontFamily: "awesome", textAlign: "center", fontSize: "20px" }}
+      >
         Ask Questions
       </h4>
     </div>
@@ -62,6 +64,6 @@ const QueInput = () => (
       </a>
     </div>
   </div>
-)
+);
 
-export default QueInput
+export default QueInput;

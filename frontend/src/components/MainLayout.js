@@ -26,11 +26,11 @@ const MainLayout = ({ pageTitle, children }) => {
     { name: "Services", url: "/service" },
     { name: "Pricing", url: "/pricing" },
     { name: "Terms and Conditions", url: "/terms" },
-    { name: "Login", url: "/auth/login" }
+    { name: "Login", url: "/auth/login" },
   ];
 
   return (
-    <Layout className="layout">
+    <Layout className="layout" style={{ margin: "-8px" }}>
       <Header
         style={{
           padding: "0",

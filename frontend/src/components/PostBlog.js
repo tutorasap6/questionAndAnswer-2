@@ -26,14 +26,20 @@ const PostBlog = () => {
     >
       <div
         style={{
-          marginTop: "-50px",
+          marginTop: "-30px",
           display: "flex",
           justifyContent: "center",
         }}
       >
-        <h4 style={{ fontFamily: "awesome", textAlign: "center" }}>
+        <h3
+          style={{
+            fontFamily: "awesome",
+            textAlign: "center",
+            fontSize: "30px",
+          }}
+        >
           Assignment Help
-        </h4>
+        </h3>
       </div>
       <Row>
         <Col span={12} style={{ paddingRight: "10px" }}>
