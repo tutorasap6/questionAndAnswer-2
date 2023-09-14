@@ -3,7 +3,7 @@ import * as React from "react";
 import axios from "axios";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
-import Logo from "../../images/logo.svg";
+import logocom from "../../assets/images/logocom.png";
 import { loginRoute } from "../../utils/APIRoutes";
 
 const Login = () => {
@@ -68,11 +68,11 @@ const Login = () => {
   //   }
   // };
   return (
-    <FormContainer>
+    <FormContainer style={{ margin: "-8px" }}>
       <form action="" onSubmit={(event) => handleSubmit(event)}>
         <div className="brand">
-          <img src={Logo} alt="logo" />
-          <h1>snappy</h1>
+          <img src={logocom} alt="logo" />
+          <h1>Champlain</h1>
         </div>
         {errors && (
           <div>
@@ -100,8 +100,11 @@ const Login = () => {
           name="password"
           onChange={(e) => handleChange(e)}
         />
-        <button type="submit">Log In</button>
-        <span>
+        <div>
+          <button type="submit">Log In</button>
+        </div>
+
+        <span style={{ textAlign: "center" }}>
           Don't have an account ? <Link to="/auth/register">Create One.</Link>
         </span>
       </form>

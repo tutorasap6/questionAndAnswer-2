@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link } from "gatsby";
 import { Menu } from "antd";
 import { Col, Row } from "antd";
-import logocom from "../../assets/images/logocom.png";
+import logocom from "../assets/images/logocom.png";
 
 const { Header } = Layout;
 
@@ -163,7 +163,7 @@ const AdminPage = () => {
 };
 
 // You'll learn about this in the next task, just copy it for now
-export const Head = () => <title>Home</title>;
+export const Head = () => <title>admin</title>;
 
 // Step 3: Export your component
 export default AdminPage;

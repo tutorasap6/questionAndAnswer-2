@@ -90,7 +90,9 @@ const MainLayout = ({ pageTitle, children }) => {
           </Col>
         </Row>
       </Header>
-      <div style={{ backgroundImage: `url( ${backimg})`, height: "300px" }}>
+      <div
+        style={{ backgroundImage: `url( ${backimg})`, backgroundSize: "cover" }}
+      >
         <Row>
           <Col span={4}></Col>
           <Col span={8} style={{ paddingTop: "40px" }}>

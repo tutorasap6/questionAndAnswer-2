@@ -223,7 +223,7 @@ const PricingPage = () => {
                     </p>
                     <h3
                       style={{
-                        marginLeft: "-20px",
+                        marginLeft: "15px",
                         marginTop: "-5px",
                         textAlign: "center",
                         fontFamily: "awesome",

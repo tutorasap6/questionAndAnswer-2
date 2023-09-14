@@ -6,7 +6,9 @@ const onChange = (e) => {
 };
 
 const QueInput = () => (
-  <div style={{ border: "1px solid #d9d9d9", padding: "16px" }}>
+  <div
+    style={{ border: "1px solid #d9d9d9", padding: "16px", marginTop: "5px" }}
+  >
     <div
       style={{ marginTop: "-20px", display: "flex", justifyContent: "center" }}
     >

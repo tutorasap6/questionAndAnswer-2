@@ -1,9 +1,9 @@
-import React from "react"
-import { Card } from "antd"
+import React from "react";
+import { Card } from "antd";
 
 const BlogContent = () => (
   <div>
-    <Card style={{ height: "300px", padding: "5px" }}>
+    <Card style={{ height: "300px", padding: "5px", marginTop: "5px" }}>
       <div
         style={{
           padding: "5px",
@@ -23,6 +23,7 @@ const BlogContent = () => (
               marginBottom: "0px",
               paddingTop: "3px",
               height: "35px",
+              paddingLeft: "10px",
             }}
           >
             <li
@@ -82,6 +83,7 @@ const BlogContent = () => (
               marginTop: "0.2px",
               paddingTop: "3px",
               height: "35px",
+              paddingLeft: "10px",
             }}
           >
             <li
@@ -517,6 +519,6 @@ const BlogContent = () => (
       </div>
     </Card>
   </div>
-)
+);
 
-export default BlogContent
+export default BlogContent;
