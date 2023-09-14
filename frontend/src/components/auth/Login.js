@@ -4,11 +4,10 @@ import axios from "axios";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
 import Logo from "../../images/logo.svg";
-import logocom from "../../assets/images/logocom.png";
 import { loginRoute } from "../../utils/APIRoutes";
 
 const Login = () => {
-  const [values, setValues] = useState({ username: "", password: "" });
+  const [values, setValues] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState("");
 
   const handleChange = (event) => {
@@ -18,13 +17,13 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     // if (validateForm()) {
-    const { username, password } = values;
+    const { email, password } = values;
     const { data } = await axios.post(loginRoute, {
-      username,
+      email,
       password,
     });
     if (data.status === false) {
-      console.log("failed login");
+      setErrors(data.errors);
     }
     if (data.status === true) {
       // localStorage.setItem(
@@ -69,39 +68,39 @@ const Login = () => {
   //   }
   // };
   return (
-    <FormContainer style={{ margin: "-8px" }}>
+    <FormContainer>
       <form action="" onSubmit={(event) => handleSubmit(event)}>
         <div className="brand">
-          <img src={logocom} alt="logo" />
-          <h1 style={{ fontSize: "30px" }}>Champlain</h1>
+          <img src={Logo} alt="logo" />
+          <h1>snappy</h1>
         </div>
         {errors && (
           <div>
-            <p className="error">{errors.email ? errors.email : ""}</p>
+            <p
+              style={{
+                color: "red",
+                textAlign: "center",
+                justifyContent: "center",
+              }}
+            >
+              {errors ? errors : ""}
+            </p>
           </div>
         )}
         <input
           type="text"
           placeholder="Email"
           onChange={(e) => handleChange(e)}
-          name="username"
+          name="email"
           min="3"
         />
-        {errors && (
-          <div>
-            <p className="error">{errors.email ? errors.email : ""}</p>
-          </div>
-        )}
         <input
           type="password"
           placeholder="Password"
           name="password"
           onChange={(e) => handleChange(e)}
         />
-        <div style={{ paddingLeft: "125px" }}>
-          <button type="submit">Log In</button>
-        </div>
-
+        <button type="submit">Log In</button>
         <span>
           Don't have an account ? <Link to="/auth/register">Create One.</Link>
         </span>

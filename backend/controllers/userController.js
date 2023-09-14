@@ -5,12 +5,38 @@ const validator = require("validator");
 module.exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
+    console.log(email, password);
+    if (validator.isEmpty(email)) {
+      return res.json({
+        errors: "Email is required.",
+        status: false,
+      });
+    }
+    if (!validator.isEmail(email)) {
+      return res.json({
+        errors: "Email is invalid.",
+        status: false,
+      });
+    }
+    if (validator.isEmpty(password)) {
+      return res.json({
+        errors: "Password is required.",
+        status: false,
+      });
+    }
+    if (!validator.isStrongPassword(password)) {
+      return res.json({
+        errors: "Password is invalid.",
+        status: false,
+      });
+    }
+
     const user = await User.findOne({ email });
     if (!user)
       return res.json({ errors: "Incorrect Email or Password", status: false });
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid)
-      return res.json({ msg: "Incorrect Email or Password", status: false });
+      return res.json({ errors: "Incorrect Email or Password", status: false });
     delete user.password;
     return res.json({ status: true, user });
   } catch (ex) {
@@ -35,7 +61,7 @@ module.exports.register = async (req, res, next) => {
         status: false,
       });
     }
-    if (!validator.isEmail) {
+    if (!validator.isEmail(email)) {
       return res.json({
         errors: "Email is invalid.",
         status: false,
@@ -47,7 +73,7 @@ module.exports.register = async (req, res, next) => {
         status: false,
       });
     }
-    if (!validator.isStrongPassword) {
+    if (!validator.isStrongPassword(password)) {
       return res.json({
         errors: "Password is invalid.",
         status: false,
@@ -63,7 +89,7 @@ module.exports.register = async (req, res, next) => {
     console.log(errors, req.body);
     const emailCheck = await User.findOne({ email });
     if (emailCheck)
-      return res.json({ msg: "Email already used", status: false });
+      return res.json({ errors: "Email already used.n", status: false });
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({
       email,
