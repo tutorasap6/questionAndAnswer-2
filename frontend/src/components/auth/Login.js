@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
 import Logo from "../../images/logo.svg";
+import logocom from "../../assets/images/logocom.png";
 import { loginRoute } from "../../utils/APIRoutes";
 
 const Login = () => {
@@ -68,11 +69,11 @@ const Login = () => {
   //   }
   // };
   return (
-    <FormContainer>
+    <FormContainer style={{ margin: "-8px" }}>
       <form action="" onSubmit={(event) => handleSubmit(event)}>
         <div className="brand">
-          <img src={Logo} alt="logo" />
-          <h1>snappy</h1>
+          <img src={logocom} alt="logo" />
+          <h1 style={{ fontSize: "30px" }}>Champlain</h1>
         </div>
         {errors && (
           <div>
@@ -97,7 +98,10 @@ const Login = () => {
           name="password"
           onChange={(e) => handleChange(e)}
         />
-        <button type="submit">Log In</button>
+        <div style={{ paddingLeft: "125px" }}>
+          <button type="submit">Log In</button>
+        </div>
+
         <span>
           Don't have an account ? <Link to="/auth/register">Create One.</Link>
         </span>

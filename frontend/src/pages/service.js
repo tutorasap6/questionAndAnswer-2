@@ -34,13 +34,15 @@ const ServicePage = () => {
             }}
           >
             <Breadcrumb.Item>
-              <p style={{ fontFamily: "awesome" }}>Home</p>
+              <p style={{ fontFamily: "awesome", marginTop: "0px" }}>Home</p>
             </Breadcrumb.Item>
             {/* <Breadcrumb.Item>list</Breadcrumb.Item>
           <Breadcrumb.Item>App</Breadcrumb.Item> */}
 
             <Breadcrumb.Item>
-              <p style={{ fontFamily: "awesome" }}>Services</p>
+              <p style={{ fontFamily: "awesome", marginTop: "0px" }}>
+                Services
+              </p>
             </Breadcrumb.Item>
           </Breadcrumb>
         </div>

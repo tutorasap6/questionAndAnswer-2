@@ -1,12 +1,12 @@
 // Step 1: Import React
-import * as React from "react"
-import MainLayout from "../components/MainLayout"
-import BlogContent from "../components/BlogContent"
-import QueInput from "../components/QueInput"
-import { Layout } from "antd"
-import { Col, Row } from "antd"
+import * as React from "react";
+import MainLayout from "../components/MainLayout";
+import BlogContent from "../components/BlogContent";
+import QueInput from "../components/QueInput";
+import { Layout } from "antd";
+import { Col, Row } from "antd";
 
-const { Content } = Layout
+const { Content } = Layout;
 
 const IndexPage = () => {
   return (
@@ -63,11 +63,11 @@ const IndexPage = () => {
         ></div> */}
       </Content>
     </MainLayout>
-  )
-}
+  );
+};
 
 // You'll learn about this in the next task, just copy it for now
-export const Head = () => <title>Home</title>
+export const Head = () => <title>Home</title>;
 
 // Step 3: Export your component
-export default IndexPage
+export default IndexPage;

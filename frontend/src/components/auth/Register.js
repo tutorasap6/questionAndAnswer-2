@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
-import Logo from "../../images/logo.svg";
+import logocom from "../../assets/images/logocom.png";
 import axios from "axios";
 import { registerRoute } from "../../utils/APIRoutes";
 // import { useNavigate } from "react-router-dom";
@@ -62,11 +62,11 @@ const Register = () => {
   };
   return (
     <>
-      <FormContainer>
+      <FormContainer style={{ margin: "-8px" }}>
         <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="brand">
-            <img src={Logo} alt="logo" />
-            <h1>snappy</h1>
+            <img src={logocom} alt="logo" />
+            <h1>Champlain</h1>
           </div>
           {errors && (
             <div>
@@ -105,8 +105,11 @@ const Register = () => {
             name="confirmPassword"
             onChange={(e) => handleChange(e)}
           />
-          <button type="submit">Create User</button>
-          <span>
+          <div style={{ paddingLeft: "115px" }}>
+            <button type="submit">Create User</button>
+          </div>
+
+          <span style={{ textAlign: "center" }}>
             Already have an account ? <Link to="/auth/login">Login.</Link>
           </span>
         </form>
