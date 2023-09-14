@@ -1,15 +1,16 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
+const validator = require("validator");
 
 module.exports.login = async (req, res, next) => {
   try {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username });
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
     if (!user)
-      return res.json({ msg: "Incorrect Username or Password", status: false });
+      return res.json({ errors: "Incorrect Email or Password", status: false });
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid)
-      return res.json({ msg: "Incorrect Username or Password", status: false });
+      return res.json({ msg: "Incorrect Email or Password", status: false });
     delete user.password;
     return res.json({ status: true, user });
   } catch (ex) {
@@ -19,10 +20,47 @@ module.exports.login = async (req, res, next) => {
 
 module.exports.register = async (req, res, next) => {
   try {
-    const { username, email, password } = req.body;
-    const usernameCheck = await User.findOne({ username });
-    if (usernameCheck)
-      return res.json({ msg: "Username already used", status: false });
+    console.log(req.body);
+    const errors = "";
+    const { username, email, password, confirmPassword } = req.body;
+    if (validator.isEmpty(username)) {
+      return res.json({
+        errors: "User name is required.",
+        status: false,
+      });
+    }
+    if (validator.isEmpty(email)) {
+      return res.json({
+        errors: "Email is required.",
+        status: false,
+      });
+    }
+    if (!validator.isEmail) {
+      return res.json({
+        errors: "Email is invalid.",
+        status: false,
+      });
+    }
+    if (validator.isEmpty(password)) {
+      return res.json({
+        errors: "Password is required.",
+        status: false,
+      });
+    }
+    if (!validator.isStrongPassword) {
+      return res.json({
+        errors: "Password is invalid.",
+        status: false,
+      });
+    }
+
+    if (!validator.equals(password, confirmPassword)) {
+      return res.json({
+        errors: "Password is not matched.",
+        status: false,
+      });
+    }
+    console.log(errors, req.body);
     const emailCheck = await User.findOne({ email });
     if (emailCheck)
       return res.json({ msg: "Email already used", status: false });
@@ -63,14 +101,14 @@ module.exports.acceptUser = async (req, res, next) => {
     const id = req.params.id;
     const usernameCheck = await User.findById(id);
     if (!usernameCheck) {
-      return res.status(404).send('User not found');
+      return res.status(404).send("User not found");
     }
     if (usernameCheck.state === 0) {
       await User.updateOne({ _id: id }, { $set: { state: 1 } });
-      res.send('User accepted');
+      res.send("User accepted");
     } else {
       await User.updateOne({ _id: id }, { $set: { state: 0 } });
-      res.send('User rejected');
+      res.send("User rejected");
     }
   } catch (ex) {
     next(ex);

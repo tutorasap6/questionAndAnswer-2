@@ -14,6 +14,9 @@ const Register = () => {
     password: "",
     confirmPassword: "",
   });
+
+  const [errors, setErrors] = useState("");
+
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
@@ -21,18 +24,21 @@ const Register = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(values.username);
-    const { email, username, password } = values;
+    const { email, username, password, confirmPassword } = values;
     const { data } = await axios.post(registerRoute, {
       username,
       email,
       password,
+      confirmPassword,
     });
     if (data.status === true) {
       console.log("SUCCESS");
       navigate("/");
     }
     if (data.status === false) {
-      console.log("FAILED");
+      setErrors(data.errors);
+      console.log(data);
+      console.log(errors);
     }
     // if (handleValidation()) {
     //     const { email, username, password } = values;
@@ -62,6 +68,19 @@ const Register = () => {
             <img src={Logo} alt="logo" />
             <h1>snappy</h1>
           </div>
+          {errors && (
+            <div>
+              <p
+                style={{
+                  color: "red",
+                  textAlign: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {errors ? errors : ""}
+              </p>
+            </div>
+          )}
           <input
             type="text"
             placeholder="Username"

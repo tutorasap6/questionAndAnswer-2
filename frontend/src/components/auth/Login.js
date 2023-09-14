@@ -8,6 +8,7 @@ import { loginRoute } from "../../utils/APIRoutes";
 
 const Login = () => {
   const [values, setValues] = useState({ username: "", password: "" });
+  const [errors, setErrors] = useState("");
 
   const handleChange = (event) => {
     setValues({ ...values, [event.target.name]: event.target.value });
@@ -73,13 +74,23 @@ const Login = () => {
           <img src={Logo} alt="logo" />
           <h1>snappy</h1>
         </div>
+        {errors && (
+          <div>
+            <p className="error">{errors.email ? errors.email : ""}</p>
+          </div>
+        )}
         <input
           type="text"
-          placeholder="Username"
+          placeholder="Email"
           onChange={(e) => handleChange(e)}
           name="username"
           min="3"
         />
+        {errors && (
+          <div>
+            <p className="error">{errors.email ? errors.email : ""}</p>
+          </div>
+        )}
         <input
           type="password"
           placeholder="Password"
