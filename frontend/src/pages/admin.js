@@ -6,23 +6,34 @@ import { Link } from "gatsby";
 import { Menu } from "antd";
 import { Col, Row } from "antd";
 import logocom from "../assets/images/logocom.png";
+import { getPostsRoute } from "../utils/APIRoutes";
 
 const { Header } = Layout;
 
 const AdminPage = () => {
-  const [cruds, setCruds] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-  useEffect(function () {
-    async function getCruds() {
-      try {
-        const response = await axios.get("/api/cruds");
-        setCruds(response.data);
-      } catch (error) {
-        console.log("error", error);
+  useEffect(
+    function () {
+      async function getPosts() {
+        try {
+          const response = await axios.get(getPostsRoute);
+          console.log(response.data);
+          setPosts(response.data);
+          console.log("state: ");
+        } catch (error) {
+          console.log("error", error);
+        }
       }
-    }
-    getCruds();
-  }, []);
+      getPosts();
+    },
+    [posts]
+  );
+
+  // useEffect(() => {
+  //   console.log("s", posts);
+  // }, [posts]);
+
   const array = [
     { name: "Solutions", url: "/" },
     { name: "Post Questions", url: "/post" },
@@ -90,14 +101,7 @@ const AdminPage = () => {
       </Header>
       <div className="container">
         <div>
-          <h2>
-            CRUD - Table View
-            <p>
-              <Link to="/cruds/new" className="btn btn-primary float-right">
-                Create CRUD
-              </Link>
-            </p>
-          </h2>
+          <h2>Question Management</h2>
           <hr />
         </div>
 
@@ -105,55 +109,60 @@ const AdminPage = () => {
           <table className="table riped  table-hover table-bordered container">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Location</th>
+                <th>Title</th>
+                <th>CourseCode</th>
+                <th>CourseName</th>
+                <th>UniversityName</th>
+                <th>Category</th>
+                <th>Tags</th>
+                <th>Price</th>
                 <th>View</th>
                 <th>Edit</th>
                 <th>Delete</th>
               </tr>
             </thead>
             <tbody>
-              {cruds &&
-                cruds.map((crud) => {
-                  return (
-                    <tr key={crud._id}>
-                      <td>
-                        <Link to={`/cruds/${crud._id}`} className="link-line">
-                          {crud.companyName}
-                        </Link>
-                      </td>
-                      <td>{crud.phone}</td>
-                      <td>{crud.email}</td>
-                      <td>{crud.location}</td>
-                      <td>
-                        <Link
-                          to={`/cruds/${crud._id}`}
-                          className="btn btn-warning"
-                        >
-                          View
-                        </Link>
-                      </td>
-                      <td>
-                        <Link
-                          to={`/cruds/${crud._id}/edit`}
-                          className="btn btn-success"
-                        >
-                          Edit
-                        </Link>
-                      </td>
-                      <td>
-                        <Link
-                          to={`/cruds/${crud._id}/delete`}
-                          className="btn btn-danger"
-                        >
-                          Delete
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
+              {posts.map((post) => {
+                return (
+                  <tr key={post._id}>
+                    <td>
+                      <Link to={`/posts/${post._id}`} className="link-line">
+                        {post.questionTitle}
+                      </Link>
+                    </td>
+                    <td>{post.courseCode}</td>
+                    <td>{post.courseName}</td>
+                    <td>{post.universityName}</td>
+                    <td>{post.category}</td>
+                    <td>{post.insertPrice}</td>
+                    <td>{post.insertTagsHere}</td>
+                    <td>
+                      <Link
+                        to={`/posts/${post._id}`}
+                        className="btn btn-warning"
+                      >
+                        View
+                      </Link>
+                    </td>
+                    <td>
+                      <Link
+                        to={`/posts/${post._id}/edit`}
+                        className="btn btn-success"
+                      >
+                        Edit
+                      </Link>
+                    </td>
+                    <td>
+                      <Link
+                        to={`/posts/${post._id}/delete`}
+                        className="btn btn-danger"
+                      >
+                        Delete
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

@@ -72,7 +72,7 @@ const Register = () => {
             <div>
               <p
                 style={{
-                  color: "red",
+                  color: "white",
                   textAlign: "center",
                   justifyContent: "center",
                 }}

@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Col, Row, Upload, Form, Button } from "antd";
 import "react-quill/dist/quill.snow.css";
+import { navigate } from "gatsby";
 import ReactQuill from "react-quill";
 import { InboxOutlined, UploadOutlined } from "@ant-design/icons";
+import { postRoute } from "../utils/APIRoutes";
+import axios from "axios";
 
 const normFile = (e) => {
   console.log("Upload event:", e);
@@ -11,10 +14,64 @@ const normFile = (e) => {
   }
   return e?.fileList;
 };
-const onChange = (e) => {
-  console.log("Change:", e.target.value);
-};
+
 const PostBlog = () => {
+  const [values, setValues] = useState({
+    questionTitle: "",
+    courseCode: "",
+    universityName: "",
+    category: "",
+    courseName: "",
+    insertPrice: "",
+    insertTagsHere: "",
+  });
+  const [content, setContent] = useState("");
+
+  const handleQuillChange = (value) => {
+    setContent(value);
+    console.log(value);
+  };
+  const [errors, setErrors] = useState("");
+
+  const handleChange = (event) => {
+    setValues({ ...values, [event.target.name]: event.target.value });
+    console.log(values);
+  };
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    console.log(values.username);
+    const {
+      questionTitle,
+      courseCode,
+      universityName,
+      category,
+      courseName,
+      insertPrice,
+      insertTagsHere,
+    } = values;
+    const description = content;
+    const { data } = await axios.post(postRoute, {
+      questionTitle,
+      courseCode,
+      universityName,
+      category,
+      courseName,
+      insertPrice,
+      insertTagsHere,
+      description,
+    });
+    if (data.status === true) {
+      console.log(data);
+      navigate("/auth/login");
+    }
+    if (data.status === false) {
+      setErrors(data.errors);
+      console.log(data);
+      console.log(errors);
+    }
+  };
+
   return (
     <Card
       style={{
@@ -47,7 +104,8 @@ const PostBlog = () => {
             <input
               type="text"
               placeholder="Question Title"
-              onChange={onChange}
+              name="questionTitle"
+              onChange={(e) => handleChange(e)}
               style={{
                 width: "100%",
                 height: "40px",
@@ -59,7 +117,12 @@ const PostBlog = () => {
               }}
             />
           </div>
-          <ReactQuill placeholder="Content" style={{ height: "280px" }} />
+          <ReactQuill
+            placeholder="Content"
+            value={content}
+            onChange={handleQuillChange}
+            style={{ height: "280px" }}
+          />
         </Col>
         {/* <Col span={12}> */}
         <Col span={6} style={{ paddingRight: "10px" }}>
@@ -67,7 +130,8 @@ const PostBlog = () => {
             <input
               type="text"
               placeholder="Course Code"
-              onChange={onChange}
+              name="courseCode"
+              onChange={(e) => handleChange(e)}
               style={{
                 width: "100%",
                 height: "35px",
@@ -84,7 +148,8 @@ const PostBlog = () => {
             <input
               type="text"
               placeholder="University name"
-              onChange={onChange}
+              name="universityName"
+              onChange={(e) => handleChange(e)}
               style={{
                 width: "100%",
                 height: "35px",
@@ -101,7 +166,8 @@ const PostBlog = () => {
             <input
               type="text"
               placeholder="Category"
-              onChange={onChange}
+              name="category"
+              onChange={(e) => handleChange(e)}
               style={{
                 width: "100%",
                 height: "35px",
@@ -131,7 +197,8 @@ const PostBlog = () => {
             <input
               type="text"
               placeholder="Course Name"
-              onChange={onChange}
+              name="courseName"
+              onChange={(e) => handleChange(e)}
               style={{
                 width: "100%",
                 height: "35px",
@@ -147,7 +214,8 @@ const PostBlog = () => {
             <input
               type="text"
               placeholder="Insert Price"
-              onChange={onChange}
+              name="insertPrice"
+              onChange={(e) => handleChange(e)}
               style={{
                 width: "100%",
                 height: "35px",
@@ -163,7 +231,8 @@ const PostBlog = () => {
             <input
               type="text"
               placeholder="Insert Tags here"
-              onChange={onChange}
+              name="insertTagsHere"
+              onChange={(e) => handleChange(e)}
               style={{
                 width: "100%",
                 height: "35px",
@@ -214,6 +283,7 @@ const PostBlog = () => {
               fontSize: "20px",
               fontFamily: "awesome",
             }}
+            onClick={onSubmit}
           >
             Submit
           </Button>
@@ -222,4 +292,5 @@ const PostBlog = () => {
     </Card>
   );
 };
+
 export default PostBlog;
