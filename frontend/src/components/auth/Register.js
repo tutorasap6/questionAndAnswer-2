@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
 import logocom from "../../assets/images/logocom.png";

@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, navigate } from "gatsby";
 
-function postDelete(props) {
+function PostDelete(props) {
   const [post, setPost] = useState({});
-
-  const { _id } = useParams();
-  const navigate = useNavigate();
 
   useEffect(
     function () {
       async function deletePostById() {
         try {
-          const response = await axios.get(`/api/posts/${_id}`);
+          const response = await axios.get(
+            `http://localhost:5000/api/posts/${props.id}`
+          );
+          console.log(response);
           setPost(response.data);
         } catch (error) {
           console.log("error", error);
@@ -26,8 +26,8 @@ function postDelete(props) {
 
   async function handleDelete() {
     try {
-      await axios.delete(`/api/posts/${_id}`);
-      navigate("/admin");
+      await axios.delete(`http://localhost:5000/api/posts/${props.id}`);
+      navigate("/admin/admin");
     } catch (error) {
       console.error(error);
     }
@@ -42,23 +42,22 @@ function postDelete(props) {
       </p>
 
       <p>
-        <b>CourseName</b>: {post.courseName}
+        <b>CourseName</b> {post.courseName}
       </p>
       <p>
-        <b>UniversityName</b>: {post.universityName}
+        <b>University</b> {post.universityName}
       </p>
       <p>
-        <b>category</b>
-        {post.category}
+        <b>Category</b> {post.category}
+      </p>
+      <p>
+        <b>Price</b> {post.insertPrice}
+      </p>
+      <p>
+        <b>Tag</b> {post.insertTagsHere}
       </p>
       <p>
         <b>Description</b>: {post.description}
-      </p>
-      <p>
-        <b>Price</b>: {post.insertPrice}
-      </p>
-      <p>
-        <b>Tags</b>: {post.insertTagsHere}
       </p>
       <p>
         <small>
@@ -69,7 +68,7 @@ function postDelete(props) {
         <button onClick={handleDelete} className="btn btn-danger">
           Delete
         </button>
-        <Link to="/admin" className="btn btn-secondary">
+        <Link to="/cruds" className="btn btn-secondary">
           Cancel{" "}
         </Link>
       </div>
@@ -78,4 +77,4 @@ function postDelete(props) {
   );
 }
 
-export default postDelete;
+export default PostDelete;

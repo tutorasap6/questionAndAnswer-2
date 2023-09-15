@@ -89,3 +89,29 @@ module.exports.getPosts = async (req, res, next) => {
     next(ex);
   }
 };
+
+module.exports.getPost = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const post = await Post.findById(id);
+    return res.json(post);
+  } catch (e) {
+    throw e;
+  }
+};
+
+module.exports.post_delete = (req, res) => {
+  Post.findById(req.params.id, function (err, post) {
+    if (!post) {
+      res.status(404).send("post not found");
+    } else {
+      Post.findByIdAndRemove(req.params.id)
+        .then(function () {
+          res.status(200).json("post deleted");
+        })
+        .catch(function (err) {
+          res.status(400).send("post delete failed.");
+        });
+    }
+  });
+};

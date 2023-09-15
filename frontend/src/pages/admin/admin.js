@@ -5,34 +5,31 @@ import axios from "axios";
 import { Link } from "gatsby";
 import { Menu } from "antd";
 import { Col, Row } from "antd";
-import logocom from "../assets/images/logocom.png";
-import { getPostsRoute } from "../utils/APIRoutes";
+import logocom from "../../assets/images/Logocom.png";
+import { getPostsRoute } from "../../utils/APIRoutes";
 
 const { Header } = Layout;
 
 const AdminPage = () => {
   const [posts, setPosts] = useState([]);
 
-  useEffect(
-    function () {
-      async function getPosts() {
-        try {
-          const response = await axios.get(getPostsRoute);
-          console.log(response.data);
-          setPosts(response.data);
-          console.log("state: ");
-        } catch (error) {
-          console.log("error", error);
-        }
+  useEffect(function () {
+    async function getPosts() {
+      try {
+        const response = await axios.get(getPostsRoute);
+        console.log(response.data);
+        setPosts(response.data);
+        console.log("state: ");
+      } catch (error) {
+        console.log("error", error);
       }
-      getPosts();
-    },
-    [posts]
-  );
+    }
+    getPosts();
+  }, []);
 
-  // useEffect(() => {
-  //   console.log("s", posts);
-  // }, [posts]);
+  useEffect(() => {
+    console.log("s", posts);
+  }, [posts]);
 
   const array = [
     { name: "Solutions", url: "/" },
@@ -110,6 +107,7 @@ const AdminPage = () => {
             <thead>
               <tr>
                 <th>Title</th>
+                <th>description</th>
                 <th>CourseCode</th>
                 <th>CourseName</th>
                 <th>UniversityName</th>
@@ -130,6 +128,8 @@ const AdminPage = () => {
                         {post.questionTitle}
                       </Link>
                     </td>
+
+                    <td>{post.description}</td>
                     <td>{post.courseCode}</td>
                     <td>{post.courseName}</td>
                     <td>{post.universityName}</td>
@@ -138,7 +138,7 @@ const AdminPage = () => {
                     <td>{post.insertTagsHere}</td>
                     <td>
                       <Link
-                        to={`/posts/${post._id}`}
+                        to={`/admin/posts/view/${post._id}`}
                         className="btn btn-warning"
                       >
                         View
@@ -146,7 +146,7 @@ const AdminPage = () => {
                     </td>
                     <td>
                       <Link
-                        to={`/posts/${post._id}/edit`}
+                        to={`/admin/posts/edit/${post._id}`}
                         className="btn btn-success"
                       >
                         Edit
@@ -154,7 +154,7 @@ const AdminPage = () => {
                     </td>
                     <td>
                       <Link
-                        to={`/posts/${post._id}/delete`}
+                        to={`/admin/posts/delete/${post._id}`}
                         className="btn btn-danger"
                       >
                         Delete
