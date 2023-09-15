@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { get, patch } from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { navigate } from "gatsby";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function PostEdit(params) {
   const { id } = params;
   const [post, setPost] = useState({});
+  const [temp, setTemp] = useState({});
 
   useEffect(
     function () {
       async function updatePost() {
         try {
           const response = await get(`http://localhost:5000/api/posts/${id}`);
+          setTemp(response.data);
           setPost(response.data);
         } catch (error) {
           console.log(error);
@@ -26,7 +31,16 @@ function PostEdit(params) {
     event.preventDefault();
     async function updatePost() {
       try {
-        const post = await patch(`http://localhost:5000/api/posts/${id}`);
+        await patch(`http://localhost:5000/api/posts/${id}`, post);
+        toast.success("Updated Successfully", {
+          position: "top-right",
+          autoClose: 1000,
+          theme: "colored",
+          hideProgressBar: true,
+        });
+        setTimeout(() => {
+          navigate("/admin/admin");
+        }, 1500);
       } catch (error) {
         console.log(error);
       }
@@ -40,10 +54,13 @@ function PostEdit(params) {
     });
   }
 
-  function handleCancel() {}
+  function handleCancel() {
+    navigate("/admin/admin");
+  }
 
   return (
     <div className="container">
+      <ToastContainer />
       <h1>Edit </h1>
       <hr />
       <form onSubmit={handleSubmit}>

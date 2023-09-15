@@ -100,6 +100,17 @@ module.exports.getPost = async (req, res) => {
   }
 };
 
+module.exports.post_update = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(req.body);
+    const post = await Post.findByIdAndUpdate(id, req.body);
+    return res.json(post);
+  } catch (e) {
+    throw e;
+  }
+};
+
 module.exports.post_delete = (req, res) => {
   Post.findById(req.params.id, function (err, post) {
     if (!post) {
