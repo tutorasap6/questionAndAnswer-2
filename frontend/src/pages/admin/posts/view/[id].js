@@ -258,7 +258,7 @@ function CrudDetails(params) {
                   <div style={{ marginTop: "420px" }}>
                     <Row>
                       <Col span={18}></Col>
-                      <Col span={3}>
+                      <Col span={3} style={{ paddingTop: "35px" }}>
                         <input type="file" onChange={handleFile} />
                       </Col>
                       <Col

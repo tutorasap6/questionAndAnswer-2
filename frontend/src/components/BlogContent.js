@@ -144,7 +144,13 @@ const BlogContent = () => {
                     <div>
                       <p>{blog.description}</p>
                     </div>
-                    <div style={{ marginTop: "-15px", paddingLeft: "680px" }}>
+                    <div
+                      style={{
+                        marginTop: "80px",
+                        paddingLeft: "700px",
+                        position: "absolute",
+                      }}
+                    >
                       <a href="/answer">
                         <button
                           type="submit"

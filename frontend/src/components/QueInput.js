@@ -12,13 +12,11 @@ const QueInput = () => (
     <div
       style={{ marginTop: "-20px", display: "flex", justifyContent: "center" }}
     >
-      <h4
+      {/* <h4
         style={{ fontFamily: "awesome", textAlign: "center", fontSize: "20px" }}
-      >
-        Ask Questions
-      </h4>
+      ></h4> */}
     </div>
-    <div style={{ paddingBottom: "9px" }}>
+    {/* <div style={{ paddingBottom: "9px" }}>
       <input
         type="text"
         placeholder="Question Title"
@@ -33,14 +31,14 @@ const QueInput = () => (
           fontFamily: "awesome",
         }}
       />
-    </div>
+    </div> */}
     <div>
-      <textarea
-        placeholder="Type here"
-        onChange={onChange}
+      <p
+        // placeholder="Type here"
+        // onChange={onChange}
         style={{
           width: "100%",
-          height: "250px",
+          height: "280px",
           fontSize: "15px",
           color: "black",
           border: "1px solid #d9d9d9",
@@ -48,7 +46,15 @@ const QueInput = () => (
           fontWeight: "bold",
           fontFamily: "awesome",
         }}
-      ></textarea>
+      >
+        Online education has become an essential component of our academic path
+        in the fast-paced world of today. However, it frequently presents its
+        own special difficulties. Students frequently have overwhelming
+        workloads due to managing many online courses and keeping up with
+        assignments, exams, lab reports, and essays. This is where
+        ChamplainSolutions.com comes in to help you have a more effective and
+        seamless experience when learning online.
+      </p>
     </div>
     <div style={{ paddingTop: "10px" }}>
       <a href="/post">
@@ -61,7 +67,7 @@ const QueInput = () => (
             fontFamily: "awesome",
           }}
         >
-          Submit
+          Ask Questions
         </Button>
       </a>
     </div>

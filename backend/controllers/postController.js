@@ -1,11 +1,14 @@
 const Post = require("../models/postModel");
+const User = require("../models/userModel");
 const validator = require("validator");
+const jwt = require("jsonwebtoken");
 
 module.exports.addPost = async (req, res, next) => {
   try {
     console.log(req.body);
     const errors = "";
     const {
+      token,
       questionTitle,
       courseCode,
       universityName,
@@ -63,9 +66,18 @@ module.exports.addPost = async (req, res, next) => {
         status: false,
       });
     }
+    if (!token) {
+      return res.status(400).send({ error: "Invalid User" });
+    }
+    const payload = jwt.verify(token, "HJS");
+    const user = await User.findById(payload.id);
+    if (!user) {
+      throw new Error("Invalid User");
+    }
 
     console.log(errors, req.body);
     const post = await Post.create({
+      user: user._id,
       questionTitle,
       courseCode,
       universityName,
@@ -78,6 +90,19 @@ module.exports.addPost = async (req, res, next) => {
     return res.json({ status: true, post });
   } catch (ex) {
     next(ex);
+  }
+};
+
+module.exports.upload = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const post = await Post.findById(id);
+    post.file = req.file.filename;
+    console.log(req.file.filename);
+    await post.save();
+    return res.json(post);
+  } catch (e) {
+    throw e;
   }
 };
 

@@ -7,14 +7,6 @@ import { InboxOutlined, UploadOutlined } from "@ant-design/icons";
 import { postRoute } from "../utils/APIRoutes";
 import axios from "axios";
 
-const normFile = (e) => {
-  console.log("Upload event:", e);
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
-
 const PostBlog = () => {
   const [values, setValues] = useState({
     questionTitle: "",
@@ -26,6 +18,7 @@ const PostBlog = () => {
     insertTagsHere: "",
   });
   const [content, setContent] = useState("");
+  const [file, setFile] = useState(null);
 
   const handleQuillChange = (value) => {
     setContent(value);
@@ -37,6 +30,8 @@ const PostBlog = () => {
     setValues({ ...values, [event.target.name]: event.target.value });
     console.log(values);
   };
+
+  const handleFile = (e) => setFile(e.target.files[0]);
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -52,6 +47,7 @@ const PostBlog = () => {
     } = values;
     const description = content;
     const { data } = await axios.post(postRoute, {
+      token: localStorage.token,
       questionTitle,
       courseCode,
       universityName,
@@ -61,6 +57,15 @@ const PostBlog = () => {
       insertTagsHere,
       description,
     });
+    if (file) {
+      const newData = new FormData();
+      newData.append("file", file);
+      await axios({
+        method: "post",
+        url: `http://localhost:5000/api/posts/file/${data.post._id}`,
+        data: newData,
+      });
+    }
     if (data.status === true) {
       console.log(data);
       navigate("/auth/login");
@@ -179,18 +184,7 @@ const PostBlog = () => {
               }}
             />
           </div>
-          <Form.Item
-            name="upload"
-            label="Upload"
-            style={{ paddingTop: "20px" }}
-            valuePropName="fileList"
-            getValueFromEvent={normFile}
-            // extra="longgggggggggggggggggggggggggggggggggg"
-          >
-            <Upload name="logo" action="/upload.do" listType="picture">
-              <Button icon={<UploadOutlined />}>Click to upload</Button>
-            </Upload>
-          </Form.Item>
+          <input type="file" onChange={handleFile} />
         </Col>
         <Col span={6}>
           <div style={{ paddingBottom: "9px" }}>
@@ -245,26 +239,6 @@ const PostBlog = () => {
             />
           </div>
           {/* </Col> */}
-          <Form.Item label="Dragger">
-            <Form.Item
-              name="dragger"
-              valuePropName="fileList"
-              getValueFromEvent={normFile}
-              noStyle
-            >
-              <Upload.Dragger name="files" action="/upload.do">
-                <p className="ant-upload-drag-icon">
-                  <InboxOutlined />
-                </p>
-                <p className="ant-upload-text">
-                  Click or drag file to this area to upload
-                </p>
-                <p className="ant-upload-hint">
-                  Support for a single or bulk upload.
-                </p>
-              </Upload.Dragger>
-            </Form.Item>
-          </Form.Item>
         </Col>
         <div
           style={{
@@ -272,7 +246,7 @@ const PostBlog = () => {
             justifyContent: "center",
             alignItems: "center",
             // height: "100vh",
-            paddingLeft: "490px",
+            paddingLeft: "545px",
           }}
         >
           <Button

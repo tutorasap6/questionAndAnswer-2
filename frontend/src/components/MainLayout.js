@@ -1,24 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Layout, Menu } from "antd";
 import { Col, Row, Input } from "antd";
-// import image1 from "../assets/images/truste.png"
-// import image2 from "../assets/images/mastercard.png"
-// import image3 from "../assets/images/paypal.png"
-// import logocom from "../assets/images/logocom.png"
 import logocom from "../assets/images/logocom.png";
 import { Link } from "gatsby";
 import backimg from "../assets/images/action.png";
 
 const { Search } = Input;
 const { Header, Footer } = Layout;
+
 const MainLayout = ({ pageTitle, children }) => {
-  //   const {
-  //     token: { colorBgContainer },
-  //   } = theme.useToken()
   const onSearch = (value) => console.log(value);
+  const [authorized, setAuthorized] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.token) setAuthorized(true);
+  }, []);
 
   // const navbarArray = ["Home", "AboutUs", "How To Work"]
-  const array = [
+  const unauthorizedArray = [
+    { name: "Solutions", url: "/" },
+    { name: "About Us", url: "/about" },
+    { name: "How it works", url: "/how" },
+    { name: "Services", url: "/service" },
+    { name: "Pricing", url: "/pricing" },
+    { name: "Terms and Conditions", url: "/terms" },
+    { name: "Login", url: "/auth/login" },
+  ];
+
+  const authorizedArray = [
     { name: "Solutions", url: "/" },
     { name: "Post Questions", url: "/post" },
     { name: "About Us", url: "/about" },
@@ -26,7 +35,7 @@ const MainLayout = ({ pageTitle, children }) => {
     { name: "Services", url: "/service" },
     { name: "Pricing", url: "/pricing" },
     { name: "Terms and Conditions", url: "/terms" },
-    { name: "Login", url: "/auth/login" },
+    { name: "Logout", url: "/" },
   ];
 
   return (
@@ -46,7 +55,9 @@ const MainLayout = ({ pageTitle, children }) => {
               paddingTop: "15px",
             }}
           >
-            <img src={logocom} alt="logo" width="60%" height="65%" />
+            <a href="/">
+              <img src={logocom} alt="logo" width="60%" height="65%" />
+            </a>
           </Col>
           <Col
             span={6}
@@ -63,30 +74,57 @@ const MainLayout = ({ pageTitle, children }) => {
             />
           </Col>
           <Col span={12} style={{ paddingTop: "16px" }}>
-            <Menu
-              theme="white"
-              mode="horizontal"
-              items={array.map((item, index) => {
-                const key = index + 1;
-                return {
-                  key,
-                  label: (
-                    <Link to={item.url}>
-                      <span
-                        style={{
-                          marginLeft: "5px",
-                          fontFamily: "awesome",
-                          color: "white",
-                          fontSize: "16px",
-                        }}
-                      >
-                        {item.name}
-                      </span>
-                    </Link>
-                  ),
-                };
-              })}
-            />
+            {authorized ? (
+              <Menu
+                theme="white"
+                mode="horizontal"
+                items={authorizedArray.map((item, index) => {
+                  const key = index + 1;
+                  return {
+                    key,
+                    label: (
+                      <Link to={item.url}>
+                        <span
+                          style={{
+                            marginLeft: "5px",
+                            fontFamily: "awesome",
+                            color: "white",
+                            fontSize: "16px",
+                          }}
+                        >
+                          {item.name}
+                        </span>
+                      </Link>
+                    ),
+                  };
+                })}
+              />
+            ) : (
+              <Menu
+                theme="white"
+                mode="horizontal"
+                items={unauthorizedArray.map((item, index) => {
+                  const key = index + 1;
+                  return {
+                    key,
+                    label: (
+                      <Link to={item.url}>
+                        <span
+                          style={{
+                            marginLeft: "5px",
+                            fontFamily: "awesome",
+                            color: "white",
+                            fontSize: "16px",
+                          }}
+                        >
+                          {item.name}
+                        </span>
+                      </Link>
+                    ),
+                  };
+                })}
+              />
+            )}
           </Col>
         </Row>
       </Header>

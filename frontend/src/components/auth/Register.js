@@ -32,7 +32,8 @@ const Register = () => {
       confirmPassword,
     });
     if (data.status === true) {
-      console.log("SUCCESS");
+      console.log(data.token);
+      localStorage.setItem("token", data.token);
       navigate("/");
     }
     if (data.status === false) {

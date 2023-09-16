@@ -26,47 +26,11 @@ const Login = () => {
       setErrors(data.errors);
     }
     if (data.status === true) {
-      // localStorage.setItem(
-      //   process.env.REACT_APP_LOCALHOST_KEY,
-      //   JSON.stringify(data.user)
-      // );
-      console.log("Success Login");
-
+      console.log(data.token);
+      localStorage.setItem("token", data.token);
       navigate("/");
-      // }
     }
   };
-
-  // useEffect(() => {
-  //   console.log(history);
-  //   if (localStorage.getItem("authToken")) {
-  //     history.push("/");
-  //   }
-  // }, [history]);
-
-  // const loginHandler = async (e) => {
-  //   e.preventDefault();
-  //   const config = {
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //   };
-
-  //   try {
-  //     const { data } = await axios.post(
-  //       "http://localhost:5000/api/auth/login",
-  //       { email, password },
-  //       config
-  //     );
-  //     localStorage.setItem("authToken", data.token);
-  //     history.push("/");
-  //   } catch (error) {
-  //     setError(error.response.data.error);
-  //     setTimeout(() => {
-  //       setError("");
-  //     }, 5000);
-  //   }
-  // };
   return (
     <FormContainer style={{ margin: "-8px" }}>
       <form action="" onSubmit={(event) => handleSubmit(event)}>

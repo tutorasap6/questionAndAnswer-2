@@ -1,6 +1,11 @@
 const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "users",
+    required: true,
+  },
   questionTitle: {
     type: String,
     required: true,
@@ -36,6 +41,9 @@ const postSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
+  },
+  file: {
+    type: String,
   },
   answer: {
     type: String,

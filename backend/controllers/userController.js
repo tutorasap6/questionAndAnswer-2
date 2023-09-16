@@ -1,6 +1,7 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
+const jwt = require("jsonwebtoken");
 
 module.exports.login = async (req, res, next) => {
   try {
@@ -31,8 +32,9 @@ module.exports.login = async (req, res, next) => {
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid)
       return res.json({ errors: "Incorrect Email or Password", status: false });
-    delete user.password;
-    return res.json({ status: true, user });
+    const payload = { id: user._id };
+    const token = jwt.sign(payload, "HJS");
+    return res.json({ token, status: true });
   } catch (ex) {
     next(ex);
   }
@@ -84,8 +86,9 @@ module.exports.register = async (req, res, next) => {
       username,
       password: hashedPassword,
     });
-    delete user.password;
-    return res.json({ status: true, user });
+    const payload = { id: user._id };
+    const token = jwt.sign(payload, "HJS");
+    return res.json({ token, status: true });
   } catch (ex) {
     next(ex);
   }
