@@ -111,6 +111,28 @@ module.exports.post_update = async (req, res) => {
   }
 };
 
+module.exports.file_upload = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const post = await Post.findById(id);
+    post.answer = req.file.filename;
+    await post.save();
+    return res.json(post);
+  } catch (e) {
+    throw e;
+  }
+};
+
+module.exports.fetch_answered_posts = async (req, res) => {
+  try {
+    const posts = await Post.find();
+    const newPosts = posts.filter((post) => !!post.answer === true);
+    return res.json(newPosts);
+  } catch (e) {
+    throw e;
+  }
+};
+
 module.exports.post_delete = (req, res) => {
   Post.findById(req.params.id, function (err, post) {
     if (!post) {

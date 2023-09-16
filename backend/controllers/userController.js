@@ -24,12 +24,6 @@ module.exports.login = async (req, res, next) => {
         status: false,
       });
     }
-    if (!validator.isStrongPassword(password)) {
-      return res.json({
-        errors: "Password is invalid.",
-        status: false,
-      });
-    }
 
     const user = await User.findOne({ email });
     if (!user)
@@ -70,12 +64,6 @@ module.exports.register = async (req, res, next) => {
     if (validator.isEmpty(password)) {
       return res.json({
         errors: "Password is required.",
-        status: false,
-      });
-    }
-    if (!validator.isStrongPassword(password)) {
-      return res.json({
-        errors: "Password is invalid.",
         status: false,
       });
     }

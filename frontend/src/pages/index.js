@@ -19,26 +19,6 @@ const IndexPage = () => {
           borderBottom: "0.2px solid rgba(111,111,110,.8)",
         }}
       >
-        {/* <div
-          style={{
-            height: "40px",
-            // background: "rgb(52,120,255)",
-            width: "100%",
-            // borderBottom: "0.2px solid rgba(255,255,255,.8)",
-            //   borderBottom: "0.2px solid rgba(52,120,255,.8)",
-            // borderBottom: "0.2px solid rgba(111,111,110,.8)",
-          }}
-        >
-          <Breadcrumb
-            style={{
-              //   margin: "16px 0",
-              paddingLeft: "200px",
-              paddingTop: "10px",
-            }}
-          >
-          </Breadcrumb>
-        </div> */}
-
         <Row
         // style={{ marginTop: "40px" }}
         >
@@ -54,13 +34,6 @@ const IndexPage = () => {
           </Col>
           <Col span={4}></Col>
         </Row>
-
-        {/* <div
-          className="site-layout-content"
-          style={{
-            background: colorBgContainer,
-          }}
-        ></div> */}
       </Content>
     </MainLayout>
   );

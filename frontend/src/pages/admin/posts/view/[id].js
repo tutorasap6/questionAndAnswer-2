@@ -5,7 +5,7 @@ import { Layout } from "antd";
 import { Link } from "gatsby";
 import { Menu } from "antd";
 import logocom from "../../../../assets/images/Logocom.png";
-import { InboxOutlined, UploadOutlined } from "@ant-design/icons";
+import { navigate } from "gatsby";
 
 const normFile = (e) => {
   console.log("Upload event:", e);
@@ -17,8 +17,10 @@ const normFile = (e) => {
 
 function CrudDetails(params) {
   const [crud, setCrud] = useState({});
+  const [file, setFile] = useState(null);
   const { id } = params;
   const { Header, Content } = Layout;
+
   useEffect(
     function () {
       async function getCrudById() {
@@ -36,6 +38,25 @@ function CrudDetails(params) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
+
+  const handleFile = (e) => setFile(e.target.files[0]);
+
+  const handlePush = async (e) => {
+    try {
+      e.preventDefault();
+      const data = new FormData();
+      data.append("file", file);
+      const res = await axios({
+        method: "post",
+        url: `http://localhost:5000/api/posts/upload/${id}`,
+        data: data,
+      });
+      navigate("/");
+    } catch (e) {
+      throw e;
+    }
+  };
+
   const array = [
     { name: "Solutions", url: "/" },
     { name: "Post Questions", url: "/post" },
@@ -63,7 +84,9 @@ function CrudDetails(params) {
               paddingTop: "15px",
             }}
           >
-            <img src={logocom} alt="logo" width="60%" height="65%" />
+            <a href="/">
+              <img src={logocom} alt="logo" width="60%" height="65%" />
+            </a>
           </Col>
           <Col
             span={6}
@@ -236,42 +259,25 @@ function CrudDetails(params) {
                     <Row>
                       <Col span={18}></Col>
                       <Col span={3}>
-                        <Form.Item
-                          name="upload"
-                          label="Upload"
-                          valuePropName="fileList"
-                          getValueFromEvent={normFile}
-                          // extra="longgggggggggggggggggggggggggggggggggg"
-                        >
-                          <Upload
-                            name="logo"
-                            action="/upload.do"
-                            listType="picture"
-                          >
-                            <Button icon={<UploadOutlined />}>
-                              Click to upload
-                            </Button>
-                          </Upload>
-                        </Form.Item>
+                        <input type="file" onChange={handleFile} />
                       </Col>
                       <Col
                         span={3}
                         style={{ paddingLeft: "60px", paddingTop: "25px" }}
                       >
                         {" "}
-                        <a href="/answer">
-                          <button
-                            type="submit"
-                            style={{
-                              width: "60px",
-                              height: "40px",
-                              fontSize: "20px",
-                              fontFamily: "awesome",
-                            }}
-                          >
-                            push
-                          </button>
-                        </a>
+                        <button
+                          disabled={!file}
+                          onClick={handlePush}
+                          style={{
+                            width: "60px",
+                            height: "40px",
+                            fontSize: "20px",
+                            fontFamily: "awesome",
+                          }}
+                        >
+                          push
+                        </button>
                       </Col>
                     </Row>
                   </div>

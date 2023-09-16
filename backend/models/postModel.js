@@ -37,6 +37,9 @@ const postSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  answer: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("Posts", postSchema);
