@@ -7,6 +7,7 @@ import { Menu } from "antd";
 import { Col, Row } from "antd";
 import logocom from "../../assets/images/Logocom.png";
 import { getPostsRoute } from "../../utils/APIRoutes";
+import { Space, Table } from "antd";
 
 const { Header } = Layout;
 
@@ -40,6 +41,72 @@ const AdminPage = () => {
     { name: "Pricing", url: "/pricing" },
     { name: "Terms and Conditions", url: "/terms" },
   ];
+
+  const columns = [
+    {
+      title: "Title",
+      dataIndex: "Title",
+      key: "Title",
+    },
+    {
+      title: "description",
+      dataIndex: "description",
+      key: "description",
+    },
+    {
+      title: "CourseCode",
+      dataIndex: "CourseCode",
+      key: "CourseCode",
+    },
+    {
+      title: "CourseName",
+      dataIndex: "CourseName",
+      key: "CourseName",
+    },
+    {
+      title: "University",
+      dataIndex: "University",
+      key: "University",
+    },
+    {
+      title: "Category",
+      dataIndex: "Category",
+      key: "Category",
+    },
+    {
+      title: "Tags",
+      dataIndex: "insertTagsHere",
+      key: "insertTagsHere",
+    },
+    {
+      title: "Price",
+      dataIndex: "insertPrice",
+      key: "insertPrice",
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (_, record) => (
+        <Space size="middle">
+          <a href={`/admin/posts/view/${record.key}`}>View</a>
+          <a href={`/admin/posts/edit/${record.key}`}>Edit</a>
+          <a href={`/admin/posts/delete/${record.key}`}>Delete</a>
+        </Space>
+      ),
+    },
+  ];
+
+  const data = posts.map((post) => ({
+    key: post._id,
+    Title: post.questionTitle,
+    description: post.description,
+    CourseCode: post.courseCode,
+    CourseName: post.courseName,
+    University: post.universityName,
+    Category: post.category,
+    insertTagsHere: post.insertTagsHere,
+    insertPrice: post.insertPrice,
+  }));
   return (
     <>
       <Header
@@ -102,7 +169,9 @@ const AdminPage = () => {
           <hr />
         </div>
 
-        <div className="table-responsive">
+        <Table columns={columns} dataSource={data} />
+
+        {/* <div className="table-responsive">
           <table className="table riped  table-hover table-bordered container">
             <thead>
               <tr>
@@ -165,7 +234,7 @@ const AdminPage = () => {
               })}
             </tbody>
           </table>
-        </div>
+        </div> */}
       </div>
     </>
   );
