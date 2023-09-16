@@ -98,7 +98,7 @@ const AdminPage = () => {
       </Header>
       <div className="container">
         <div>
-          <h2>Question Management</h2>
+          <h2 style={{ textAlign: "center" }}>Question Management</h2>
           <hr />
         </div>
 

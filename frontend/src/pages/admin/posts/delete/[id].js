@@ -6,7 +6,7 @@ import { Col, Row } from "antd";
 import logocom from "../../../../assets/images/Logocom.png";
 import PostDelete from "../../../../components/PostDelete";
 
-const { Header } = Layout;
+const { Header, Content } = Layout;
 
 const DeletePage = (params) => {
   const { id } = params;
@@ -76,7 +76,19 @@ const DeletePage = (params) => {
           </Col>
         </Row>
       </Header>
-      <PostDelete id={id}></PostDelete>
+      <Content
+        style={{
+          padding: "120px",
+        }}
+      >
+        <Row>
+          <Col span={4}></Col>
+          <Col span={16}>
+            <PostDelete id={id}></PostDelete>
+          </Col>
+          <Col span={4}></Col>
+        </Row>
+      </Content>
     </>
   );
 };
