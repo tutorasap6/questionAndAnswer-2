@@ -6,7 +6,9 @@ const postRoutes = require("./routes/post");
 const multer = require("multer");
 const path = require("path");
 const Post = require("./models/postModel");
+const User = require('./models/userModel');
 const fs = require("fs");
+const jwt = require('jsonwebtoken')
 
 const fileRenamer = (filename) => {
   const queHoraEs = Date.now();
@@ -61,18 +63,35 @@ app.post("/api/file/:id", upload1.single("file"), async (req, res) => {
 });
 
 app.use("/", express.static(path.join(__dirname, "./postFile")));
+
+app.get('/check', async(req, res) => {
+  try{
+    const token = req.headers['x-auth-token'];
+    if(!token) throw new Error('Unauthorized');
+    const payload = jwt.verify(token, 'HJS');
+    const user = await User.findById(payload.id);
+    user.downloadable = true;
+    await user.save();
+    return res.json('success')
+  }catch(e){
+    return res.status(400).send(e.message)
+  }
+})
+
 app.get("/file/:id", async (req, res) => {
   try {
+    const token = req.headers['x-auth-token'];
+    if(!token) throw new Error('Unauthorized');
+    const payload = jwt.verify(token, 'HJS');
+    const user = await User.findById(payload.id);
+    if(!user.downloadable) throw new Error('You are not allowed to download');
+    user.downloadable = false;
+    await user.save();
     const id = req.params.id;
     let filePath = path.join(__dirname, `./uploads/${id}`);
-    let file = fs.readFile(filePath);
-    const filereader = new FileReader();
-    filereader.readAsBinaryString(file);
-    filereader.onload = (e) => {
-      return res.json(e.target.result);
-    };
+    return res.sendFile(filePath);
   } catch (e) {
-    throw e;
+    return res.status(400).send(e.message)
   }
 });
 

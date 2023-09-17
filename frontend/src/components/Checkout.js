@@ -45,36 +45,18 @@ const Checkout = ({ post }) => {
 
   useEffect(() => {
     if (success) {
-      //   alert("Payment successful!!");
+      alert('success')
       const fetchFile = async () => {
         try {
-          const res = await axios.get(
-            `http://localhost:5000/file/${post.answer}`
-          );
+          const token = localStorage.token;
+          await axios.get('http://localhost:5000/check', {headers: {'x-auth-token': token}});
+          const res = await axios.get(`http://localhost:5000/file/${post.answer}`, {responseType: "blob", headers: {'x-auth-token': token}});
 
-          // Create a Blob object from the byte array
-          const bl = res.data.length;
-          const buffer = new ArrayBuffer(bl);
-          let chars = new Uint8Array(buffer);
-          for (let i = 0; i < bl; i++) chars[i] = res.data.charCodeAt(i);
-
-          // application/x-zip-compressed - winrar archive
-          // application/x-msdownload - windows executable files
-
-          const file = new File([buffer], "filename.exe", {
-            type: "application/x-msdownload",
-          });
-
-          // Generate a temporary URL for the blob
-          const url = URL.createObjectURL(file);
-          console.log(file, url);
-
-          // Create a link element and set its attributes
+          const url = window.URL.createObjectURL(res.data);
           const link = document.createElement("a");
           link.href = url;
-          link.download = post.answer; // Specify the desired filename with extension
-
-          // Programmatically click the link to trigger the download
+          link.setAttribute("download", post.answer); //or any other extension
+          document.body.appendChild(link);
           link.click();
         } catch (e) {
           console.log(e);
