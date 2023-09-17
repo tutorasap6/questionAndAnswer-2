@@ -28,7 +28,15 @@ const Login = () => {
     if (data.status === true) {
       console.log(data.token);
       localStorage.setItem("token", data.token);
-      navigate("/");
+      const res = await axios({
+        method: "GET",
+        url: "http://localhost:5000/api/auth",
+        headers: {
+          "x-auth-token": data.token,
+        },
+      });
+      if (res.data.role === "admin") navigate("/admin/admin");
+      else navigate("/");
     }
   };
   return (

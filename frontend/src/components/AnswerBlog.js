@@ -1,9 +1,10 @@
 import React from "react";
 import { Card, Button } from "antd";
 import screenimg from "../assets/images/default-answer.jpg";
+import Checkout from "./Checkout";
 
-const AnswerBlog = () => (
-  <div>
+const AnswerBlog = ({ post }) => (
+  <div style={{ marginBottom: "50px" }}>
     <Card style={{ height: "300px", padding: "5px" }}>
       <div
         style={{
@@ -37,14 +38,7 @@ const AnswerBlog = () => (
               <span>
                 <strong>University:</strong>
               </span>
-              <span>
-                <a href="/" target="_blank">
-                  Wilmington University /
-                </a>
-                <a href="/" target="_blank">
-                  PSY 101
-                </a>
-              </span>
+              <span>{post.universityName}</span>
             </li>
             <li
               style={{
@@ -56,11 +50,7 @@ const AnswerBlog = () => (
               <span>
                 <strong>Category:</strong>
               </span>
-              <span>
-                <a href="/" target="_blank">
-                  Humanities Assignment Help{" "}
-                </a>
-              </span>
+              <span>{post.category}</span>
             </li>
 
             <li
@@ -96,14 +86,7 @@ const AnswerBlog = () => (
               <span>
                 <strong>Course code:</strong>
               </span>
-              <span>
-                <a href="/" target="_blank">
-                  4345345252352523 /
-                </a>
-                <a href="/" target="_blank">
-                  PSY 101
-                </a>
-              </span>
+              <span>{post.courseCode}</span>
             </li>
             <li
               style={{
@@ -115,11 +98,7 @@ const AnswerBlog = () => (
               <span>
                 <strong>Course name:</strong>
               </span>
-              <span>
-                <a href="/" target="_blank">
-                  mathematics{" "}
-                </a>
-              </span>
+              <span>{post.courseName}</span>
             </li>
             <li
               style={{
@@ -130,7 +109,7 @@ const AnswerBlog = () => (
               <span>
                 <strong>Price:</strong>
               </span>
-              <span>$8</span>
+              <span>{post.insertPrice}</span>
             </li>
           </ul>
           <h2
@@ -141,21 +120,12 @@ const AnswerBlog = () => (
               // textAlign: "center",
             }}
           >
-            <a href="/answer">ACCN 2010 Quiz 1 | Tulane University</a>
+            {post.questionTitle}
           </h2>
         </div>
         <div style={{ marginTop: "-15px" }}>
           <div>
-            <p>
-              PSY 101 Week 7 Assignment 2 |Wilmington UniversityWeek 7 Career
-              Project: Final PaperCollege level grammar is required. Basic APA
-              format should be followed. This includes a cover sheet, page
-              numbers, page headers, a paper title, page margins, indentation,
-              font, and font size. No abstract or references section is
-              necessary. Please see the attached rubric for more grading
-              details.This assignment is due Sundayby 11:59pm EST.Thefollowing
-              content...
-            </p>
+            <p>{post.description}</p>
           </div>
           {/* <div style={{ marginTop: "-15px", paddingLeft: "680px" }}>
             <button
@@ -207,11 +177,7 @@ const AnswerBlog = () => (
             {/* <a href="/homework-solution-details/632507/accn-2010-quiz-1-tulane-university">
               Read more <i></i>
             </a> */}
-            <div>
-              <Button block style={{ fontWeight: "bold" }}>
-                Download this answer instantly at $$$
-              </Button>
-            </div>
+            <Checkout post={post} />
             <div style={{ marginTop: "5px" }}>
               <Button block style={{ fontWeight: "bold" }}>
                 Get a quote of a new original/Human generated paper

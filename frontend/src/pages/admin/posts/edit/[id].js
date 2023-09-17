@@ -9,6 +9,9 @@ import { Link } from "gatsby";
 import { Menu } from "antd";
 import { Col, Row } from "antd";
 import logocom from "../../../../assets/images/Logocom.png";
+import { Button, Input } from "antd";
+
+const { TextArea } = Input;
 
 const { Header } = Layout;
 function PostEdit(params) {
@@ -72,7 +75,6 @@ function PostEdit(params) {
     { name: "Pricing", url: "/pricing" },
     { name: "Terms and Conditions", url: "/terms" },
   ];
-
   return (
     <>
       <Header
@@ -129,55 +131,67 @@ function PostEdit(params) {
           </Col>
         </Row>
       </Header>
-      <div className="container">
+      <div>
         <ToastContainer />
-        <h1>Edit </h1>
+        <h1 style={{ textAlign: "center" }}>Edit </h1>
         <hr />
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Course Code</label>
-            <input
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            marginLeft: "400px",
+            marginRight: "400px",
+            marginTop: "30px",
+          }}
+        >
+          <div>
+            <label>CourseCode:</label>
+
+            <Input
               name="courseCode"
               type="text"
               value={post.courseCode}
               onChange={handleChange}
-              className="form-control"
             />
           </div>
-          <div className="form-group">
-            <label>CourseName</label>
-            <input
+
+          <div style={{ marginTop: "15px" }}>
+            <label>courseName:</label>
+
+            <Input
               name="courseName"
               value={post.courseName}
               required
               onChange={handleChange}
-              className="form-control"
             />
           </div>
-          <div className="form-group">
-            <label>University</label>
-            <input
+
+          <div style={{ marginTop: "15px" }}>
+            <label>University:</label>
+
+            <Input
               name="universityName"
               value={post.universityName}
               required
               onChange={handleChange}
-              className="form-control"
             />
           </div>
-          <div className="form-group">
-            <label>Category</label>
-            <input
+
+          <div style={{ marginTop: "15px" }}>
+            <label>Category:</label>
+
+            <Input
               name="category"
               value={post.category}
               type="text"
               required
               onChange={handleChange}
-              className="form-control"
             />
           </div>
-          <div className="form-group">
-            <label>Price</label>
-            <input
+
+          <div style={{ marginTop: "15px" }}>
+            <label>Price:</label>
+
+            <Input
               name="insertPrice"
               type="number"
               value={post.insertPrice}
@@ -185,9 +199,11 @@ function PostEdit(params) {
               className="form-control"
             />
           </div>
-          <div className="form-group">
-            <label>Tag</label>
-            <input
+
+          <div style={{ marginTop: "15px" }}>
+            <label>Tag:</label>
+
+            <Input
               name="insertTagsHere"
               value={post.insertTagsHere}
               type="url"
@@ -195,30 +211,29 @@ function PostEdit(params) {
               className="form-control"
             />
           </div>
-          <div className="form-group">
-            <label>Description</label>
-            <input
+
+          <div style={{ marginTop: "15px" }}>
+            <label>Description:</label>
+
+            <TextArea
+              style={{ height: "400px" }}
               name="description"
               value={post.description}
               onChange={handleChange}
               className="form-control"
             />
           </div>
-          <div className="btn-group">
-            <button
-              type="submit"
-              className="btn btn-primary"
-              onClick={handleSubmit}
-            >
+          <div style={{ marginTop: "15px" }}>
+            <Button type="primary" onClick={handleSubmit}>
               Update
-            </button>
-            <button
-              type="button"
+            </Button>
+            <Button
+              type="primary"
               onClick={handleCancel}
-              className="btn btn-secondary"
+              style={{ marginLeft: "15px" }}
             >
               Cancel
-            </button>
+            </Button>
           </div>
         </form>
       </div>

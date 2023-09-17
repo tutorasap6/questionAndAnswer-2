@@ -6,6 +6,7 @@ import { Link } from "gatsby";
 import { Menu } from "antd";
 import logocom from "../../../../assets/images/Logocom.png";
 import { navigate } from "gatsby";
+import FileViewer from "react-file-viewer";
 
 const normFile = (e) => {
   console.log("Upload event:", e);
@@ -40,6 +41,9 @@ function CrudDetails(params) {
   );
 
   const handleFile = (e) => setFile(e.target.files[0]);
+  function handleCancel() {
+    navigate("/admin/admin");
+  }
 
   const handlePush = async (e) => {
     try {
@@ -133,7 +137,7 @@ function CrudDetails(params) {
             // style={{ borderRight: "0.1px solid rgba(111,111,110,.8)" }}
           ></Col>
           <Col span={16}>
-            <Card style={{ height: "700px", padding: "5px", marginTop: "5px" }}>
+            <Card style={{ height: "100%", padding: "5px", marginTop: "5px" }}>
               <div
                 style={{
                   padding: "5px",
@@ -255,35 +259,57 @@ function CrudDetails(params) {
                 </div>
                 <div style={{ marginTop: "-15px" }}>
                   <div>{crud.description}</div>
-                  <div style={{ marginTop: "420px" }}>
-                    <Row>
-                      <Col span={18}></Col>
-                      <Col span={3} style={{ paddingTop: "35px" }}>
-                        <input type="file" onChange={handleFile} />
-                      </Col>
-                      <Col
-                        span={3}
-                        style={{ paddingLeft: "60px", paddingTop: "25px" }}
-                      >
-                        {" "}
-                        <button
-                          disabled={!file}
-                          onClick={handlePush}
-                          style={{
-                            width: "60px",
-                            height: "40px",
-                            fontSize: "20px",
-                            fontFamily: "awesome",
-                          }}
-                        >
-                          push
-                        </button>
-                      </Col>
-                    </Row>
-                  </div>
                 </div>
               </div>
+              {crud.file && (
+                <div>
+                  <FileViewer
+                    filePath={`http://localhost:5000/${crud.file}`}
+                    fileType={
+                      crud.file.split(".")[crud.file.split(".").length - 1]
+                    }
+                  />
+                </div>
+              )}
             </Card>
+            <div style={{ marginTop: "10px" }}>
+              <Row>
+                <Col span={15}></Col>
+                <Col span={3} style={{ paddingTop: "35px" }}>
+                  <input type="file" onChange={handleFile} />
+                </Col>
+                <Col
+                  span={3}
+                  style={{ paddingLeft: "70px", paddingTop: "25px" }}
+                >
+                  {" "}
+                  <Button
+                    type="primary"
+                    disabled={!file}
+                    onClick={handlePush}
+                    style={{
+                      width: "60px",
+                      height: "40px",
+                      fontSize: "20px",
+                      fontFamily: "awesome",
+                      marginLeft: "15px",
+                      padding: "3px",
+                    }}
+                  >
+                    Push
+                  </Button>
+                </Col>
+                <Col span={3} style={{ paddingTop: "30px" }}>
+                  <Button
+                    type="primary"
+                    onClick={handleCancel}
+                    style={{ marginLeft: "15px" }}
+                  >
+                    Cancel
+                  </Button>
+                </Col>
+              </Row>
+            </div>
           </Col>
           <Col span={4}></Col>
         </Row>

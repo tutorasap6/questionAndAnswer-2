@@ -1,9 +1,9 @@
 import React from "react";
 import { Button } from "antd";
 
-const onChange = (e) => {
-  console.log("Change:", e.target.value);
-};
+// const onChange = (e) => {
+//   console.log("Change:", e.target.value);
+// };
 
 const QueInput = () => (
   <div

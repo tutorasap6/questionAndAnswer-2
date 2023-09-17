@@ -137,14 +137,14 @@ const BlogContent = () => {
                         // textAlign: "center",
                       }}
                     >
-                      <a href="/answer">{blog.questionTitle}</a>
+                      <a href={`/answer/${blog._id}`}>{blog.questionTitle}</a>
                     </h2>
                   </div>
                   <div style={{ marginTop: "-15px" }}>
                     <div>
                       <p>{blog.description}</p>
                     </div>
-                    <div
+                    {/* <div
                       style={{
                         marginTop: "80px",
                         paddingLeft: "700px",
@@ -164,7 +164,7 @@ const BlogContent = () => {
                           Answer
                         </button>
                       </a>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </Card>

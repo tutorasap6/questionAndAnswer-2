@@ -35,7 +35,7 @@ const MainLayout = ({ pageTitle, children }) => {
     { name: "Services", url: "/service" },
     { name: "Pricing", url: "/pricing" },
     { name: "Terms and Conditions", url: "/terms" },
-    { name: "Logout", url: "/" },
+    { name: "Logout", url: "/logout" },
   ];
 
   return (
@@ -288,16 +288,6 @@ const MainLayout = ({ pageTitle, children }) => {
                   Support
                 </a>
               </li>
-              {/* <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
-                  Question Answers
-                </a>
-              </li>
-              <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
-                  Blogs
-                </a>
-              </li> */}
               <li>
                 <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
                   Advanced Payment
@@ -309,7 +299,6 @@ const MainLayout = ({ pageTitle, children }) => {
         </Row>
         <div
           style={{
-            // background: "rgb(144,218,222)",
             background: "rgb(26,28,33)",
             display: "flex",
             justifyContent: "center",
@@ -318,8 +307,6 @@ const MainLayout = ({ pageTitle, children }) => {
             marginTop: "0.2px",
           }}
         >
-          {/* <Col span={4} style={{}}></Col> */}
-          {/* <Col span={4} style={{ display: "flex", alignItems: "flex-start" }}> */}
           <h2
             style={{
               fontFamily: "awesome",
@@ -332,39 +319,6 @@ const MainLayout = ({ pageTitle, children }) => {
           >
             ©2023 Champlain Solutions
           </h2>
-          {/* </Col> */}
-          {/* <Col span={4}></Col> */}
-          {/* <Col span={8} style={{ padding: "12px" }}>
-            <ul style={{ listStyleType: "none", display: "flex" }}>
-              <li style={{ marginRight: "10px" }}>
-             <img src={image1} alt="image 1" width="100" height="39" /> 
-                <StaticImage
-                  alt="image1"
-                  src="../assets/images/truste.png"
-                  width="100"
-                  height="39"
-                />
-              </li>
-              <li style={{ marginRight: "10px" }}>
-                <img src={image2} alt="image 2" width="100" height="39" />
-                <StaticImage
-                  alt="image2"
-                  src="../assets/images/mastercard.png"
-                  width="100"
-                  height="39"
-                />
-              </li>
-              <li>
-                <img src={image3} alt="image 3" width="100" height="39" />
-                <StaticImage
-                  alt="image3"
-                  src="../assets/images/paypal.png"
-                  width="100"
-                  height="39"
-                />
-              </li>
-            </ul>
-          </Col> */}
         </div>
       </Footer>
     </Layout>

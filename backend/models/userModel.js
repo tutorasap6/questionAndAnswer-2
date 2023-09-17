@@ -19,16 +19,16 @@ const userSchema = new mongoose.Schema({
     required: true,
     min: 8,
   },
-  roll: {
-    type:Number,
+  role: {
+    type: String,
     required: true,
-    default:0
+    default: "user",
   },
   state: {
-    type:Number,
-    required:true,
-    default:0
-  }
+    type: Number,
+    required: true,
+    default: 0,
+  },
 });
 
 module.exports = mongoose.model("Users", userSchema);

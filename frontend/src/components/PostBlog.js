@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Card, Col, Row, Upload, Form, Button } from "antd";
+import { Card, Col, Row, Button } from "antd";
 import "react-quill/dist/quill.snow.css";
 import { navigate } from "gatsby";
 import ReactQuill from "react-quill";
-import { InboxOutlined, UploadOutlined } from "@ant-design/icons";
 import { postRoute } from "../utils/APIRoutes";
 import axios from "axios";
 
@@ -62,13 +61,13 @@ const PostBlog = () => {
       newData.append("file", file);
       await axios({
         method: "post",
-        url: `http://localhost:5000/api/posts/file/${data.post._id}`,
+        url: `http://localhost:5000/api/file/${data.post._id}`,
         data: newData,
       });
     }
     if (data.status === true) {
       console.log(data);
-      navigate("/auth/login");
+      navigate("/");
     }
     if (data.status === false) {
       setErrors(data.errors);
@@ -184,7 +183,11 @@ const PostBlog = () => {
               }}
             />
           </div>
-          <input type="file" onChange={handleFile} />
+          <input
+            type="file"
+            onChange={handleFile}
+            accept=".pptx, .doc, .docx, .pdf, .xls"
+          />
         </Col>
         <Col span={6}>
           <div style={{ paddingBottom: "9px" }}>

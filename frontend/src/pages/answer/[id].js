@@ -1,14 +1,37 @@
 // Step 1: Import React
-import * as React from "react";
-import MainLayout from "../components/MainLayout";
+import React, { useState } from "react";
+import MainLayout from "../../components/MainLayout";
 import { Breadcrumb, Layout } from "antd";
-import AnswerBlog from "../components/AnswerBlog";
+import AnswerBlog from "../../components/AnswerBlog";
 import { Col, Row } from "antd";
-import QueInput from "../components/QueInput";
+import QueInput from "../../components/QueInput";
+import { useEffect } from "react";
+import axios from "axios";
 
 // Step 2: Define your component
 const { Content } = Layout;
-const AnswerPage = () => {
+const AnswerPage = (params) => {
+  const { id } = params;
+  console.log(id);
+  const [post, setPost] = useState({});
+
+  useEffect(() => {
+    try {
+      const getPostById = async () => {
+        try {
+          const response = await axios.get(
+            `http://localhost:5000/api/posts/${id}`
+          );
+          setPost(response.data);
+        } catch (error) {
+          console.log("error", error);
+        }
+      };
+      getPostById();
+    } catch (e) {
+      throw e;
+    }
+  }, []);
   return (
     <MainLayout pageTitle="Answer">
       <Content
@@ -49,10 +72,7 @@ const AnswerPage = () => {
         <Row style={{ marginTop: "10px" }}>
           <Col span={4}></Col>
           <Col span={11}>
-            <AnswerBlog></AnswerBlog>
-          </Col>
-          <Col span={5} style={{ paddingLeft: "30px" }}>
-            <QueInput></QueInput>
+            <AnswerBlog post={post}></AnswerBlog>
           </Col>
           <Col span={4}></Col>
         </Row>

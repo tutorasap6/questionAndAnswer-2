@@ -103,13 +103,15 @@ module.exports.getAllUsers = async (req, res, next) => {
   }
 };
 
-module.exports.logOut = (req, res, next) => {
+module.exports.getUser = async (req, res) => {
   try {
-    if (!req.params.id) return res.json({ msg: "User id is required " });
-    onlineUsers.delete(req.params.id);
-    return res.status(200).send();
-  } catch (ex) {
-    next(ex);
+    const token = req.headers["x-auth-token"];
+    const payload = jwt.verify(token, "HJS");
+    const user = await User.findById(payload.id);
+    if (!user) throw "User Not Found";
+    return res.json(user);
+  } catch (e) {
+    throw e;
   }
 };
 

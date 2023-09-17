@@ -93,7 +93,7 @@ module.exports.addPost = async (req, res, next) => {
   }
 };
 
-module.exports.upload = async (req, res) => {
+module.exports.file_upload = async (req, res) => {
   try {
     const { id } = req.params;
     const post = await Post.findById(id);
@@ -136,11 +136,12 @@ module.exports.post_update = async (req, res) => {
   }
 };
 
-module.exports.file_upload = async (req, res) => {
+module.exports.answer_upload = async (req, res) => {
   try {
     const { id } = req.params;
     const post = await Post.findById(id);
     post.answer = req.file.filename;
+    console.log(req.file.filename);
     await post.save();
     return res.json(post);
   } catch (e) {

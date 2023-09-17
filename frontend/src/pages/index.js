@@ -29,9 +29,6 @@ const IndexPage = () => {
           <Col span={12}>
             <BlogContent></BlogContent>
           </Col>
-          <Col span={4} style={{ paddingLeft: "10px" }}>
-            <QueInput></QueInput>
-          </Col>
           <Col span={4}></Col>
         </Row>
       </Content>

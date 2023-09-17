@@ -2,7 +2,7 @@ import React from "react";
 import { Layout } from "antd";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import { Menu } from "antd";
 import { Col, Row } from "antd";
 import logocom from "../../assets/images/Logocom.png";
@@ -13,6 +13,22 @@ const { Header } = Layout;
 
 const AdminPage = () => {
   const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState();
+  const [token, setToken] = useState(localStorage.token);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios({
+        method: "GET",
+        url: "http://localhost:5000/api/auth",
+        headers: {
+          "x-auth-token": token,
+        },
+      });
+      setUser(res.data);
+    };
+    if (token) fetchUser();
+  }, []);
 
   useEffect(function () {
     async function getPosts() {
@@ -48,11 +64,11 @@ const AdminPage = () => {
       dataIndex: "Title",
       key: "Title",
     },
-    {
-      title: "description",
-      dataIndex: "description",
-      key: "description",
-    },
+    // {
+    //   title: "description",
+    //   dataIndex: "description",
+    //   key: "description",
+    // },
     {
       title: "CourseCode",
       dataIndex: "CourseCode",
@@ -99,7 +115,7 @@ const AdminPage = () => {
   const data = posts.map((post) => ({
     key: post._id,
     Title: post.questionTitle,
-    description: post.description,
+    // description: post.description,
     CourseCode: post.courseCode,
     CourseName: post.courseName,
     University: post.universityName,
@@ -107,6 +123,14 @@ const AdminPage = () => {
     insertTagsHere: post.insertTagsHere,
     insertPrice: post.insertPrice,
   }));
+  if (!token) {
+    navigate("/");
+    return null;
+  }
+  if (user && user?.role !== "admin") {
+    navigate("/");
+    return null;
+  }
   return (
     <>
       <Header
