@@ -67,11 +67,11 @@ const MainLayout = ({ pageTitle, children }) => {
               paddingRight: "60px",
             }}
           >
-            <Search
+            {/* <Search
               placeholder="input search text"
               onSearch={onSearch}
               enterButton
-            />
+            /> */}
           </Col>
           <Col span={12} style={{ paddingTop: "16px" }}>
             {authorized ? (
