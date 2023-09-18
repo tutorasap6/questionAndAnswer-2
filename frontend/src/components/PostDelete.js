@@ -163,9 +163,11 @@ function PostDelete(props) {
             </h2>
           </div>
           <div style={{ marginTop: "-15px" }}>
-            <div>
-              <p>{post.description}</p>
-            </div>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: post.description,
+              }}
+            ></div>
           </div>
         </div>
       </Card>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { Button } from "antd";
+import {toast} from 'react-toastify'
 import axios from "axios";
 
 const Checkout = ({ post }) => {
@@ -40,12 +41,22 @@ const Checkout = ({ post }) => {
 
   //capture likely error
   const onError = (err) => {
-    alert(err);
+    toast.error(err, {
+      position: "top-right",
+      autoClose: 1000,
+      theme: "colored",
+      hideProgressBar: true,
+    });
   };
 
   useEffect(() => {
     if (success) {
-      alert('success')
+      toast.success('Success', {
+        position: "top-right",
+        autoClose: 1000,
+        theme: "colored",
+        hideProgressBar: true,
+      });
       const fetchFile = async () => {
         try {
           const token = localStorage.token;

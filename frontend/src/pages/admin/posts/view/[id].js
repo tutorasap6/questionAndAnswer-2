@@ -258,7 +258,11 @@ function CrudDetails(params) {
                   </h2>
                 </div>
                 <div style={{ marginTop: "-15px" }}>
-                  <div>{crud.description}</div>
+                <div
+                      dangerouslySetInnerHTML={{
+                        __html: crud.description
+                      }}
+                    ></div>
                 </div>
               </div>
               {crud.file && (

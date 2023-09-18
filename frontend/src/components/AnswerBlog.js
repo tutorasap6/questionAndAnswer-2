@@ -124,9 +124,11 @@ const AnswerBlog = ({ post }) => (
           </h2>
         </div>
         <div style={{ marginTop: "-15px" }}>
-          <div>
-            <p>{post.description}</p>
-          </div>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: post.description,
+            }}
+          ></div>
           {/* <div style={{ marginTop: "-15px", paddingLeft: "680px" }}>
             <button
               type="submit"

@@ -141,9 +141,11 @@ const BlogContent = () => {
                     </h2>
                   </div>
                   <div style={{ marginTop: "-15px" }}>
-                    <div>
-                      <p>{blog.description}</p>
-                    </div>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: blog.description
+                      }}
+                    ></div>
                     {/* <div
                       style={{
                         marginTop: "80px",

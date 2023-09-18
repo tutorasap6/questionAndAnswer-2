@@ -4,6 +4,9 @@ import "react-quill/dist/quill.snow.css";
 import { navigate } from "gatsby";
 import ReactQuill from "react-quill";
 import { postRoute } from "../utils/APIRoutes";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 const PostBlog = () => {
@@ -70,6 +73,12 @@ const PostBlog = () => {
       navigate("/");
     }
     if (data.status === false) {
+      toast.error(data.errors, {
+        position: "top-right",
+        autoClose: 1000,
+        theme: "colored",
+        hideProgressBar: true,
+      });
       setErrors(data.errors);
       console.log(data);
       console.log(errors);
@@ -85,6 +94,7 @@ const PostBlog = () => {
         marginBottom: "-6px",
       }}
     >
+      <ToastContainer/>
       <div
         style={{
           marginTop: "-30px",
@@ -209,7 +219,7 @@ const PostBlog = () => {
           </div>
           <div style={{ paddingBottom: "9px" }}>
             <input
-              type="text"
+              type="number"
               placeholder="Insert Price"
               name="insertPrice"
               onChange={(e) => handleChange(e)}

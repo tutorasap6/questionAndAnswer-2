@@ -9,13 +9,10 @@ const postSchema = new mongoose.Schema({
   questionTitle: {
     type: String,
     required: true,
-    min: 20,
-    unique: true,
   },
   courseCode: {
     type: String,
     required: true,
-    unique: true,
   },
   universityName: {
     type: String,

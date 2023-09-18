@@ -4,6 +4,8 @@ import { Col, Row, Input } from "antd";
 import logocom from "../assets/images/logocom.png";
 import { Link } from "gatsby";
 import backimg from "../assets/images/action.png";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const { Search } = Input;
 const { Header, Footer } = Layout;
@@ -40,6 +42,7 @@ const MainLayout = ({ pageTitle, children }) => {
 
   return (
     <Layout className="layout" style={{ margin: "-8px" }}>
+      <ToastContainer/>
       <Header
         style={{
           padding: "0",
