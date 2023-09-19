@@ -42,7 +42,7 @@ const MainLayout = ({ pageTitle, children }) => {
 
   return (
     <Layout className="layout" style={{ margin: "-8px" }}>
-      <ToastContainer/>
+      <ToastContainer />
       <Header
         style={{
           padding: "0",
@@ -209,6 +209,7 @@ const MainLayout = ({ pageTitle, children }) => {
                 fontFamily: "awesome",
                 color: "white",
                 fontSize: "18px",
+                paddingLeft: "40px",
               }}
             >
               About us
@@ -226,17 +227,26 @@ const MainLayout = ({ pageTitle, children }) => {
                 </a>
               </li>
               <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
+                <a
+                  href="/about"
+                  style={{ fontFamily: "awesome", color: "#707885" }}
+                >
                   About Us
                 </a>
               </li>
               <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
+                <a
+                  href="/service"
+                  style={{ fontFamily: "awesome", color: "#707885" }}
+                >
                   Services
                 </a>
               </li>
               <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
+                <a
+                  href="/terms"
+                  style={{ fontFamily: "awesome", color: "#707885" }}
+                >
                   Terms & Conditions
                 </a>
               </li>
@@ -248,23 +258,27 @@ const MainLayout = ({ pageTitle, children }) => {
                 fontFamily: "awesome",
                 color: "white",
                 fontSize: "18px",
+                paddingLeft: "30px",
               }}
             >
               Legal Stuff
             </h4>
             <ul style={{ listStyleType: "none" }}>
               <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
+                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
                   Team of Use
                 </a>
               </li>
               <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
+                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
+                <a
+                  href="/pricing"
+                  style={{ fontFamily: "awesome", color: "#707885" }}
+                >
                   Pricing
                 </a>
               </li>
@@ -276,23 +290,24 @@ const MainLayout = ({ pageTitle, children }) => {
                 fontFamily: "awesome",
                 color: "white",
                 fontSize: "18px",
+                paddingLeft: "50px",
               }}
             >
               Help
             </h4>
             <ul style={{ listStyleType: "none" }}>
               <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
+                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
                   knowledge Base
                 </a>
               </li>
               <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
+                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
                   Support
                 </a>
               </li>
               <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
+                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
                   Advanced Payment
                 </a>
               </li>
