@@ -2,7 +2,6 @@
 import * as React from "react";
 import MainLayout from "../components/MainLayout";
 import BlogContent from "../components/BlogContent";
-import QueInput from "../components/QueInput";
 import { Layout } from "antd";
 import { Col, Row } from "antd";
 
@@ -19,13 +18,8 @@ const IndexPage = () => {
           borderBottom: "0.2px solid rgba(111,111,110,.8)",
         }}
       >
-        <Row
-        // style={{ marginTop: "40px" }}
-        >
-          <Col
-            span={4}
-            // style={{ borderRight: "0.1px solid rgba(111,111,110,.8)" }}
-          ></Col>
+        <Row>
+          <Col span={4}></Col>
           <Col span={12}>
             <BlogContent></BlogContent>
           </Col>
