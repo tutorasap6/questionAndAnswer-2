@@ -265,17 +265,20 @@ const MainLayout = ({ pageTitle, children }) => {
             </h4>
             <ul style={{ listStyleType: "none" }}>
               <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
+                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
                   Team of Use
                 </a>
               </li>
               <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
+                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
+                <a
+                  href="/pricing"
+                  style={{ fontFamily: "awesome", color: "#707885" }}
+                >
                   Pricing
                 </a>
               </li>
@@ -294,17 +297,17 @@ const MainLayout = ({ pageTitle, children }) => {
             </h4>
             <ul style={{ listStyleType: "none" }}>
               <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
+                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
                   knowledge Base
                 </a>
               </li>
               <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
+                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
                   Support
                 </a>
               </li>
               <li>
-                <a href="/" style={{ fontFamily: "awesome", color: "#707885" }}>
+                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
                   Advanced Payment
                 </a>
               </li>
