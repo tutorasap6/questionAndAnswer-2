@@ -1,13 +1,37 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "antd";
 import axios from "axios";
+import insane from "insane";
+import ChopLines from "chop-lines";
+
+const Sanitized = ({ html }) => (
+  <div
+    dangerouslySetInnerHTML={{
+      __html: insane(html, {
+        allowedTags: [
+          "p",
+          "strong",
+          "em",
+          "a",
+          "b",
+          "i",
+          "span",
+          "div",
+          "br",
+          "u",
+          "img",
+        ],
+      }),
+    }}
+  />
+);
 
 const BlogContent = () => {
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     const fetchBlogs = async () => {
       const res = await axios.get(
-        "http://localhost:5000/api/posts/fetch/answeredPosts"
+        "http://166.88.77.154:5000/api/posts/fetch/answeredPosts"
       );
       setBlogs(res.data);
     };
@@ -17,136 +41,141 @@ const BlogContent = () => {
     <div>
       {blogs?.length
         ? blogs.map((blog) => {
-            return (
-              <Card
-                style={{ height: "300px", padding: "5px", marginTop: "5px" }}
+          return (
+            <Card
+              style={{ height: "300px", padding: "5px", marginTop: "5px" }}
+              key={blog.questionTitle}
+            >
+              <div
+                style={{
+                  padding: "5px",
+                  paddingTop: "0px",
+                  fontFamily: "'Heebo', sans-serif",
+                  marginBottom: "15px",
+                }}
               >
-                <div
-                  style={{
-                    padding: "5px",
-                    paddingTop: "0px",
-                    fontFamily: "'Heebo', sans-serif",
-                    marginBottom: "15px",
-                  }}
-                >
-                  <div style={{ marginBottom: "15px", marginTop: "-10px" }}>
-                    <ul
+                <div style={{ marginBottom: "15px", marginTop: "-10px" }}>
+                  <ul
+                    style={{
+                      listStyleType: "none",
+                      display: "flex",
+                      borderTop: "0.2px solid rgba(0,0,0,0.2)",
+                      borderBottom: "0.2px solid rgba(0,0,0,0.2)",
+                      marginTop: "0.2px",
+                      marginBottom: "0px",
+                      paddingTop: "3px",
+                      height: "35px",
+                      paddingLeft: "10px",
+                    }}
+                  >
+                    <li
                       style={{
-                        listStyleType: "none",
-                        display: "flex",
-                        borderTop: "0.2px solid rgba(0,0,0,0.2)",
-                        borderBottom: "0.2px solid rgba(0,0,0,0.2)",
-                        marginTop: "0.2px",
-                        marginBottom: "0px",
-                        paddingTop: "3px",
-                        height: "35px",
-                        paddingLeft: "10px",
+                        marginRight: "10px",
+                        borderRight: "1px solid rgba(0, 0, 0, 0.2)",
+                        paddingRight: "5px",
+                        margin: "5px",
                       }}
                     >
-                      <li
-                        style={{
-                          marginRight: "10px",
-                          borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                          paddingRight: "5px",
-                          margin: "5px",
-                        }}
-                      >
-                        <span>
-                          <strong>University:</strong>
-                        </span>
-                        <span>{blog.universityName}</span>
-                      </li>
-                      <li
-                        style={{
-                          borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                          paddingRight: "5px",
-                          margin: "5px",
-                        }}
-                      >
-                        <span>
-                          <strong>Category:</strong>
-                        </span>
-                        <span>{blog.category}</span>
-                      </li>
+                      <span>
+                        <strong>University:</strong>
+                      </span>
+                      <span>{blog.universityName}</span>
+                    </li>
+                    <li
+                      style={{
+                        borderRight: "1px solid rgba(0, 0, 0, 0.2)",
+                        paddingRight: "5px",
+                        margin: "5px",
+                      }}
+                    >
+                      <span>
+                        <strong>Category:</strong>
+                      </span>
+                      <span>{blog.category}</span>
+                    </li>
 
-                      <li
-                        style={{
-                          paddingRight: "5px",
-                          margin: "5px",
-                        }}
-                      >
-                        <span>
-                          <strong>Date:</strong>
-                        </span>
-                        <span>03 May 2023</span>
-                      </li>
-                    </ul>
-                    <ul
+                    <li
                       style={{
-                        listStyleType: "none",
-                        display: "flex",
-                        borderBottom: "0.2px solid rgba(0,0,0,0.2)",
-                        marginTop: "0.2px",
-                        paddingTop: "3px",
-                        height: "35px",
-                        paddingLeft: "10px",
+                        paddingRight: "5px",
+                        margin: "5px",
                       }}
                     >
-                      <li
-                        style={{
-                          marginRight: "10px",
-                          borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                          paddingRight: "5px",
-                          margin: "5px",
-                        }}
-                      >
-                        <span>
-                          <strong>Course code:</strong>
-                        </span>
-                        <span>{blog.courseCode}</span>
-                      </li>
-                      <li
-                        style={{
-                          borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                          paddingRight: "5px",
-                          margin: "5px",
-                        }}
-                      >
-                        <span>
-                          <strong>Course name:</strong>
-                        </span>
-                        <span>{blog.courseName}</span>
-                      </li>
-                      <li
-                        style={{
-                          paddingRight: "5px",
-                          margin: "5px",
-                        }}
-                      >
-                        <span>
-                          <strong>Price:</strong>
-                        </span>
-                        <span>{blog.insertPrice}</span>
-                      </li>
-                    </ul>
-                    <h2
+                      <span>
+                        <strong>Date:</strong>
+                      </span>
+                      <span>03 May 2023</span>
+                    </li>
+                  </ul>
+                  <ul
+                    style={{
+                      listStyleType: "none",
+                      display: "flex",
+                      borderBottom: "0.2px solid rgba(0,0,0,0.2)",
+                      marginTop: "0.2px",
+                      paddingTop: "3px",
+                      height: "35px",
+                      paddingLeft: "10px",
+                    }}
+                  >
+                    <li
                       style={{
-                        marginTop: "-15px",
-                        fontFamily: "awesome",
-                        fontSize: "26px",
-                        // textAlign: "center",
+                        marginRight: "10px",
+                        borderRight: "1px solid rgba(0, 0, 0, 0.2)",
+                        paddingRight: "5px",
+                        margin: "5px",
                       }}
                     >
-                      <a href={`/answer/${blog._id}`}>{blog.questionTitle}</a>
-                    </h2>
+                      <span>
+                        <strong>Course code:</strong>
+                      </span>
+                      <span>{blog.courseCode}</span>
+                    </li>
+                    <li
+                      style={{
+                        borderRight: "1px solid rgba(0, 0, 0, 0.2)",
+                        paddingRight: "5px",
+                        margin: "5px",
+                      }}
+                    >
+                      <span>
+                        <strong>Course name:</strong>
+                      </span>
+                      <span>{blog.courseName}</span>
+                    </li>
+                    <li
+                      style={{
+                        paddingRight: "5px",
+                        margin: "5px",
+                      }}
+                    >
+                      <span>
+                        <strong>Price:</strong>
+                      </span>
+                      <span>{blog.insertPrice}</span>
+                    </li>
+                  </ul>
+                  <h2
+                    style={{
+                      marginTop: "-15px",
+                      fontFamily: "awesome",
+                      fontSize: "26px",
+                      // textAlign: "center",
+                    }}
+                  >
+                    <a href={`/answer/${blog._id}`}>{blog.questionTitle}</a>
+                  </h2>
+                </div>
+                <div style={{ marginTop: "-15px" }}>
+                  <div>
+                    {blog.description?.length > 500 ?
+                      <div dangerouslySetInnerHTML={{ __html: blog.description.replace( /(<([^>]+)>)/ig, '').replaceAll('&nbsp;', '').slice(0, 500).concat('...') }} className="my-4"></div>
+                      :
+                      <div dangerouslySetInnerHTML={{ __html: blog.description }} className="my-4"/>
+                    }
+                    {blog.description?.length > 500 && <span>...</span>}
                   </div>
-                  <div style={{ marginTop: "-15px" }}>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: blog.description
-                      }}
-                    ></div>
-                    {/* <div
+
+                  {/* <div
                       style={{
                         marginTop: "80px",
                         paddingLeft: "700px",
@@ -167,11 +196,11 @@ const BlogContent = () => {
                         </button>
                       </a>
                     </div> */}
-                  </div>
                 </div>
-              </Card>
-            );
-          })
+              </div>
+            </Card>
+          );
+        })
         : null}
     </div>
   );

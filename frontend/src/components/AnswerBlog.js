@@ -29,10 +29,10 @@ const AnswerBlog = ({ post }) => (
           >
             <li
               style={{
-                marginRight: "10px",
                 borderRight: "1px solid rgba(0, 0, 0, 0.2)",
                 paddingRight: "5px",
                 margin: "5px",
+                marginLeft: "-25px",
               }}
             >
               <span>
@@ -77,10 +77,10 @@ const AnswerBlog = ({ post }) => (
           >
             <li
               style={{
-                marginRight: "10px",
                 borderRight: "1px solid rgba(0, 0, 0, 0.2)",
                 paddingRight: "5px",
                 margin: "5px",
+                marginLeft: "-25px",
               }}
             >
               <span>

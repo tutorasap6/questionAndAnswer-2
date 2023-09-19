@@ -30,7 +30,7 @@ const Login = () => {
       localStorage.setItem("token", data.token);
       const res = await axios({
         method: "GET",
-        url: "http://localhost:5000/api/auth",
+        url: "http://166.88.77.154:5000/api/auth",
         headers: {
           "x-auth-token": data.token,
         },
