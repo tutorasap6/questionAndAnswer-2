@@ -1,30 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "antd";
 import axios from "axios";
-import insane from "insane";
-import ChopLines from "chop-lines";
-
-const Sanitized = ({ html }) => (
-  <div
-    dangerouslySetInnerHTML={{
-      __html: insane(html, {
-        allowedTags: [
-          "p",
-          "strong",
-          "em",
-          "a",
-          "b",
-          "i",
-          "span",
-          "div",
-          "br",
-          "u",
-          "img",
-        ],
-      }),
-    }}
-  />
-);
 
 const BlogContent = () => {
   const [blogs, setBlogs] = useState([]);
