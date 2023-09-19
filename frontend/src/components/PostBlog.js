@@ -64,7 +64,7 @@ const PostBlog = () => {
       newData.append("file", file);
       await axios({
         method: "post",
-        url: `http://localhost:5000/api/file/${data.post._id}`,
+        url: `http://166.88.77.154:5000/api/file/${data.post._id}`,
         data: newData,
       });
     }

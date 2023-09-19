@@ -5,7 +5,7 @@ import Checkout from "./Checkout";
 
 const AnswerBlog = ({ post }) => (
   <div style={{ marginBottom: "50px" }}>
-    <Card style={{ height: "300px", padding: "5px" }}>
+    <Card style={{  padding: "5px" }}>
       <div
         style={{
           padding: "5px",
@@ -145,7 +145,7 @@ const AnswerBlog = ({ post }) => (
         </div>
       </div>
     </Card>
-    <Card style={{ height: "300px", padding: "5px", marginTop: 16 }}>
+    <Card style={{ padding: "5px", marginTop: 16 }}>
       <div
         style={{
           padding: "5px",

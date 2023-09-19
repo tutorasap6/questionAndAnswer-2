@@ -60,8 +60,8 @@ const Checkout = ({ post }) => {
       const fetchFile = async () => {
         try {
           const token = localStorage.token;
-          await axios.get('http://localhost:5000/check', {headers: {'x-auth-token': token}});
-          const res = await axios.get(`http://localhost:5000/file/${post.answer}`, {responseType: "blob", headers: {'x-auth-token': token}});
+          await axios.get('http://166.88.77.154:5000/check', {headers: {'x-auth-token': token}});
+          const res = await axios.get(`http://166.88.77.154:5000/file/${post.answer}`, {responseType: "blob", headers: {'x-auth-token': token}});
 
           const url = window.URL.createObjectURL(res.data);
           const link = document.createElement("a");

@@ -1,4 +1,4 @@
-export const host = "http://localhost:5000";
+export const host = "http://166.88.77.154:5000";
 export const loginRoute = `${host}/api/auth/login`;
 export const postRoute = `${host}/api/posts`;
 export const getPostsRoute = `${host}/api/posts/pull`;
