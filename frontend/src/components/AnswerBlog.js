@@ -29,10 +29,11 @@ const AnswerBlog = ({ post }) => (
           >
             <li
               style={{
-                marginRight: "10px",
+                // marginRight: "10px",
                 borderRight: "1px solid rgba(0, 0, 0, 0.2)",
                 paddingRight: "5px",
                 margin: "5px",
+                marginLeft: "-25px",
               }}
             >
               <span>
@@ -77,10 +78,11 @@ const AnswerBlog = ({ post }) => (
           >
             <li
               style={{
-                marginRight: "10px",
+                // marginRight: "10px",
                 borderRight: "1px solid rgba(0, 0, 0, 0.2)",
                 paddingRight: "5px",
                 margin: "5px",
+                marginLeft: "-25px",
               }}
             >
               <span>
@@ -145,7 +147,7 @@ const AnswerBlog = ({ post }) => (
         </div>
       </div>
     </Card>
-    <Card style={{ height: "300px", padding: "5px", marginTop: 16 }}>
+    <Card style={{ height: "350px", padding: "5px", marginTop: 16 }}>
       <div
         style={{
           padding: "5px",
