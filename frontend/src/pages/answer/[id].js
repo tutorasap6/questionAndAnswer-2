@@ -4,7 +4,6 @@ import MainLayout from "../../components/MainLayout";
 import { Breadcrumb, Layout } from "antd";
 import AnswerBlog from "../../components/AnswerBlog";
 import { Col, Row } from "antd";
-import QueInput from "../../components/QueInput";
 import { useEffect } from "react";
 import axios from "axios";
 

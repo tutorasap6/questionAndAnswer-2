@@ -6,6 +6,10 @@ const postSchema = new mongoose.Schema({
     ref: "users",
     required: true,
   },
+  date: {
+    type: Date,
+    default: Date.now
+  },
   questionTitle: {
     type: String,
     required: true,
