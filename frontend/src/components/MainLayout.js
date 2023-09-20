@@ -67,33 +67,20 @@ const MainLayout = ({ pageTitle, children }) => {
           background: "#272930",
         }}
       >
-        <Row>
+        <Row justify="space-between">
           <Col
-            span={5}
+            span={4}
             style={{
-              paddingLeft: "280px",
+              display: "flex",
+              justifyContent: "center",
               paddingTop: "12px",
             }}
           >
             <a href="/">
-              <img src={logocom} alt="logo" height="100%" width="100%" />
+              <img src={logocom} alt="logo" height="35%" />
             </a>
           </Col>
-          <Col
-            span={6}
-            style={{
-              padding: "30px",
-              paddingLeft: "20px",
-              paddingRight: "60px",
-            }}
-          >
-            {/* <Search
-              placeholder="input search text"
-              onSearch={onSearch}
-              enterButton
-            /> */}
-          </Col>
-          <Col span={13} style={{ paddingTop: "30px" }}>
+          <Col span={20} style={{ paddingTop: "30px", display: "flex" }}>
             {authorized ? (
               <Menu
                 theme="white"

@@ -64,35 +64,23 @@ const IndexPage = () => {
       >
         <Row>
           <Col
-            span={5}
+            span={4}
             style={{
-              paddingLeft: "280px",
+              display: "flex",
+              justifyContent: "center",
               paddingTop: "15px",
             }}
           >
             <a href="/">
-              <img src={logocom} alt="logo" width="100%" height="100%" />
+              <img src={logocom} alt="logo" height="30%" />
             </a>
           </Col>
-          <Col
-            span={6}
-            // style={{
-            //   padding: "30px",
-            //   paddingLeft: "20px",
-            //   paddingRight: "60px",
-            // }}
-          >
-            {/* <Search
-              placeholder="input search text"
-              onSearch={onSearch}
-              enterButton
-            /> */}
-          </Col>
-          <Col span={13} style={{ paddingTop: "30px" }}>
+          <Col span={20} style={{ paddingTop: "30px", display: "flex" }}>
             {authorized ? (
               <Menu
                 theme="white"
                 mode="horizontal"
+                style={{minWidth: 0, flex: "auto", justifyContent: "space-evenly"}}
                 items={authorizedArray.map((item, index) => {
                   const key = index + 1;
                   return {
