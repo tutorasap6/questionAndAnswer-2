@@ -15,15 +15,12 @@ const IndexPage = () => {
           padding: "120px",
           paddingTop: "0px",
           paddingBottom: "3px",
-          borderBottom: "0.2px solid rgba(111,111,110,.8)",
         }}
       >
         <Row>
-          <Col span={4}></Col>
-          <Col span={12}>
+          <Col span={16} offset={4}>
             <BlogContent></BlogContent>
           </Col>
-          <Col span={4}></Col>
         </Row>
       </Content>
     </MainLayout>

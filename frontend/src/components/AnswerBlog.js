@@ -69,7 +69,6 @@ const AnswerBlog = ({ post }) => (
             style={{
               listStyleType: "none",
               display: "flex",
-              borderBottom: "0.2px solid rgba(0,0,0,0.2)",
               marginTop: "0.2px",
               paddingTop: "3px",
               height: "35px",

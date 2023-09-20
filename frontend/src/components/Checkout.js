@@ -2,13 +2,18 @@ import React, { useState, useEffect } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { Button } from "antd";
 import {toast} from 'react-toastify'
+import { navigate } from "gatsby";
 import axios from "axios";
 
 const Checkout = ({ post }) => {
   const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [ErrorMessage, setErrorMessage] = useState("");
   const [orderID, setOrderID] = useState(false);
+  const [authorized, setAuthorized] = useState(false);
+
+  useEffect(() => {
+    if(localStorage.token) setAuthorized(true);
+  }, [])
 
   // creates a paypal order
   const createOrder = (data, actions) => {
@@ -30,6 +35,11 @@ const Checkout = ({ post }) => {
         return orderID;
       });
   };
+
+  const onClick = () => {
+    if(authorized) setShow(true);
+    else navigate("/auth/login");
+  }
 
   // check Approval
   const onApprove = (data, actions) => {
@@ -91,7 +101,7 @@ const Checkout = ({ post }) => {
               <div>
                 <Button
                   block
-                  onClick={() => setShow(true)}
+                  onClick={onClick}
                   style={{ fontWeight: "bold" }}
                 >
                   Download this answer instantly at {post.insertPrice}$

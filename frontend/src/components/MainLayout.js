@@ -50,37 +50,28 @@ const MainLayout = ({ pageTitle, children }) => {
           background: "#272930",
         }}
       >
-        <Row>
+        <Row style={{ paddingTop: "14px" }} justify="space-between">
           <Col
-            span={6}
-            style={{
-              paddingLeft: "300px",
-              paddingTop: "15px",
-            }}
+            sm={{ span: 4 }}
+            lg={{ span: 6 }}
+            xl={{ span: 8 }}
+            style={{ display: "flex", justifyContent: "center" }}
           >
             <a href="/">
-              <img src={logocom} alt="logo" width="60%" height="65%" />
+              <img src={logocom} alt="logo" height="30%" />
             </a>
           </Col>
           <Col
-            span={6}
-            style={{
-              padding: "30px",
-              paddingLeft: "20px",
-              paddingRight: "60px",
-            }}
+            sm={{ span: 20 }}
+            lg={{ span: 18 }}
+            xl={{ span: 16 }}
+            xxl={{ span: 12 }}
           >
-            {/* <Search
-              placeholder="input search text"
-              onSearch={onSearch}
-              enterButton
-            /> */}
-          </Col>
-          <Col span={12} style={{ paddingTop: "16px" }}>
             {authorized ? (
               <Menu
                 theme="white"
                 mode="horizontal"
+                style={{ flex: "auto", minWidth: 0 }}
                 items={authorizedArray.map((item, index) => {
                   const key = index + 1;
                   return {
@@ -132,11 +123,11 @@ const MainLayout = ({ pageTitle, children }) => {
         </Row>
       </Header>
       <div
-        style={{ backgroundImage: `url( ${backimg})`, backgroundSize: "cover" }}
+        style={{ backgroundImage: `url( ${backimg})`, backgroundSize: "100% 150%", height: "500px" }}
       >
         <Row>
           <Col span={4}></Col>
-          <Col span={8} style={{ paddingTop: "40px" }}>
+          <Col span={8} style={{ paddingTop: "120px" }}>
             <div>
               <h4 style={{ fontFamily: "awesome", color: "white" }}>
                 Why Champlain Solutions?
@@ -159,7 +150,7 @@ const MainLayout = ({ pageTitle, children }) => {
           <Col span={4}></Col>
         </Row>
       </div>
-      {children}
+      <div style={{marginTop: "30px", marginBottom: "30px"}}>{children}</div>
 
       <Footer
         style={{

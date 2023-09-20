@@ -1,33 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Card } from "antd";
+import { Card, Pagination } from "antd";
 import axios from "axios";
-import insane from "insane";
-import ChopLines from "chop-lines";
-
-const Sanitized = ({ html }) => (
-  <div
-    dangerouslySetInnerHTML={{
-      __html: insane(html, {
-        allowedTags: [
-          "p",
-          "strong",
-          "em",
-          "a",
-          "b",
-          "i",
-          "span",
-          "div",
-          "br",
-          "u",
-          "img",
-        ],
-      }),
-    }}
-  />
-);
 
 const BlogContent = () => {
   const [blogs, setBlogs] = useState([]);
+  const [current, setCurrent] = useState(1);
   useEffect(() => {
     const fetchBlogs = async () => {
       const res = await axios.get(
@@ -37,13 +14,14 @@ const BlogContent = () => {
     };
     fetchBlogs();
   }, []);
+  const onChange = page => setCurrent(page);
   return (
     <div>
       {blogs?.length
-        ? blogs.map((blog) => {
+        ? blogs.slice((current - 1) * 5, current * 5).map((blog) => {
           return (
             <Card
-              style={{ height: "300px", padding: "5px", marginTop: "5px" }}
+              style={{ padding: "5px", marginTop: "5px" }}
               key={blog.questionTitle}
             >
               <div
@@ -60,7 +38,6 @@ const BlogContent = () => {
                       listStyleType: "none",
                       display: "flex",
                       borderTop: "0.2px solid rgba(0,0,0,0.2)",
-                      borderBottom: "0.2px solid rgba(0,0,0,0.2)",
                       marginTop: "0.2px",
                       marginBottom: "0px",
                       paddingTop: "3px",
@@ -110,7 +87,6 @@ const BlogContent = () => {
                     style={{
                       listStyleType: "none",
                       display: "flex",
-                      borderBottom: "0.2px solid rgba(0,0,0,0.2)",
                       marginTop: "0.2px",
                       paddingTop: "3px",
                       height: "35px",
@@ -202,6 +178,7 @@ const BlogContent = () => {
           );
         })
         : null}
+        <Pagination style={{margin: "5px auto", float: "right"}} current={current} onChange={onChange} total={blogs.length} pageSize={5} />
     </div>
   );
 };

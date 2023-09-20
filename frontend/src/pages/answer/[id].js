@@ -70,11 +70,9 @@ const AnswerPage = (params) => {
           </Breadcrumb>
         </div>
         <Row style={{ marginTop: "10px" }}>
-          <Col span={4}></Col>
-          <Col span={11}>
+          <Col span={14} offset={5}>
             <AnswerBlog post={post}></AnswerBlog>
           </Col>
-          <Col span={4}></Col>
         </Row>
       </Content>
     </MainLayout>
