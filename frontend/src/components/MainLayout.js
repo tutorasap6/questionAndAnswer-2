@@ -4,7 +4,7 @@ import { Col, Row, Input } from "antd";
 import logocom from "../assets/images/logocom.png";
 import { Link } from "gatsby";
 import backimg from "../assets/images/action.png";
-import axios from 'axios'
+import axios from "axios";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -20,18 +20,21 @@ const MainLayout = ({ pageTitle, children }) => {
     if (!localStorage.token) setAuthorized(false);
     else {
       const token = localStorage.token;
-      const fetchUser = async() => {
-        const res = await axios.get('http://166.88.77.154:5000/api/auth', {headers: {'x-auth-token': token}});
+      const fetchUser = async () => {
+        const res = await axios.get("http://166.88.77.154:5000/api/auth", {
+          headers: { "x-auth-token": token },
+        });
         setUser(res.data);
         setAuthorized(true);
-      }
+      };
       fetchUser();
     }
   }, []);
 
   // const navbarArray = ["Home", "AboutUs", "How To Work"]
   const unauthorizedArray = [
-    { name: "Solutions", url: "/" },
+    { name: "Home", url: "/" },
+    { name: "Solutions", url: "/solution" },
     { name: "About Us", url: "/about" },
     { name: "How it works", url: "/how" },
     { name: "Services", url: "/service" },
@@ -41,7 +44,8 @@ const MainLayout = ({ pageTitle, children }) => {
   ];
 
   const authorizedArray = [
-    { name: "Solutions", url: "/" },
+    { name: "Home", url: "/" },
+    { name: "Solutions", url: "/solution" },
     { name: "Post Questions", url: "/post" },
     { name: "About Us", url: "/about" },
     { name: "How it works", url: "/how" },
@@ -50,31 +54,46 @@ const MainLayout = ({ pageTitle, children }) => {
     { name: "Terms and Conditions", url: "/terms" },
     { name: "Logout", url: "/logout" },
   ];
-  if(user?.role === 'admin') authorizedArray.unshift({name: "Admin", url: "/admin/admin"})
+  if (user?.role === "admin")
+    authorizedArray.unshift({ name: "Admin", url: "/admin/admin" });
 
   return (
     <Layout className="layout" style={{ margin: "-8px" }}>
       <ToastContainer />
-      <Header
+      <header
         style={{
           padding: "0",
-          height: "96px",
+          height: "90px",
           background: "#272930",
         }}
       >
-        <Row style={{ paddingTop: "14px" }} justify="space-between">
+        <Row>
           <Col
-            span={4}
-            style={{ display: "flex", justifyContent: "center" }}
+            span={5}
+            style={{
+              paddingLeft: "280px",
+              paddingTop: "12px",
+            }}
           >
             <a href="/">
-              <img src={logocom} alt="logo" height="30%" />
+              <img src={logocom} alt="logo" height="100%" width="100%" />
             </a>
           </Col>
           <Col
-            span={20}
-            style={{display: "flex"}}
+            span={6}
+            style={{
+              padding: "30px",
+              paddingLeft: "20px",
+              paddingRight: "60px",
+            }}
           >
+            {/* <Search
+              placeholder="input search text"
+              onSearch={onSearch}
+              enterButton
+            /> */}
+          </Col>
+          <Col span={13} style={{ paddingTop: "30px" }}>
             {authorized ? (
               <Menu
                 theme="white"
@@ -85,9 +104,10 @@ const MainLayout = ({ pageTitle, children }) => {
                   return {
                     key,
                     label: (
-                      <Link to={item.url} >
+                      <Link to={item.url}>
                         <span
                           style={{
+                            marginLeft: "5px",
                             fontFamily: "awesome",
                             color: "white",
                             fontSize: "16px",
@@ -128,14 +148,18 @@ const MainLayout = ({ pageTitle, children }) => {
             )}
           </Col>
         </Row>
-      </Header>
+      </header>
       <div
-        style={{ backgroundImage: `url( ${backimg})`, backgroundSize: "100% 150%", height: "500px" }}
+        style={{
+          backgroundImage: `url( ${backimg})`,
+          backgroundSize: "cover",
+          height: "180px",
+        }}
       >
         <Row>
           <Col span={4}></Col>
-          <Col span={8} style={{ paddingTop: "120px" }}>
-            <div>
+          <Col span={8} style={{ paddingTop: "40px" }}>
+            {/* <div>
               <h4 style={{ fontFamily: "awesome", color: "white" }}>
                 Why Champlain Solutions?
               </h4>
@@ -151,14 +175,14 @@ const MainLayout = ({ pageTitle, children }) => {
                 give students like you thorough support so you can succeed in
                 your online courses with assurance.
               </p>
-            </div>
+            </div> */}
           </Col>
           <Col span={8}></Col>
           <Col span={4}></Col>
         </Row>
       </div>
-      <div style={{marginTop: "30px", marginBottom: "30px"}}>{children}</div>
-
+      {/* <div style={{ marginTop: "30px", marginBottom: "30px" }}>{children}</div> */}
+      {children}
       <Footer
         style={{
           // textAlign: "center",
