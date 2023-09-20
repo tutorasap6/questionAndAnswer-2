@@ -49,6 +49,7 @@ const AdminPage = () => {
   }, [posts]);
 
   const array = [
+    {name: "Admin", url: "/admin/admin"},
     { name: "Solutions", url: "/" },
     { name: "Post Questions", url: "/post" },
     { name: "About Us", url: "/about" },
@@ -56,6 +57,7 @@ const AdminPage = () => {
     { name: "Services", url: "/service" },
     { name: "Pricing", url: "/pricing" },
     { name: "Terms and Conditions", url: "/terms" },
+    {name: "Logout", url: "/logout"}
   ];
 
   const columns = [
@@ -141,28 +143,23 @@ const AdminPage = () => {
           margin: "-8px",
         }}
       >
-        <Row>
-          <Col
-            span={6}
-            style={{
-              paddingLeft: "300px",
-              paddingTop: "15px",
-            }}
+        <Row style={{ paddingTop: "14px" }} justify="space-between">
+        <Col
+            span={4}
+            style={{ display: "flex", justifyContent: "center" }}
           >
-            <img src={logocom} alt="logo" width="60%" height="65%" />
+            <a href="/">
+              <img src={logocom} alt="logo" height="30%" />
+            </a>
           </Col>
           <Col
-            span={6}
-            style={{
-              padding: "30px",
-              paddingLeft: "20px",
-              paddingRight: "60px",
-            }}
-          ></Col>
-          <Col span={12} style={{ paddingTop: "16px" }}>
+            span={20}
+            style={{display: "flex"}}
+          >
             <Menu
               theme="white"
               mode="horizontal"
+              style={{ justifyContent: "center", flex: "auto", minWidth: 0 }}
               items={array.map((item, index) => {
                 const key = index + 1;
                 return {

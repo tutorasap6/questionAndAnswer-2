@@ -111,7 +111,7 @@ module.exports.getUser = async (req, res) => {
     if (!user) throw "User Not Found";
     return res.json(user);
   } catch (e) {
-    throw e;
+    return res.status(400).send(e.message)
   }
 };
 

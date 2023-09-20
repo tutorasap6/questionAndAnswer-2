@@ -4,6 +4,7 @@ import { Col, Row, Input } from "antd";
 import logocom from "../assets/images/logocom.png";
 import { Link } from "gatsby";
 import backimg from "../assets/images/action.png";
+import axios from 'axios'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -13,9 +14,19 @@ const { Header, Footer } = Layout;
 const MainLayout = ({ pageTitle, children }) => {
   const onSearch = (value) => console.log(value);
   const [authorized, setAuthorized] = useState(false);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    if (localStorage.token) setAuthorized(true);
+    if (!localStorage.token) setAuthorized(false);
+    else {
+      const token = localStorage.token;
+      const fetchUser = async() => {
+        const res = await axios.get('http://166.88.77.154:5000/api/auth', {headers: {'x-auth-token': token}});
+        setUser(res.data);
+        setAuthorized(true);
+      }
+      fetchUser();
+    }
   }, []);
 
   // const navbarArray = ["Home", "AboutUs", "How To Work"]
@@ -39,6 +50,7 @@ const MainLayout = ({ pageTitle, children }) => {
     { name: "Terms and Conditions", url: "/terms" },
     { name: "Logout", url: "/logout" },
   ];
+  if(user?.role === 'admin') authorizedArray.unshift({name: "Admin", url: "/admin/admin"})
 
   return (
     <Layout className="layout" style={{ margin: "-8px" }}>
@@ -52,9 +64,7 @@ const MainLayout = ({ pageTitle, children }) => {
       >
         <Row style={{ paddingTop: "14px" }} justify="space-between">
           <Col
-            sm={{ span: 4 }}
-            lg={{ span: 6 }}
-            xl={{ span: 8 }}
+            span={4}
             style={{ display: "flex", justifyContent: "center" }}
           >
             <a href="/">
@@ -62,25 +72,22 @@ const MainLayout = ({ pageTitle, children }) => {
             </a>
           </Col>
           <Col
-            sm={{ span: 20 }}
-            lg={{ span: 18 }}
-            xl={{ span: 16 }}
-            xxl={{ span: 12 }}
+            span={20}
+            style={{display: "flex"}}
           >
             {authorized ? (
               <Menu
                 theme="white"
                 mode="horizontal"
-                style={{ flex: "auto", minWidth: 0 }}
+                style={{ justifyContent: "center", flex: "auto", minWidth: 0 }}
                 items={authorizedArray.map((item, index) => {
                   const key = index + 1;
                   return {
                     key,
                     label: (
-                      <Link to={item.url}>
+                      <Link to={item.url} >
                         <span
                           style={{
-                            marginLeft: "5px",
                             fontFamily: "awesome",
                             color: "white",
                             fontSize: "16px",
