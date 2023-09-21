@@ -64,7 +64,7 @@ const IndexPage = () => {
       >
         <Row>
           <Col
-            span={4}
+            span={5}
             style={{
               display: "flex",
               flexFlow: "row-reverse",
@@ -72,10 +72,11 @@ const IndexPage = () => {
             }}
           >
             <a href="/">
-              <img src={logocom} alt="logo" height="30%" />
+              <img src={logocom} alt="logo" height="40%" />
             </a>
           </Col>
-          <Col span={20} style={{ paddingTop: "30px", display: "flex" }}>
+          <Col span={3}></Col>
+          <Col span={14} style={{ paddingTop: "30px", display: "flex" }}>
             {authorized ? (
               <Menu
                 theme="white"
@@ -130,6 +131,7 @@ const IndexPage = () => {
               />
             )}
           </Col>
+          <Col span={2}></Col>
         </Row>
       </header>
       <Content>
