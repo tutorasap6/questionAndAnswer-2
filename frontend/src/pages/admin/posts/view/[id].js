@@ -55,14 +55,14 @@ function CrudDetails(params) {
         url: `http://166.88.77.154:5000/api/posts/upload/${id}`,
         data: data,
       });
-      navigate("/");
+      navigate("/solution");
     } catch (e) {
       throw e;
     }
   };
 
   const array = [
-    { name: "Solutions", url: "/" },
+    { name: "Solutions", url: "/solution" },
     { name: "Post Questions", url: "/post" },
     { name: "About Us", url: "/about" },
     { name: "How it works", url: "/how" },
