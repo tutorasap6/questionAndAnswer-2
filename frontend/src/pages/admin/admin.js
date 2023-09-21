@@ -146,7 +146,7 @@ const AdminPage = () => {
         <Row style={{ paddingTop: "14px" }} justify="space-between">
         <Col
             span={4}
-            style={{ display: "flex", justifyContent: "center" }}
+            style={{ display: "flex", flexFlow: "row-reverse", }}
           >
             <a href="/">
               <img src={logocom} alt="logo" height="30%" />

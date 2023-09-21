@@ -67,7 +67,7 @@ const IndexPage = () => {
             span={4}
             style={{
               display: "flex",
-              justifyContent: "center",
+              flexFlow: "row-reverse",
               paddingTop: "15px",
             }}
           >
@@ -106,6 +106,7 @@ const IndexPage = () => {
               <Menu
                 theme="white"
                 mode="horizontal"
+                style={{minWidth: 0, flex: "auto", justifyContent: "space-evenly"}}
                 items={unauthorizedArray.map((item, index) => {
                   const key = index + 1;
                   return {

@@ -70,7 +70,7 @@ const PostBlog = () => {
     }
     if (data.status === true) {
       console.log(data);
-      navigate("/");
+      navigate("/solution");
     }
     if (data.status === false) {
       toast.error(data.errors, {

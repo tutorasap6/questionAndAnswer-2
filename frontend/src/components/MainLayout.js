@@ -72,7 +72,7 @@ const MainLayout = ({ pageTitle, children }) => {
             span={4}
             style={{
               display: "flex",
-              justifyContent: "center",
+              flexFlow: "row-reverse",
               paddingTop: "12px",
             }}
           >
@@ -111,6 +111,7 @@ const MainLayout = ({ pageTitle, children }) => {
               <Menu
                 theme="white"
                 mode="horizontal"
+                style={{ justifyContent: "center", flex: "auto", minWidth: 0 }}
                 items={unauthorizedArray.map((item, index) => {
                   const key = index + 1;
                   return {
