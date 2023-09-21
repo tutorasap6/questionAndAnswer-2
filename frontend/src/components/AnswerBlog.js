@@ -62,7 +62,7 @@ const AnswerBlog = ({ post }) => (
               <span>
                 <strong>Date:</strong>
               </span>
-              <span>03 May 2023</span>
+              <span>{post.date}</span>
             </li>
           </ul>
           <ul

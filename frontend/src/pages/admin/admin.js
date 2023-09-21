@@ -102,6 +102,11 @@ const AdminPage = () => {
       key: "insertPrice",
     },
     {
+      title: "Date",
+      dataIndex: "date",
+      key: "date",
+    },
+    {
       title: "Action",
       key: "action",
       render: (_, record) => (
@@ -124,6 +129,7 @@ const AdminPage = () => {
     Category: post.category,
     insertTagsHere: post.insertTagsHere,
     insertPrice: post.insertPrice,
+    date:post.date,
   }));
   if (!token) {
     navigate("/");
