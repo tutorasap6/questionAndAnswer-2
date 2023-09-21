@@ -21,7 +21,7 @@ const MainLayout = ({ pageTitle, children }) => {
     else {
       const token = localStorage.token;
       const fetchUser = async () => {
-        const res = await axios.get("http://166.88.77.154:5000/api/auth", {
+        const res = await axios.get("http://95.216.104.112:5000/api/auth", {
           headers: { "x-auth-token": token },
         });
         setUser(res.data);

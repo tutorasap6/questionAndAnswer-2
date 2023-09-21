@@ -20,7 +20,7 @@ const AdminPage = () => {
     const fetchUser = async () => {
       const res = await axios({
         method: "GET",
-        url: "http://166.88.77.154:5000/api/auth",
+        url: "http://95.216.104.112:5000/api/auth",
         headers: {
           "x-auth-token": token,
         },
@@ -50,7 +50,7 @@ const AdminPage = () => {
 
   const array = [
     {name: "Admin", url: "/admin/admin"},
-    { name: "Solutions", url: "/" },
+    { name: "Solutions", url: "/solution" },
     { name: "Post Questions", url: "/post" },
     { name: "About Us", url: "/about" },
     { name: "How it works", url: "/how" },

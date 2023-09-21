@@ -8,7 +8,7 @@ const BlogContent = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       const res = await axios.get(
-        "http://166.88.77.154:5000/api/posts/fetch/answeredPosts"
+        "http://95.216.104.112:5000/api/posts/fetch/answeredPosts"
       );
       setBlogs(res.data);
     };

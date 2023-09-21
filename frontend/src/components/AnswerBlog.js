@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Button } from "antd";
-import screenimg from "../assets/images/default-answer.jpg";
+import screenimg from "../assets/images/answer.png";
 import Checkout from "./Checkout";
 
 const AnswerBlog = ({ post }) => (
