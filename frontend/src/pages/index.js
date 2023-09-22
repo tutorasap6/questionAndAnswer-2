@@ -173,7 +173,7 @@ const IndexPage = () => {
             <div>
               <h3
                 style={{
-                  fontSize: "60px",
+                  fontSize: "45px",
                   color: "white",
                   //color: "black",
                   fontFamily: "awesome",
@@ -183,7 +183,7 @@ const IndexPage = () => {
               </h3>
               <p
                 style={{
-                  fontSize: "35px",
+                  fontSize: "28px",
                   color: "white",
                   //color: "black",
                   fontFamily: "awesome",
