@@ -21,11 +21,17 @@ const MainLayout = ({ pageTitle, children }) => {
     else {
       const token = localStorage.token;
       const fetchUser = async () => {
-        const res = await axios.get("http://95.216.104.112:5000/api/auth", {
-          headers: { "x-auth-token": token },
-        });
-        setUser(res.data);
-        setAuthorized(true);
+        try {
+
+          const res = await axios.get(`${process.env.api_url}/api/auth`, {
+            headers: { "x-auth-token": token },
+          });
+          setUser(res.data);
+          setAuthorized(true);
+        } catch (e) {
+          console.log(e);
+          localStorage.removeItem('token');
+        }
       };
       fetchUser();
     }

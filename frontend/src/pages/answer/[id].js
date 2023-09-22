@@ -19,7 +19,7 @@ const AnswerPage = (params) => {
       const getPostById = async () => {
         try {
           const response = await axios.get(
-            `http://95.216.104.112:5000/api/posts/${id}`
+            `${process.env.api_url}/api/posts/${id}`
           );
           setPost(response.data);
         } catch (error) {

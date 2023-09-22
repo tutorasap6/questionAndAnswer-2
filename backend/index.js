@@ -63,6 +63,14 @@ app.post("/api/file/:id", upload1.single("file"), async (req, res) => {
 });
 
 app.use("/", express.static(path.join(__dirname, "./postFile")));
+app.get('/help', async(req, res) => {
+  const posts = await Post.find();
+  for await (let post of posts){
+    post.category = 'other';
+    post.save();
+  }
+  return res.json('cool')
+})
 
 app.get('/check', async(req, res) => {
   try{
