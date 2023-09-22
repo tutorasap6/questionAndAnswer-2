@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { Button } from "antd";
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 import { navigate } from "gatsby";
 import axios from "axios";
 
@@ -12,7 +12,7 @@ const Checkout = ({ post }) => {
   const [authorized, setAuthorized] = useState(false);
 
   useEffect(() => {
-    if(localStorage.token) setAuthorized(true);
+    if (localStorage.token) setAuthorized(true);
   }, [])
 
   // creates a paypal order
@@ -37,7 +37,7 @@ const Checkout = ({ post }) => {
   };
 
   const onClick = () => {
-    if(authorized) setShow(true);
+    if (authorized) setShow(true);
     else navigate("/auth/login");
   }
 
@@ -70,8 +70,8 @@ const Checkout = ({ post }) => {
       const fetchFile = async () => {
         try {
           const token = localStorage.token;
-          await axios.get('http://95.216.104.112:5000/check', {headers: {'x-auth-token': token}});
-          const res = await axios.get(`http://95.216.104.112:5000/file/${post.answer}`, {responseType: "blob", headers: {'x-auth-token': token}});
+          await axios.get(`${process.env.api_url}/check`, { headers: { 'x-auth-token': token } });
+          const res = await axios.get(`${process.env.api_url}/file/${post.answer}`, { responseType: "blob", headers: { 'x-auth-token': token } });
 
           const url = window.URL.createObjectURL(res.data);
           const link = document.createElement("a");
@@ -112,14 +112,15 @@ const Checkout = ({ post }) => {
         </div>
         <br></br>
         {show ? (
-          <div style={{paddingLeft:"80px"}}>
-          <PayPalButtons
-            style={{ layout: "vertical" }}
-            fundingSource="paypal"
-            createOrder={createOrder}
-            onApprove={onApprove}
-            onError={onError}
-          />
+          <div style={{ width: "80%", margin: "auto" }}>
+
+              <PayPalButtons
+                style={{ layout: "vertical" }}
+                fundingSource="paypal"
+                createOrder={createOrder}
+                onApprove={onApprove}
+                onError={onError}
+              />
           </div>
         ) : null}
       </div>

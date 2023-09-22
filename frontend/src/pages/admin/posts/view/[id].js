@@ -27,7 +27,7 @@ function CrudDetails(params) {
       async function getCrudById() {
         try {
           const response = await axios.get(
-            `http://95.216.104.112:5000/api/posts/${id}`
+            `${process.env.api_url}/api/posts/${id}`
           );
           setCrud(response.data);
         } catch (error) {
@@ -52,7 +52,7 @@ function CrudDetails(params) {
       data.append("file", file);
       const res = await axios({
         method: "post",
-        url: `http://95.216.104.112:5000/api/posts/upload/${id}`,
+        url: `${process.env.api_url}/api/posts/upload/${id}`,
         data: data,
       });
       navigate("/solution");
@@ -268,7 +268,7 @@ function CrudDetails(params) {
               {crud.file && (
                 <div>
                   <FileViewer
-                    filePath={`http://95.216.104.112:5000/${crud.file}`}
+                    filePath={`${process.env.api_url}/${crud.file}`}
                     fileType={
                       crud.file.split(".")[crud.file.split(".").length - 1]
                     }

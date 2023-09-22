@@ -23,7 +23,7 @@ function PostEdit(params) {
     function () {
       async function updatePost() {
         try {
-          const response = await get(`http://95.216.104.112:5000/api/posts/${id}`);
+          const response = await get(`${process.env.api_url}/api/posts/${id}`);
           setTemp(response.data);
           setPost(response.data);
         } catch (error) {
@@ -40,7 +40,7 @@ function PostEdit(params) {
     event.preventDefault();
     async function updatePost() {
       try {
-        await patch(`http://95.216.104.112:5000/api/posts/${id}`, post);
+        await patch(`${process.env.api_url}/api/posts/${id}`, post);
         toast.success("Updated Successfully", {
           position: "top-right",
           autoClose: 1000,

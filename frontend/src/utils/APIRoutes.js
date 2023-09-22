@@ -1,4 +1,4 @@
-export const host = "http://95.216.104.112:5000";
+export const host = `${process.env.api_url}`;
 export const loginRoute = `${host}/api/auth/login`;
 export const postRoute = `${host}/api/posts`;
 export const getPostsRoute = `${host}/api/posts/pull`;

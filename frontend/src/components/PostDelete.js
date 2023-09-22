@@ -14,7 +14,7 @@ function PostDelete(props) {
       async function deletePostById() {
         try {
           const response = await axios.get(
-            `http://95.216.104.112:5000/api/posts/${props.id}`
+            `${process.env.api_url}/api/posts/${props.id}`
           );
           console.log(response);
           setPost(response.data);
@@ -30,7 +30,7 @@ function PostDelete(props) {
 
   async function handleDelete() {
     try {
-      await axios.delete(`http://95.216.104.112:5000/api/posts/${props.id}`);
+      await axios.delete(`${process.env.api_url}/api/posts/${props.id}`);
       navigate("/admin/admin");
     } catch (error) {
       console.error(error);
