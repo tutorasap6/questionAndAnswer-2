@@ -6,7 +6,7 @@ import { Link } from "gatsby";
 import backimg from "../assets/images/action.png";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
-import { DownOutlined, SmileOutlined } from '@ant-design/icons';
+import { CaretDownOutlined, SmileOutlined } from '@ant-design/icons';
 import "react-toastify/dist/ReactToastify.css";
 
 const { Search } = Input;
@@ -161,7 +161,7 @@ const MainLayout = ({ pageTitle, children }) => {
                 }))}}
               >
                 <a onClick={(e) => e.preventDefault()}>
-                  <DownOutlined />
+                  <CaretDownOutlined />
                 </a>
               </Dropdown>
             ) : (
@@ -188,7 +188,7 @@ const MainLayout = ({ pageTitle, children }) => {
                   };
                 })}}
               ><a onClick={(e) => e.preventDefault()}>
-                  <DownOutlined />
+                  <CaretDownOutlined />
                 </a></Dropdown>
             )}
           </Col>

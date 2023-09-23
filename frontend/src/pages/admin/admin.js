@@ -7,7 +7,7 @@ import { Menu } from "antd";
 import { Col, Row } from "antd";
 import logocom from "../../assets/images/Logocom.png";
 import { getPostsRoute } from "../../utils/APIRoutes";
-import { DownOutlined, SmileOutlined } from '@ant-design/icons';
+import { CaretDownOutlined, SmileOutlined } from '@ant-design/icons';
 import { Space, Table } from "antd";
 
 const { Header } = Layout;
@@ -209,7 +209,7 @@ const AdminPage = () => {
                 }))}}
               >
                 <a onClick={(e) => e.preventDefault()}>
-                  <DownOutlined />
+                  <CaretDownOutlined />
                 </a>
               </Dropdown>
             

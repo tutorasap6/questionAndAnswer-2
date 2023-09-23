@@ -9,7 +9,7 @@ import { Link } from "gatsby";
 import { Menu } from "antd";
 import { Col, Row } from "antd";
 import logocom from "../../../../assets/images/Logocom.png";
-import { DownOutlined, SmileOutlined } from '@ant-design/icons';
+import { CaretDownOutlined, SmileOutlined } from '@ant-design/icons';
 import { Button, Input } from "antd";
 
 const { TextArea } = Input;
@@ -147,7 +147,7 @@ function PostEdit(params) {
                 }))}}
               >
                 <a onClick={(e) => e.preventDefault()}>
-                  <DownOutlined />
+                  <CaretDownOutlined />
                 </a>
               </Dropdown>
             

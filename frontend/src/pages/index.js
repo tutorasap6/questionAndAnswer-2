@@ -7,7 +7,7 @@ import { Col, Row } from "antd";
 import logocom from "../assets/images/logocom.png";
 import { Link } from "gatsby";
 import { ToastContainer } from "react-toastify";
-import { DownOutlined, SmileOutlined } from '@ant-design/icons';
+import { CaretDownOutlined, SmileOutlined } from '@ant-design/icons';
 import "react-toastify/dist/ReactToastify.css";
 
 const { Header, Footer } = Layout;
@@ -95,7 +95,7 @@ const IndexPage = () => {
               <img src={logocom} alt="logo" height="40%" />
             </a>
           </Col>
-          <Col md={{ span: 0 }} lg={{ span: 20 }} style={{ paddingTop: "30px" }}>
+          <Col md={{ span: 0 }} xl={{ span: 20 }} style={{ paddingTop: "30px" }}>
             {authorized ? (
               <Menu
                 theme="white"
@@ -150,7 +150,7 @@ const IndexPage = () => {
               />
             )}
           </Col>
-          <Col md={{ span: 3, offset: 10 }} lg={{ span: 0 }} style={{ paddingTop: "30px" }}>
+          <Col md={{ span: 3, offset: 10 }} lg={{offset: 17}} xl={{ span: 0 }} style={{ paddingTop: "30px" }}>
             {authorized ? (
               <Dropdown
                 trigger={['click']}
@@ -169,7 +169,7 @@ const IndexPage = () => {
                 }))}}
               >
                 <a onClick={(e) => e.preventDefault()}>
-                  <DownOutlined />
+                  <CaretDownOutlined />
                 </a>
               </Dropdown>
             ) : (
@@ -196,7 +196,7 @@ const IndexPage = () => {
                   };
                 })}}
               ><a onClick={(e) => e.preventDefault()}>
-                  <DownOutlined />
+                  <CaretDownOutlined />
                 </a></Dropdown>
             )}
           </Col>

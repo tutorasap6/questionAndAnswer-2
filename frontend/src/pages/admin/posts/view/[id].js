@@ -6,7 +6,7 @@ import { Link } from "gatsby";
 import { Menu } from "antd";
 import logocom from "../../../../assets/images/Logocom.png";
 import { navigate } from "gatsby";
-import { DownOutlined, SmileOutlined } from '@ant-design/icons';
+import { CaretDownOutlined, SmileOutlined } from '@ant-design/icons';
 import FileViewer from "react-file-viewer";
 
 const normFile = (e) => {
@@ -143,7 +143,7 @@ function CrudDetails(params) {
                 }))}}
               >
                 <a onClick={(e) => e.preventDefault()}>
-                  <DownOutlined />
+                  <CaretDownOutlined />
                 </a>
               </Dropdown>
             
