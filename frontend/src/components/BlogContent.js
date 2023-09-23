@@ -164,28 +164,6 @@ const BlogContent = () => {
                       )}
                       {blog.description?.length > 500 &&<p style={{color: 'blue', marginTop: "20px"}}> <a href={`/answer/${blog._id}`}>Read more{' >>'}</a></p>}
                     </div>
-
-                    <div
-                      style={{
-                        marginTop: "-20px",
-                        // paddingLeft: "700px",
-                        // position: "absolute",
-                      }}
-                    >
-                      <a href={`/answer/${blog._id}`}>
-                        <button
-                          type="submit"
-                          style={{
-                            width: "100%",
-                            height: "30px",
-                            fontSize: "20px",
-                            fontFamily: "awesome",
-                          }}
-                        >
-                          view more
-                        </button>
-                      </a>
-                    </div>
                   </div>
                 </div>
               </Card>
