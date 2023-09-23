@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Card, Col, Row, Upload, Form, Button } from "antd";
-import { Layout } from "antd";
+import { Layout, Dropdown } from "antd";
 import { Link } from "gatsby";
 import { Menu } from "antd";
 import logocom from "../../../../assets/images/Logocom.png";
 import { navigate } from "gatsby";
+import { CaretDownOutlined, SmileOutlined } from '@ant-design/icons';
 import FileViewer from "react-file-viewer";
 
 const normFile = (e) => {
@@ -32,6 +33,7 @@ function CrudDetails(params) {
           setCrud(response.data);
         } catch (error) {
           console.log("error", error);
+          navigate('/404')
         }
       }
       getCrudById();
@@ -62,6 +64,8 @@ function CrudDetails(params) {
   };
 
   const array = [
+    {name: "Admin", url: "/admin/admin"},
+    { name: "Home", url: "/" },
     { name: "Solutions", url: "/solution" },
     { name: "Post Questions", url: "/post" },
     { name: "About Us", url: "/about" },
@@ -69,6 +73,7 @@ function CrudDetails(params) {
     { name: "Services", url: "/service" },
     { name: "Pricing", url: "/pricing" },
     { name: "Terms and Conditions", url: "/terms" },
+    { name: "Logout", url: "/logout" }
   ];
   return (
     <>
@@ -82,50 +87,68 @@ function CrudDetails(params) {
       >
         <Row>
           <Col
-            span={6}
+
+            lg={{ span: 3 }}
             style={{
-              paddingLeft: "300px",
+              display: "flex",
               paddingTop: "15px",
             }}
           >
-            <a href="/">
-              <img src={logocom} alt="logo" width="60%" height="65%" />
+            <a href="/" style={{ margin: '0 auto' }}>
+              <img src={logocom} alt="logo" height="40%" />
             </a>
           </Col>
-          <Col
-            span={6}
-            style={{
-              padding: "30px",
-              paddingLeft: "20px",
-              paddingRight: "60px",
-            }}
-          ></Col>
-          <Col span={12} style={{ paddingTop: "16px" }}>
-            <Menu
-              theme="white"
-              mode="horizontal"
-              items={array.map((item, index) => {
-                const key = index + 1;
-                return {
-                  key,
-                  label: (
-                    <Link to={item.url}>
-                      <span
-                        style={{
-                          marginLeft: "5px",
-                          fontFamily: "awesome",
-                          color: "white",
-                          fontSize: "16px",
-                        }}
-                      >
-                        {item.name}
-                      </span>
-                    </Link>
-                  ),
-                };
-              })}
-            />
+          <Col md={{ span: 0 }} xl={{ span: 21 }} style={{ paddingTop: "30px" }}>
+              <Menu
+                theme="white"
+                mode="horizontal"
+                style={{ minWidth: 0, flex: "auto", justifyContent: "flex-end" }}
+                md={{ gap: '3px' }}
+                items={array.map((item, index) => {
+                  const key = index + 1;
+                  return {
+                    key,
+                    label: (
+                      <Link to={item.url}>
+                        <span
+                          style={{
+                            fontFamily: "awesome",
+                            color: "white",
+                            fontSize: "16px",
+                          }}
+                        >
+                          {item.name}
+                        </span>
+                      </Link>
+                    ),
+                  };
+                })}
+              />
           </Col>
+          <Col md={{ span: 3, offset: 10 }} lg={{offset: 17}} xl={{ span: 0 }} style={{ paddingTop: "30px" }}>
+              <Dropdown
+                trigger={['click']}
+                menu={{items: array.map((item, index) => ({
+                  key: index + 1, label: <Link to={item.url}>
+                    <span
+                      style={{
+                        fontFamily: "awesome",
+                        color: "black",
+                        fontSize: "16px",
+                      }}
+                    >
+                      {item.name}
+                    </span>
+                  </Link>
+                }))}}
+              >
+                <a onClick={(e) => e.preventDefault()}>
+                  <CaretDownOutlined />
+                </a>
+              </Dropdown>
+            
+          </Col>
+          <Col span={2}></Col>
         </Row>
       </Header>
       <Content style={{ paddingTop: "70px" }}>
@@ -134,7 +157,7 @@ function CrudDetails(params) {
         >
           <Col
             span={4}
-            // style={{ borderRight: "0.1px solid rgba(111,111,110,.8)" }}
+          // style={{ borderRight: "0.1px solid rgba(111,111,110,.8)" }}
           ></Col>
           <Col span={16}>
             <Card style={{ height: "100%", padding: "5px", marginTop: "5px" }}>
@@ -258,11 +281,11 @@ function CrudDetails(params) {
                   </h2>
                 </div>
                 <div style={{ marginTop: "-15px" }}>
-                <div
-                      dangerouslySetInnerHTML={{
-                        __html: crud.description
-                      }}
-                    ></div>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: crud.description
+                    }}
+                  ></div>
                 </div>
               </div>
               {crud.file && (
@@ -276,15 +299,14 @@ function CrudDetails(params) {
                 </div>
               )}
             </Card>
-            <div style={{ marginTop: "10px" }}>
-              <Row>
-                <Col span={15}></Col>
-                <Col span={3} style={{ paddingTop: "35px" }}>
+            <div>
+              <Row style={{ paddingTop: "35px" }}>
+                <Col md={{ span: 3, offset: 3 }} lg={{ offset: 5, span: 3 }} xxl={{ span: 3, offset: 6 }}>
                   <input type="file" onChange={handleFile} />
                 </Col>
+                <Col md={{ span: 6 }} xl={{ span: 2, offset: 16 }} />
                 <Col
-                  span={3}
-                  style={{ paddingLeft: "70px", paddingTop: "25px" }}
+                  md={{ span: 4 }} lg={{ span: 3 }} xl={{ span: 2 }}
                 >
                   {" "}
                   <Button
@@ -292,22 +314,28 @@ function CrudDetails(params) {
                     disabled={!file}
                     onClick={handlePush}
                     style={{
-                      width: "60px",
+                      width: "100%",
                       height: "40px",
                       fontSize: "20px",
                       fontFamily: "awesome",
-                      marginLeft: "15px",
                       padding: "3px",
                     }}
                   >
                     Push
                   </Button>
                 </Col>
-                <Col span={3} style={{ paddingTop: "30px" }}>
+                <Col md={{ span: 2 }} xl={{ span: 1 }} />
+                <Col md={{ span: 4 }} lg={{ span: 3 }} xl={{ span: 2 }}>
                   <Button
                     type="primary"
                     onClick={handleCancel}
-                    style={{ marginLeft: "15px" }}
+                    style={{
+                      width: "100%",
+                      height: "40px",
+                      fontSize: "20px",
+                      fontFamily: "awesome",
+                      padding: "3px",
+                    }}
                   >
                     Cancel
                   </Button>

@@ -20,6 +20,7 @@ function PostDelete(props) {
           setPost(response.data);
         } catch (error) {
           console.log("error", error);
+          navigate('/404')
         }
       }
       deletePostById();

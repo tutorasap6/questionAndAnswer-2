@@ -2,11 +2,12 @@ import * as React from "react";
 // import backimg from "../assets/images/register.png";
 import backimg from "../assets/images/back.jpg";
 import { useEffect, useState } from "react";
-import { Layout, Menu } from "antd";
+import { Dropdown, Layout, Menu } from "antd";
 import { Col, Row } from "antd";
 import logocom from "../assets/images/logocom.png";
 import { Link } from "gatsby";
 import { ToastContainer } from "react-toastify";
+import { CaretDownOutlined, SmileOutlined } from '@ant-design/icons';
 import "react-toastify/dist/ReactToastify.css";
 
 const { Header, Footer } = Layout;
@@ -43,6 +44,23 @@ const IndexPage = () => {
     { name: "Terms and Conditions", url: "/terms" },
     { name: "Logout", url: "/logout" },
   ];
+  const items = [
+    {
+      label: <a href="https://www.antgroup.com">1st menu item</a>,
+      key: '0',
+    },
+    {
+      label: <a href="https://www.aliyun.com">2nd menu item</a>,
+      key: '1',
+    },
+    {
+      type: 'divider',
+    },
+    {
+      label: '3rd menu item',
+      key: '3',
+    },
+  ];
 
   return (
     <>
@@ -66,24 +84,24 @@ const IndexPage = () => {
       >
         <Row>
           <Col
-            span={5}
+
+            lg={{ span: 3 }}
             style={{
               display: "flex",
-              flexFlow: "row-reverse",
               paddingTop: "15px",
             }}
           >
-            <a href="/">
+            <a href="/" style={{ margin: '0 auto' }}>
               <img src={logocom} alt="logo" height="40%" />
             </a>
           </Col>
-          <Col span={3}></Col>
-          <Col span={14} style={{ paddingTop: "30px", display: "flex" }}>
+          <Col md={{ span: 0 }} xl={{ span: 20 }} style={{ paddingTop: "30px" }}>
             {authorized ? (
               <Menu
                 theme="white"
                 mode="horizontal"
-                style={{minWidth: 0, flex: "auto", justifyContent: "space-evenly"}}
+                style={{ minWidth: 0, flex: "auto", justifyContent: "flex-end" }}
+                md={{ gap: '3px' }}
                 items={authorizedArray.map((item, index) => {
                   const key = index + 1;
                   return {
@@ -92,7 +110,6 @@ const IndexPage = () => {
                       <Link to={item.url}>
                         <span
                           style={{
-                            marginLeft: "5px",
                             fontFamily: "awesome",
                             color: "white",
                             fontSize: "16px",
@@ -109,7 +126,7 @@ const IndexPage = () => {
               <Menu
                 theme="white"
                 mode="horizontal"
-                style={{minWidth: 0, flex: "auto", justifyContent: "space-evenly"}}
+                style={{ minWidth: 0, flex: "auto", justifyContent: "space-evenly" }}
                 items={unauthorizedArray.map((item, index) => {
                   const key = index + 1;
                   return {
@@ -131,6 +148,56 @@ const IndexPage = () => {
                   };
                 })}
               />
+            )}
+          </Col>
+          <Col md={{ span: 3, offset: 10 }} lg={{offset: 17}} xl={{ span: 0 }} style={{ paddingTop: "30px" }}>
+            {authorized ? (
+              <Dropdown
+                trigger={['click']}
+                menu={{items: authorizedArray.map((item, index) => ({
+                  key: index + 1, label: <Link to={item.url}>
+                    <span
+                      style={{
+                        fontFamily: "awesome",
+                        color: "black",
+                        fontSize: "16px",
+                      }}
+                    >
+                      {item.name}
+                    </span>
+                  </Link>
+                }))}}
+              >
+                <a onClick={(e) => e.preventDefault()}>
+                  <CaretDownOutlined />
+                </a>
+              </Dropdown>
+            ) : (
+              <Dropdown
+                trigger={['click']}
+                menu={{items: unauthorizedArray.map((item, index) => {
+                  const key = index + 1;
+                  return {
+                    key,
+                    label: (
+                      <Link to={item.url}>
+                        <span
+                          style={{
+                            marginLeft: "5px",
+                            fontFamily: "awesome",
+                            color: "black",
+                            fontSize: "16px",
+                          }}
+                        >
+                          {item.name}
+                        </span>
+                      </Link>
+                    ),
+                  };
+                })}}
+              ><a onClick={(e) => e.preventDefault()}>
+                  <CaretDownOutlined />
+                </a></Dropdown>
             )}
           </Col>
           <Col span={2}></Col>

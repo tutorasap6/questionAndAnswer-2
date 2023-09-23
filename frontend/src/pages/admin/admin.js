@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "antd";
+import { Layout, Dropdown } from "antd";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, navigate } from "gatsby";
@@ -7,6 +7,7 @@ import { Menu } from "antd";
 import { Col, Row } from "antd";
 import logocom from "../../assets/images/Logocom.png";
 import { getPostsRoute } from "../../utils/APIRoutes";
+import { CaretDownOutlined, SmileOutlined } from '@ant-design/icons';
 import { Space, Table } from "antd";
 
 const { Header } = Layout;
@@ -50,6 +51,7 @@ const AdminPage = () => {
 
   const array = [
     {name: "Admin", url: "/admin/admin"},
+    { name: "Home", url: "/" },
     { name: "Solutions", url: "/solution" },
     { name: "Post Questions", url: "/post" },
     { name: "About Us", url: "/about" },
@@ -149,45 +151,70 @@ const AdminPage = () => {
           margin: "-8px",
         }}
       >
-        <Row style={{ paddingTop: "14px" }} justify="space-between">
-        <Col
-            span={4}
-            style={{ display: "flex", flexFlow: "row-reverse", }}
+        <Row>
+          <Col
+
+            lg={{ span: 3 }}
+            style={{
+              display: "flex",
+              paddingTop: "15px",
+            }}
           >
-            <a href="/">
-              <img src={logocom} alt="logo" height="30%" />
+            <a href="/" style={{ margin: '0 auto' }}>
+              <img src={logocom} alt="logo" height="40%" />
             </a>
           </Col>
-          <Col
-            span={20}
-            style={{display: "flex"}}
-          >
-            <Menu
-              theme="white"
-              mode="horizontal"
-              style={{ justifyContent: "center", flex: "auto", minWidth: 0 }}
-              items={array.map((item, index) => {
-                const key = index + 1;
-                return {
-                  key,
-                  label: (
-                    <Link to={item.url}>
-                      <span
-                        style={{
-                          marginLeft: "5px",
-                          fontFamily: "awesome",
-                          color: "white",
-                          fontSize: "16px",
-                        }}
-                      >
-                        {item.name}
-                      </span>
-                    </Link>
-                  ),
-                };
-              })}
-            />
+          <Col md={{ span: 0 }} xl={{ span: 21 }} style={{ paddingTop: "30px" }}>
+              <Menu
+                theme="white"
+                mode="horizontal"
+                style={{ minWidth: 0, flex: "auto", justifyContent: "flex-end" }}
+                md={{ gap: '3px' }}
+                items={array.map((item, index) => {
+                  const key = index + 1;
+                  return {
+                    key,
+                    label: (
+                      <Link to={item.url}>
+                        <span
+                          style={{
+                            fontFamily: "awesome",
+                            color: "white",
+                            fontSize: "16px",
+                          }}
+                        >
+                          {item.name}
+                        </span>
+                      </Link>
+                    ),
+                  };
+                })}
+              />
           </Col>
+          <Col md={{ span: 3, offset: 10 }} lg={{offset: 17}} xl={{ span: 0 }} style={{ paddingTop: "30px" }}>
+              <Dropdown
+                trigger={['click']}
+                menu={{items: array.map((item, index) => ({
+                  key: index + 1, label: <Link to={item.url}>
+                    <span
+                      style={{
+                        fontFamily: "awesome",
+                        color: "black",
+                        fontSize: "16px",
+                      }}
+                    >
+                      {item.name}
+                    </span>
+                  </Link>
+                }))}}
+              >
+                <a onClick={(e) => e.preventDefault()}>
+                  <CaretDownOutlined />
+                </a>
+              </Dropdown>
+            
+          </Col>
+          <Col span={2}></Col>
         </Row>
       </Header>
       <div className="container">
