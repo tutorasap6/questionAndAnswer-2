@@ -8,7 +8,7 @@ const BlogContent = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       const res = await axios.get(
-        `${process.env.api_url}/api/posts/fetch/answeredPosts`
+        "http://95.216.104.112:5000/api/posts/fetch/answeredPosts"
       );
       setBlogs(res.data);
     };
@@ -165,14 +165,14 @@ const BlogContent = () => {
                       {blog.description?.length > 500 && <span>...</span>}
                     </div>
 
-                    {/* <div
+                    <div
                       style={{
-                        marginTop: "80px",
-                        paddingLeft: "700px",
-                        position: "absolute",
+                        marginTop: "-20px",
+                        // paddingLeft: "700px",
+                        // position: "absolute",
                       }}
                     >
-                      <a href="/answer">
+                      <a href={`/answer/${blog._id}`}>
                         <button
                           type="submit"
                           style={{
@@ -182,10 +182,10 @@ const BlogContent = () => {
                             fontFamily: "awesome",
                           }}
                         >
-                          Answer
+                          view more
                         </button>
                       </a>
-                    </div> */}
+                    </div>
                   </div>
                 </div>
               </Card>
