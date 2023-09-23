@@ -86,6 +86,7 @@ const IndexPage = () => {
           <Col
 
             lg={{ span: 3 }}
+            
             style={{
               display: "flex",
               paddingTop: "15px",
