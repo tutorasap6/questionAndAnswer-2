@@ -8,7 +8,7 @@ const BlogContent = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       const res = await axios.get(
-        "http://95.216.104.112:5000/api/posts/fetch/answeredPosts"
+        `${process.env.api_url}/api/posts/fetch/answeredPosts`
       );
       setBlogs(res.data);
     };
@@ -50,7 +50,7 @@ const BlogContent = () => {
                       <span>
                           <strong>Date:</strong>
                         </span>
-                        <span>{blog.date}</span>
+                        <span>{(new Date(blog.date)).getFullYear() + '-' + ((new Date(blog.date)).getMonth() + 1) + '-' + (new Date(blog.date)).getDate()}</span>
                       </Col>
                       <Col xs={{span: 24}} md={{span: 12}} xl={{span: 8}}>
                       <span>

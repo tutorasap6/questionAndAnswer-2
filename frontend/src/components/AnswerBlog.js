@@ -1,12 +1,13 @@
 import React from "react";
-import { Card, Button } from "antd";
+import { Card, Button, Row, Col } from "antd";
 import screenimg from "../assets/images/answer.png";
 import Checkout from "./Checkout";
 import { navigate } from "gatsby";
 
-const AnswerBlog = ({ post }) => (
-  <div style={{ marginBottom: "50px" }}>
-    <Card style={{  padding: "5px" }}>
+const AnswerBlog = ({ post }) => {
+
+  return (<div style={{ marginBottom: "50px" }}>
+    <Card style={{ padding: "5px" }}>
       <div
         style={{
           padding: "5px",
@@ -16,105 +17,47 @@ const AnswerBlog = ({ post }) => (
         }}
       >
         <div style={{ marginBottom: "15px", marginTop: "-10px" }}>
-          <ul
-            style={{
-              listStyleType: "none",
-              display: "flex",
-              borderTop: "0.2px solid rgba(0,0,0,0.2)",
-              borderBottom: "0.2px solid rgba(0,0,0,0.2)",
-              marginTop: "0.2px",
-              marginBottom: "0px",
-              paddingTop: "3px",
-              height: "35px",
-            }}
-          >
-            <li
-              style={{
-                borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                paddingRight: "5px",
-                margin: "5px",
-                marginLeft: "-25px",
-              }}
-            >
+          <Row>
+            <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
               <span>
                 <strong>University:</strong>
               </span>
               <span>{post.universityName}</span>
-            </li>
-            <li
-              style={{
-                borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                paddingRight: "5px",
-                margin: "5px",
-              }}
-            >
+            </Col>
+            <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
               <span>
                 <strong>Category:</strong>
               </span>
               <span>{post.category}</span>
-            </li>
-
-            <li
-              style={{
-                paddingRight: "5px",
-                margin: "5px",
-              }}
-            >
+            </Col>
+            <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
               <span>
                 <strong>Date:</strong>
               </span>
-              <span>{post.date}</span>
-            </li>
-          </ul>
-          <ul
-            style={{
-              listStyleType: "none",
-              display: "flex",
-              marginTop: "0.2px",
-              paddingTop: "3px",
-              height: "35px",
-            }}
-          >
-            <li
-              style={{
-                borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                paddingRight: "5px",
-                margin: "5px",
-                marginLeft: "-25px",
-              }}
-            >
+              <span>{(new Date(post.date)).getFullYear() + '-' + ((new Date(post.date)).getMonth() + 1) + '-' + (new Date(post.date)).getDate()}</span>
+            </Col>
+            <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
               <span>
                 <strong>Course code:</strong>
               </span>
               <span>{post.courseCode}</span>
-            </li>
-            <li
-              style={{
-                borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                paddingRight: "5px",
-                margin: "5px",
-              }}
-            >
+            </Col>
+            <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
               <span>
                 <strong>Course name:</strong>
               </span>
               <span>{post.courseName}</span>
-            </li>
-            <li
-              style={{
-                paddingRight: "5px",
-                margin: "5px",
-              }}
-            >
+            </Col>
+            <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
               <span>
                 <strong>Price:</strong>
               </span>
               <span>{post.insertPrice}</span>
-            </li>
-          </ul>
+            </Col>
+          </Row>
           <h2
             style={{
-              marginTop: "-15px",
+              marginTop: "15px",
               fontFamily: "awesome",
               fontSize: "26px",
               // textAlign: "center",
@@ -123,7 +66,7 @@ const AnswerBlog = ({ post }) => (
             {post.questionTitle}
           </h2>
         </div>
-        <div style={{ marginTop: "-15px" }}>
+        <div style={{ marginTop: "15px" }}>
           <div
             dangerouslySetInnerHTML={{
               __html: post.description,
@@ -189,7 +132,7 @@ const AnswerBlog = ({ post }) => (
         </div>
       </div>
     </Card>
-  </div>
-);
+  </div>)
+}
 
 export default AnswerBlog;
