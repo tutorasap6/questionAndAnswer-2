@@ -88,33 +88,23 @@ const PostBlog = () => {
   return (
     <Card
       style={{
-        padding: "5px",
-        marginTop: 0,
-        height: "560px",
-        marginBottom: "-6px",
+        marginTop: "20px",
+        marginBottom: "20px"
       }}
     >
-      <ToastContainer/>
-      <div
+      <ToastContainer />
+      <h3
         style={{
-          marginTop: "-30px",
-          display: "flex",
-          justifyContent: "center",
+          fontFamily: "awesome",
+          textAlign: "center",
+          fontSize: "30px",
         }}
       >
-        <h3
-          style={{
-            fontFamily: "awesome",
-            textAlign: "center",
-            fontSize: "30px",
-          }}
-        >
-          Assignment Help
-        </h3>
-      </div>
-      <Row>
+        Assignment Help
+      </h3>
+      <Row style={{paddingBottom: "30px", marginBottom: "80px"}}>
         <Col span={12} style={{ paddingRight: "10px" }}>
-          <div style={{ paddingBottom: "9px" }}>
+          <div style={{ marginBottom: "9px" }}>
             <input
               type="text"
               placeholder="Question Title"
@@ -122,7 +112,6 @@ const PostBlog = () => {
               onChange={(e) => handleChange(e)}
               style={{
                 width: "100%",
-                height: "40px",
                 fontSize: "15px",
                 color: "black !important",
                 border: "1px solid #d9d9d9",
@@ -135,7 +124,9 @@ const PostBlog = () => {
             placeholder="Content"
             value={content}
             onChange={handleQuillChange}
-            style={{ height: "280px" }}
+            style={{
+              height: '400px'
+            }}
           />
         </Col>
         {/* <Col span={12}> */}
@@ -148,7 +139,6 @@ const PostBlog = () => {
               onChange={(e) => handleChange(e)}
               style={{
                 width: "100%",
-                height: "35px",
                 fontSize: "15px",
                 color: "black !important",
                 border: "1px solid #d9d9d9",
@@ -166,7 +156,6 @@ const PostBlog = () => {
               onChange={(e) => handleChange(e)}
               style={{
                 width: "100%",
-                height: "35px",
                 fontSize: "15px",
                 color: "black !important",
                 border: "1px solid #d9d9d9",
@@ -184,7 +173,7 @@ const PostBlog = () => {
               onChange={(e) => handleChange(e)}
               style={{
                 width: "100%",
-                height: "35px",
+
                 fontSize: "15px",
                 color: "black !important",
                 border: "1px solid #d9d9d9",
@@ -208,7 +197,7 @@ const PostBlog = () => {
               onChange={(e) => handleChange(e)}
               style={{
                 width: "100%",
-                height: "35px",
+
                 fontSize: "15px",
                 color: "black !important",
                 border: "1px solid #d9d9d9",
@@ -225,7 +214,7 @@ const PostBlog = () => {
               onChange={(e) => handleChange(e)}
               style={{
                 width: "100%",
-                height: "35px",
+
                 fontSize: "15px",
                 color: "black !important",
                 border: "1px solid #d9d9d9",
@@ -242,7 +231,7 @@ const PostBlog = () => {
               onChange={(e) => handleChange(e)}
               style={{
                 width: "100%",
-                height: "35px",
+
                 fontSize: "15px",
                 color: "black !important",
                 border: "1px solid #d9d9d9",
@@ -251,30 +240,16 @@ const PostBlog = () => {
               }}
             />
           </div>
-          {/* </Col> */}
-        </Col>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            // height: "100vh",
-            paddingLeft: "545px",
-          }}
-        >
           <Button
             type="primary"
-            style={{
-              width: "120px",
-              height: "50px",
-              fontSize: "20px",
-              fontFamily: "awesome",
-            }}
+            size="large"
             onClick={onSubmit}
           >
             Submit
           </Button>
-        </div>
+          {/* </Col> */}
+        </Col>
+
       </Row>
     </Card>
   );

@@ -227,8 +227,7 @@ const MainLayout = ({ pageTitle, children }) => {
           <Col span={4}></Col>
         </Row>
       </div>
-      {/* <div style={{ marginTop: "30px", marginBottom: "30px" }}>{children}</div> */}
-      {children}
+      <div style={{ marginTop: "30px", marginBottom: "30px" }}>{children}</div>
       <Footer
         style={{
           // textAlign: "center",
