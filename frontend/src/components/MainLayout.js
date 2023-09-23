@@ -248,13 +248,14 @@ const MainLayout = ({ pageTitle, children }) => {
           <Col
             span={5}
             style={{
-              paddingLeft: "175px",
               paddingTop: "100px",
+              display: "flex",
+              justifyContent: "center"
             }}
           >
-            <img src={logocom} alt="logo" width="45%" height="40%" />
+            <img src={logocom} alt="logo" height="40%" />
           </Col>
-          <Col span={5} style={{ paddingLeft: "0px", paddingTop: "65px" }}>
+          <Col xs={{span: 0}} xl={{span: 5}} style={{ paddingLeft: "0px", paddingTop: "65px" }}>
             <p
               style={{
                 fontSize: "15px",
