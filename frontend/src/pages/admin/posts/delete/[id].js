@@ -2,7 +2,8 @@ import React from "react";
 import { Layout } from "antd";
 import { Link } from "gatsby";
 import { Menu } from "antd";
-import { Col, Row } from "antd";
+import { Col, Row, Dropdown } from "antd";
+import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import logocom from "../../../../assets/images/Logocom.png";
 import PostDelete from "../../../../components/PostDelete";
 
@@ -12,6 +13,8 @@ const DeletePage = (params) => {
   const { id } = params;
   console.log(id);
   const array = [
+    {name: "Admin", url: "/admin/admin"},
+    { name: "Home", url: "/" },
     { name: "Solutions", url: "/" },
     { name: "Post Questions", url: "/post" },
     { name: "About Us", url: "/about" },
@@ -32,48 +35,68 @@ const DeletePage = (params) => {
       >
         <Row>
           <Col
-            span={6}
+
+            lg={{ span: 3 }}
             style={{
-              paddingLeft: "300px",
+              display: "flex",
               paddingTop: "15px",
             }}
           >
-            <img src={logocom} alt="logo" width="60%" height="65%" />
+            <a href="/" style={{ margin: '0 auto' }}>
+              <img src={logocom} alt="logo" height="40%" />
+            </a>
           </Col>
-          <Col
-            span={6}
-            style={{
-              padding: "30px",
-              paddingLeft: "20px",
-              paddingRight: "60px",
-            }}
-          ></Col>
-          <Col span={12} style={{ paddingTop: "16px" }}>
-            <Menu
-              theme="white"
-              mode="horizontal"
-              items={array.map((item, index) => {
-                const key = index + 1;
-                return {
-                  key,
-                  label: (
-                    <Link to={item.url}>
-                      <span
-                        style={{
-                          marginLeft: "5px",
-                          fontFamily: "awesome",
-                          color: "white",
-                          fontSize: "16px",
-                        }}
-                      >
-                        {item.name}
-                      </span>
-                    </Link>
-                  ),
-                };
-              })}
-            />
+          <Col md={{ span: 0 }} xl={{ span: 21 }} style={{ paddingTop: "30px" }}>
+              <Menu
+                theme="white"
+                mode="horizontal"
+                style={{ minWidth: 0, flex: "auto", justifyContent: "flex-end" }}
+                md={{ gap: '3px' }}
+                items={array.map((item, index) => {
+                  const key = index + 1;
+                  return {
+                    key,
+                    label: (
+                      <Link to={item.url}>
+                        <span
+                          style={{
+                            fontFamily: "awesome",
+                            color: "white",
+                            fontSize: "16px",
+                          }}
+                        >
+                          {item.name}
+                        </span>
+                      </Link>
+                    ),
+                  };
+                })}
+              />
           </Col>
+          <Col md={{ span: 3, offset: 10 }} lg={{offset: 17}} xl={{ span: 0 }} style={{ paddingTop: "30px" }}>
+              <Dropdown
+                trigger={['click']}
+                menu={{items: array.map((item, index) => ({
+                  key: index + 1, label: <Link to={item.url}>
+                    <span
+                      style={{
+                        fontFamily: "awesome",
+                        color: "black",
+                        fontSize: "16px",
+                      }}
+                    >
+                      {item.name}
+                    </span>
+                  </Link>
+                }))}}
+              >
+                <a onClick={(e) => e.preventDefault()}>
+                  <DownOutlined />
+                </a>
+              </Dropdown>
+            
+          </Col>
+          <Col span={2}></Col>
         </Row>
       </Header>
       <Content

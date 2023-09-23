@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Dropdown } from "antd";
 import { Col, Row, Input } from "antd";
 import logocom from "../assets/images/logocom.png";
 import { Link } from "gatsby";
 import backimg from "../assets/images/action.png";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
+import { DownOutlined, SmileOutlined } from '@ant-design/icons';
 import "react-toastify/dist/ReactToastify.css";
 
 const { Search } = Input;
@@ -73,25 +74,26 @@ const MainLayout = ({ pageTitle, children }) => {
           background: "#272930",
         }}
       >
-        <Row justify="space-between">
+        <Row>
           <Col
-            span={4}
+
+            lg={{ span: 3 }}
             style={{
               display: "flex",
-              flexFlow: "row-reverse",
-              paddingTop: "12px",
+              paddingTop: "15px",
             }}
           >
-            <a href="/">
-              <img src={logocom} alt="logo" height="35%" />
+            <a href="/" style={{ margin: '0 auto' }}>
+              <img src={logocom} alt="logo" height="40%" />
             </a>
           </Col>
-          <Col span={20} style={{ paddingTop: "30px", display: "flex" }}>
+          <Col md={{ span: 0 }} xl={{ span: 21 }} style={{ paddingTop: "30px" }}>
             {authorized ? (
               <Menu
                 theme="white"
                 mode="horizontal"
-                style={{ justifyContent: "center", flex: "auto", minWidth: 0 }}
+                style={{ minWidth: 0, flex: "auto", justifyContent: "flex-end" }}
+                md={{ gap: '3px' }}
                 items={authorizedArray.map((item, index) => {
                   const key = index + 1;
                   return {
@@ -100,7 +102,6 @@ const MainLayout = ({ pageTitle, children }) => {
                       <Link to={item.url}>
                         <span
                           style={{
-                            marginLeft: "5px",
                             fontFamily: "awesome",
                             color: "white",
                             fontSize: "16px",
@@ -117,7 +118,7 @@ const MainLayout = ({ pageTitle, children }) => {
               <Menu
                 theme="white"
                 mode="horizontal"
-                style={{ justifyContent: "center", flex: "auto", minWidth: 0 }}
+                style={{ minWidth: 0, flex: "auto", justifyContent: "space-evenly" }}
                 items={unauthorizedArray.map((item, index) => {
                   const key = index + 1;
                   return {
@@ -141,6 +142,57 @@ const MainLayout = ({ pageTitle, children }) => {
               />
             )}
           </Col>
+          <Col md={{ span: 3, offset: 10 }} lg={{offset: 17}} xl={{ span: 0 }}style={{ paddingTop: "30px" }}>
+            {authorized ? (
+              <Dropdown
+                trigger={['click']}
+                menu={{items: authorizedArray.map((item, index) => ({
+                  key: index + 1, label: <Link to={item.url}>
+                    <span
+                      style={{
+                        fontFamily: "awesome",
+                        color: "black",
+                        fontSize: "16px",
+                      }}
+                    >
+                      {item.name}
+                    </span>
+                  </Link>
+                }))}}
+              >
+                <a onClick={(e) => e.preventDefault()}>
+                  <DownOutlined />
+                </a>
+              </Dropdown>
+            ) : (
+              <Dropdown
+                trigger={['click']}
+                menu={{items: unauthorizedArray.map((item, index) => {
+                  const key = index + 1;
+                  return {
+                    key,
+                    label: (
+                      <Link to={item.url}>
+                        <span
+                          style={{
+                            marginLeft: "5px",
+                            fontFamily: "awesome",
+                            color: "black",
+                            fontSize: "16px",
+                          }}
+                        >
+                          {item.name}
+                        </span>
+                      </Link>
+                    ),
+                  };
+                })}}
+              ><a onClick={(e) => e.preventDefault()}>
+                  <DownOutlined />
+                </a></Dropdown>
+            )}
+          </Col>
+          <Col span={2}></Col>
         </Row>
       </header>
       <div
