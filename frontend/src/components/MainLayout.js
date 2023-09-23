@@ -272,7 +272,7 @@ const MainLayout = ({ pageTitle, children }) => {
               effective and seamless experience when learning online.
             </p>
           </Col>
-          <Col span={3} style={{ paddingLeft: "40px" }}>
+          <Col xs={{span: 6}} xl={{span: 3}} style={{ paddingLeft: "40px" }}>
             <h4
               style={{
                 fontFamily: "awesome",
@@ -321,7 +321,7 @@ const MainLayout = ({ pageTitle, children }) => {
               </li>
             </ul>
           </Col>
-          <Col span={3} style={{ paddingLeft: "40px" }}>
+          <Col xs={{span: 6}} xl={{span: 3}} style={{ paddingLeft: "40px" }}>
             <h4
               style={{
                 fontFamily: "awesome",
@@ -353,7 +353,7 @@ const MainLayout = ({ pageTitle, children }) => {
               </li>
             </ul>
           </Col>
-          <Col span={3} style={{ paddingLeft: "40px" }}>
+          <Col xs={{span: 6}} xl={{span: 3}} style={{ paddingLeft: "40px" }}>
             <h4
               style={{
                 fontFamily: "awesome",
@@ -382,7 +382,6 @@ const MainLayout = ({ pageTitle, children }) => {
               </li>
             </ul>
           </Col>
-          <Col span={5} style={{ paddingLeft: "0px" }}></Col>
         </Row>
         <div
           style={{
