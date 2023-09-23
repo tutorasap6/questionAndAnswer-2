@@ -162,7 +162,7 @@ const BlogContent = () => {
                           className="my-4"
                         />
                       )}
-                      {blog.description?.length > 500 && <span>...</span>}
+                      {blog.description?.length > 500 &&<p style={{color: 'blue', marginTop: "20px"}}> <a href={`/answer/${blog._id}`}>Read more{' >>'}</a></p>}
                     </div>
 
                     {/* <div

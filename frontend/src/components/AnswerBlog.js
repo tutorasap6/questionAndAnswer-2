@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Button } from "antd";
 import screenimg from "../assets/images/answer.png";
 import Checkout from "./Checkout";
+import { navigate } from "gatsby";
 
 const AnswerBlog = ({ post }) => (
   <div style={{ marginBottom: "50px" }}>
@@ -180,7 +181,7 @@ const AnswerBlog = ({ post }) => (
             </a> */}
             <Checkout post={post} />
             <div style={{ marginTop: "5px" }}>
-              <Button block style={{ fontWeight: "bold" }}>
+              <Button block style={{ fontWeight: "bold" }} onClick={() => navigate('/quote')}>
                 Get a quote of a new original/Human generated paper
               </Button>
             </div>
