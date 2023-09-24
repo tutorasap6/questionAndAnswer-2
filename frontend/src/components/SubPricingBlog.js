@@ -6,7 +6,6 @@ const SubPricingBlog = ({ price, children }) => {
     <Card
       style={{
         height: "350px",
-        width: "360px",
         // paddingLeft: "100px",
         // paddingTop: "0px",
         fontFamily: "awesome",
