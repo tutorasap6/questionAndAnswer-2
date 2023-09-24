@@ -19,11 +19,9 @@ const SolutionPage = () => {
         }}
       >
         <Row>
-          <Col span={4}></Col>
-          <Col span={12}>
+          <Col xs={{span: 18, offset: 3}} lg={{span: 14, offset: 5}}>
             <BlogContent></BlogContent>
           </Col>
-          <Col span={4}></Col>
         </Row>
       </Content>
     </MainLayout>

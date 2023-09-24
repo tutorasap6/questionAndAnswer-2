@@ -227,8 +227,7 @@ const MainLayout = ({ pageTitle, children }) => {
           <Col span={4}></Col>
         </Row>
       </div>
-      {/* <div style={{ marginTop: "30px", marginBottom: "30px" }}>{children}</div> */}
-      {children}
+      <div style={{ marginTop: "30px", marginBottom: "30px" }}>{children}</div>
       <Footer
         style={{
           // textAlign: "center",
@@ -248,13 +247,14 @@ const MainLayout = ({ pageTitle, children }) => {
           <Col
             span={5}
             style={{
-              paddingLeft: "175px",
               paddingTop: "100px",
+              display: "flex",
+              justifyContent: "center"
             }}
           >
-            <img src={logocom} alt="logo" width="45%" height="40%" />
+            <img src={logocom} alt="logo" height="40%" />
           </Col>
-          <Col span={5} style={{ paddingLeft: "0px", paddingTop: "65px" }}>
+          <Col xs={{span: 0}} xl={{span: 5}} style={{ paddingLeft: "0px", paddingTop: "65px" }}>
             <p
               style={{
                 fontSize: "15px",
@@ -271,7 +271,7 @@ const MainLayout = ({ pageTitle, children }) => {
               effective and seamless experience when learning online.
             </p>
           </Col>
-          <Col span={3} style={{ paddingLeft: "40px" }}>
+          <Col xs={{span: 6}} xl={{span: 3}} style={{ paddingLeft: "40px" }}>
             <h4
               style={{
                 fontFamily: "awesome",
@@ -320,7 +320,7 @@ const MainLayout = ({ pageTitle, children }) => {
               </li>
             </ul>
           </Col>
-          <Col span={3} style={{ paddingLeft: "40px" }}>
+          <Col xs={{span: 6}} xl={{span: 3}} style={{ paddingLeft: "40px" }}>
             <h4
               style={{
                 fontFamily: "awesome",
@@ -352,7 +352,7 @@ const MainLayout = ({ pageTitle, children }) => {
               </li>
             </ul>
           </Col>
-          <Col span={3} style={{ paddingLeft: "40px" }}>
+          <Col xs={{span: 6}} xl={{span: 3}} style={{ paddingLeft: "40px" }}>
             <h4
               style={{
                 fontFamily: "awesome",
@@ -381,7 +381,6 @@ const MainLayout = ({ pageTitle, children }) => {
               </li>
             </ul>
           </Col>
-          <Col span={5} style={{ paddingLeft: "0px" }}></Col>
         </Row>
         <div
           style={{

@@ -108,7 +108,7 @@ module.exports.file_upload = async (req, res) => {
 
 module.exports.getPosts = async (req, res, next) => {
   try {
-    const posts = await Post.find({});
+    const posts = await Post.find({}).sort({date: -1});
     return res.json(posts);
   } catch (ex) {
     next(ex);

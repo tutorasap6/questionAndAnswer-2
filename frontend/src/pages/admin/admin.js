@@ -131,7 +131,7 @@ const AdminPage = () => {
     Category: post.category,
     insertTagsHere: post.insertTagsHere,
     insertPrice: post.insertPrice,
-    date:post.date,
+    date:<span>{(new Date(post.date)).getFullYear() + '-' + ((new Date(post.date)).getMonth() + 1) + '-' + (new Date(post.date)).getDate()}</span>
   }));
   if (!token) {
     navigate("/");

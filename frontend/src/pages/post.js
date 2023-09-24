@@ -12,7 +12,6 @@ const PostPage = () => {
     <MainLayout pageTitle="PostPage">
       <Content
         style={{
-          padding: "120px",
           paddingTop: "10px",
           paddingBottom: "10px",
         }}
@@ -46,11 +45,9 @@ const PostPage = () => {
           </Breadcrumb>
         </div>
         <Row style={{ marginTop: "0px" }}>
-          <Col span={4}></Col>
-          <Col span={16}>
+          <Col xs={{span: 22, offset: 1}} md={{span: 20, offset: 2}} lg={{span: 18, offset: 3}}>
             <PostBlog></PostBlog>
           </Col>
-          <Col span={4}></Col>
         </Row>
       </Content>
     </MainLayout>
