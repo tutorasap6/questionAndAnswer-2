@@ -116,7 +116,14 @@ const Checkout = ({ post }) => {
 
               <PayPalButtons
                 style={{ layout: "vertical" }}
-                fundingSource="paypal"
+                fundingSource='paypal'
+                createOrder={createOrder}
+                onApprove={onApprove}
+                onError={onError}
+              />
+              <PayPalButtons
+                style={{ layout: "vertical" }}
+                fundingSource='card'
                 createOrder={createOrder}
                 onApprove={onApprove}
                 onError={onError}
