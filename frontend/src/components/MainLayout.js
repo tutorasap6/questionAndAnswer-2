@@ -87,7 +87,7 @@ const MainLayout = ({ pageTitle, children }) => {
               <img src={logocom} alt="logo" height="40%" />
             </a>
           </Col>
-          <Col md={{ span: 0 }} xl={{ span: 21 }} style={{ paddingTop: "30px" }}>
+          <Col md={{ span: 0 }} xl={{ span: 21 }} style={{ paddingTop: "30px", paddingRight:"30px" }}>
             {authorized ? (
               <Menu
                 theme="white"

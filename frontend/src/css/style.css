@@ -333,3 +333,78 @@ a:focus {
     list-style-position: inside;
   }
 }
+
+.pt-30 {
+  padding-top: 30px;
+}
+
+.font-sie-28 {
+  font-size: 28px;
+}
+
+.h-siz {
+  font-size: "45px";
+  color: "white";
+  font-Family: "awesome";
+}
+
+.ind-div {
+  padding-Top: "30px";
+  padding-right:"30px";
+}
+@media (max-width: 320px) {
+  .font-sie-28 {
+    font-size: 18px;
+  }
+  .h-siz {
+    font-size: "25px";
+  }
+  .pt-30 {
+    padding-top: 30px;
+  }
+  .ind-div {
+    padding-right:"30px";
+  }
+}
+@media (max-width: 1190px) {
+  .font-sie-28 {
+    font-size: 20px;
+  }
+  .h-siz {
+    font-size: "35px";
+  }
+  .pt-30 {
+    padding-top: 30px;
+  }
+  .ind-div {
+    padding-right:"35px";
+  }
+}
+@media (max-width: 1300px) {
+  .font-sie-28 {
+    font-size: 20px;
+  }
+  .h-siz {
+    font-size: "40px";
+  }
+  .pt-30 {
+    padding-top: 30px;
+  }
+  .ind-div {
+    padding-right:"40px";
+  }
+}
+@media (max-width: 1500px) {
+  .font-sie-28 {
+    font-size: 20px;
+  }
+  .h-siz {
+    font-size: "45px";
+  }
+  .pt-30 {
+    padding-top: 30px;
+  }
+  .ind-div {
+    padding-right:"45px";
+  }
+}

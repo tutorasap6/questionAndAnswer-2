@@ -9,6 +9,7 @@ import { Link } from "gatsby";
 import { ToastContainer } from "react-toastify";
 import { CaretDownOutlined, SmileOutlined } from '@ant-design/icons';
 import "react-toastify/dist/ReactToastify.css";
+import '../css/style.css'
 
 const { Header, Footer } = Layout;
 
@@ -84,9 +85,9 @@ const IndexPage = () => {
       >
         <Row>
           <Col
-
-            lg={{ span: 3 }}
-            
+            md={{ span:2, offset:3 }}
+            lg={{ span: 2 , offset: 3 }}
+            xs={{span:2,offset:3}}
             style={{
               display: "flex",
               paddingTop: "15px",
@@ -96,12 +97,12 @@ const IndexPage = () => {
               <img src={logocom} alt="logo" height="40%" />
             </a>
           </Col>
-          <Col md={{ span: 0 }} xl={{ span: 20 }} style={{ paddingTop: "30px" }}>
+          <Col md={{ span: 0 }}  xl={{ span: 19 }} style={{ paddingTop: "30px" }}>
             {authorized ? (
               <Menu
                 theme="white"
                 mode="horizontal"
-                style={{ minWidth: 0, flex: "auto", justifyContent: "flex-end" }}
+                style={{ minWidth: 0, flex: "auto", justifyContent: "flex-center" }}
                 md={{ gap: '3px' }}
                 items={authorizedArray.map((item, index) => {
                   const key = index + 1;
@@ -151,7 +152,7 @@ const IndexPage = () => {
               />
             )}
           </Col>
-          <Col md={{ span: 3, offset: 10 }} lg={{offset: 17}} xl={{ span: 0 }} style={{ paddingTop: "30px" }}>
+          <Col xs={{ span:3, offset:8}} md={{ span: 3, offset: 15 }}  xl={{ span: 0 }} className="pt-30">
             {authorized ? (
               <Dropdown
                 trigger={['click']}
@@ -201,7 +202,9 @@ const IndexPage = () => {
                 </a></Dropdown>
             )}
           </Col>
-          <Col span={2}></Col>
+          <Col md={{ span:2 }}
+            lg={{ span: 0   }}
+            xs={{span:2}}></Col>
         </Row>
       </header>
       <Content>
@@ -209,20 +212,14 @@ const IndexPage = () => {
           <Col span={8}></Col>
 
           <Col span={12}>
-            <div>
-              <h3
-                style={{
-                  fontSize: "45px",
-                  color: "white",
-                  //color: "black",
-                  fontFamily: "awesome",
-                }}
+            <div className="ind-div" >
+              <h3 className="h-siz"
               >
                 Why Champlain Solutions?
               </h3>
-              <p
+              <p className="font-sie-28"
                 style={{
-                  fontSize: "28px",
+                  // fontSize: "28px",
                   color: "white",
                   //color: "black",
                   fontFamily: "awesome",
@@ -244,21 +241,22 @@ const IndexPage = () => {
     <Footer
         style={{
           // textAlign: "center",
-          margin: "-8px",
-          padding: "0px",
+           margin: "-8px",
+          width:"100vw",
+          background: "rgb(26,28,33)",
         }}
       >
         <Row
           style={{
             // background: "rgb(66,180,186)",
-            background: "rgb(26,28,33)",
+           
             display: "flex",
             justifyContent: "center",
             height: "315px",
             paddingTop: "40px",
           }}
         >
-          <Col
+          {/* <Col
             span={5}
             style={{
               paddingTop: "100px",
@@ -267,8 +265,8 @@ const IndexPage = () => {
             }}
           >
             <img src={logocom} alt="logo" height="40%" />
-          </Col>
-          <Col xs={{span: 0}} xl={{span: 5}} style={{ paddingLeft: "0px", paddingTop: "65px" }}>
+          </Col> */}
+          {/* <Col xs={{span: 0}} xl={{span: 5}} style={{ paddingLeft: "0px", paddingTop: "65px" }}>
             <p
               style={{
                 fontSize: "15px",
@@ -284,14 +282,14 @@ const IndexPage = () => {
               is where ChamplainSolutions.com comes in to help you have a more
               effective and seamless experience when learning online.
             </p>
-          </Col>
-          <Col xs={{span: 6}} xl={{span: 3}} style={{ paddingLeft: "40px" }}>
+          </Col> */}
+          <Col xs={{span: 24}} md = {{ span: 4}} xl={{span: 4}} style={{ paddingLeft: "40px" }}>
             <h4
               style={{
                 fontFamily: "awesome",
                 color: "white",
                 fontSize: "18px",
-                paddingLeft: "40px",
+                // paddingLeft: "30px",
               }}
             >
               About us
@@ -334,13 +332,13 @@ const IndexPage = () => {
               </li>
             </ul>
           </Col>
-          <Col xs={{span: 6}} xl={{span: 3}} style={{ paddingLeft: "40px" }}>
+          <Col xs={{span: 24}} md = {{ span: 4}} xl={{span: 4}} style={{ paddingLeft: "40px" }}>
             <h4
               style={{
                 fontFamily: "awesome",
                 color: "white",
                 fontSize: "18px",
-                paddingLeft: "30px",
+                // paddingLeft: "30px",
               }}
             >
               Legal Stuff
@@ -366,13 +364,13 @@ const IndexPage = () => {
               </li>
             </ul>
           </Col>
-          <Col xs={{span: 6}} xl={{span: 3}} style={{ paddingLeft: "40px" }}>
+          <Col xs={{span: 24}} md = {{ span: 4}} xl={{span: 4}} style={{ paddingLeft: "40px" }}>
             <h4
               style={{
                 fontFamily: "awesome",
                 color: "white",
                 fontSize: "18px",
-                paddingLeft: "50px",
+                // paddingLeft: "50px",
               }}
             >
               Help
