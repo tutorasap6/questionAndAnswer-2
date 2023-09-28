@@ -213,10 +213,10 @@ const IndexPage = () => {
 
           <Col span={12}>
             <div className="ind-div" >
-              <h3 className="h-siz"
+              <h2 className="h-siz"
               >
                 Why Champlain Solutions?
-              </h3>
+              </h2>
               <p className="font-sie-28"
                 style={{
                   // fontSize: "28px",

@@ -91,7 +91,7 @@ function CrudDetails(params) {
             lg={{ span: 3 }}
             style={{
               display: "flex",
-              paddingTop: "15px",
+              paddingTop: "10px",
             }}
           >
             <a href="/" style={{ margin: '0 auto' }}>

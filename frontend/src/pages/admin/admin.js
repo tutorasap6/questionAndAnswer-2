@@ -157,14 +157,14 @@ const AdminPage = () => {
             lg={{ span: 3 }}
             style={{
               display: "flex",
-              paddingTop: "15px",
+              paddingTop: "10px",
             }}
           >
             <a href="/" style={{ margin: '0 auto' }}>
               <img src={logocom} alt="logo" height="40%" />
             </a>
           </Col>
-          <Col md={{ span: 0 }} xl={{ span: 21 }} style={{ paddingTop: "30px" }}>
+          <Col md={{ span: 0 }} xl={{ span: 21 }} style={{ paddingTop: "30px",paddingRight:"30px" }}>
               <Menu
                 theme="white"
                 mode="horizontal"
