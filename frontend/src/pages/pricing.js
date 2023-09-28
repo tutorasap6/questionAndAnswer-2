@@ -50,7 +50,7 @@ const PricingPage = () => {
           <Col span={20}>
             <Card style={{ padding: "5px" }}>
               <Row>
-                <Col span={8} style={{ padding: "10px" }}>
+                <Col xs={24} md={12} lg={8} xl={8} style={{ padding: "10px" }}>
                   <SubPricingBlog price="Full classes">
                     <h2
                       className="title h4"
@@ -77,7 +77,7 @@ const PricingPage = () => {
                     </p>
                   </SubPricingBlog>
                 </Col>
-                <Col span={8} style={{ padding: "10px" }}>
+                <Col xs={24}  md={12} lg={8} xl={8} style={{ padding: "10px" }}>
                   <SubPricingBlog price="Full classes">
                     <h2
                       className="title h4"
@@ -108,7 +108,7 @@ const PricingPage = () => {
                     </p>
                   </SubPricingBlog>
                 </Col>
-                <Col span={8} style={{ padding: "10px" }}>
+                <Col xs={24}  md={12} lg={8} xl={8} style={{ padding: "10px" }}>
                   <SubPricingBlog price="Full classes">
                     <h2
                       className="title h4"
@@ -139,9 +139,7 @@ const PricingPage = () => {
                     </p>
                   </SubPricingBlog>
                 </Col>
-              </Row>
-              <Row>
-                <Col span={8} style={{ padding: "10px" }}>
+                <Col xs={24}  md={12} lg={8} xl={8} style={{ padding: "10px" }}>
                   <SubPricingBlog price="Full classes">
                     <h2
                       className="title h4"
@@ -175,7 +173,7 @@ const PricingPage = () => {
                     </p>
                   </SubPricingBlog>
                 </Col>
-                <Col span={8} style={{ padding: "10px" }}>
+                <Col xs={24}  md={12} lg={8} xl={8} style={{ padding: "10px" }}>
                   <SubPricingBlog price="Full classes">
                     <h2
                       className="title h4"
@@ -206,7 +204,7 @@ const PricingPage = () => {
                     </p>
                   </SubPricingBlog>
                 </Col>
-                <Col span={8} style={{ padding: "10px" }}>
+                <Col xs={24}  md={12} lg={8} xl={8} style={{ padding: "10px" }}>
                   <SubPricingBlog price="Full classes">
                     <h2
                       className="title h4"
