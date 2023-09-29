@@ -31,7 +31,7 @@ const IndexPage = () => {
     { name: "Services", url: "/service" },
     { name: "Pricing", url: "/pricing" },
     { name: "Terms and Conditions", url: "/terms" },
-    { name: "Login", url: "/auth/login" },
+    { name: "Post project", url: "/auth/login" },
   ];
 
   const authorizedArray = [

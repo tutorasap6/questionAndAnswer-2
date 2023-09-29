@@ -3,12 +3,18 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
 const postRoutes = require("./routes/post");
+const pageRoutes = require("./routes/page");
 const multer = require("multer");
 const path = require("path");
 const Post = require("./models/postModel");
 const User = require('./models/userModel');
+const Page = require('./models/pageModel');
 const fs = require("fs");
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+
+
+
 
 const fileRenamer = (filename) => {
   const queHoraEs = Date.now();
@@ -34,6 +40,7 @@ require("dotenv").config();
 
 app.use(cors());
 app.use(express.json());
+mongoose.set("strictQuery", false);
 
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -47,8 +54,48 @@ mongoose
     console.log(err.message);
   });
 
+// const addPage = async () => {
+//     try {
+//       console.log(req.body);
+//       const errors = "";
+//       const {
+        
+//         pagedescription,
+//       } = req.body;
+      
+//       if (validator.isEmpty(pagedescription)) {
+//         return res.json({
+//           errors: "description is required.",
+//           status: false,
+//         });
+//       }
+//       console.log(errors, req.body);
+//       const page = await Page.create({
+//         pagedescription,
+//       });
+//       return res.json({ status: true, page });
+//     } catch (ex) {
+//     }
+//   };
+
+// addPage();
+const data = JSON.parse(fs.readFileSync('./page.json','utf-8'))
+console.log(data)
+
+const importData = async () => {
+  try {
+    await Page.create(data)
+    console.log('data successfullly imported')
+    process.exit()
+  } catch (error) {
+    console.log('error', error)
+  }
+}
+importData();
+
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
+app.use("/api/page", pageRoutes);
 app.post("/api/file/:id", upload1.single("file"), async (req, res) => {
   try {
     const { id } = req.params;
@@ -103,6 +150,6 @@ app.get("/file/:id", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT, () =>
+app.listen(process.env.PORT, () => 
   console.log(`Server started on ${process.env.PORT}`)
 );

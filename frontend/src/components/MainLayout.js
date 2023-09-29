@@ -47,7 +47,7 @@ const MainLayout = ({ pageTitle, children }) => {
     { name: "Services", url: "/service" },
     { name: "Pricing", url: "/pricing" },
     { name: "Terms and Conditions", url: "/terms" },
-    { name: "Login", url: "/auth/login" },
+    { name: "Post Project", url: "/auth/login" },
   ];
 
   const authorizedArray = [
@@ -425,33 +425,7 @@ const MainLayout = ({ pageTitle, children }) => {
             paddingTop: "40px",
           }}
         >
-          {/* <Col
-            span={5}
-            style={{
-              paddingTop: "100px",
-              display: "flex",
-              justifyContent: "center"
-            }}
-          >
-            <img src={logocom} alt="logo" height="40%" />
-          </Col> */}
-          {/* <Col xs={{span: 0}} xl={{span: 5}} style={{ paddingLeft: "0px", paddingTop: "65px" }}>
-            <p
-              style={{
-                fontSize: "15px",
-                fontFamily: "awesome",
-                color: "#707885",
-              }}
-            >
-              Online education has become an essential component of our academic
-              path in the fast-paced world of today. However, it frequently
-              presents its own special difficulties. Students frequently have
-              overwhelming workloads due to managing many online courses and
-              keeping up with assignments, exams, lab reports, and essays. This
-              is where ChamplainSolutions.com comes in to help you have a more
-              effective and seamless experience when learning online.
-            </p>
-          </Col> */}
+
           <Col xs={{span: 24}} md = {{ span: 4}} xl={{span: 4}} style={{ paddingLeft: "40px" }}>
             <h4
               style={{
