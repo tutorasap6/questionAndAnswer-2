@@ -109,7 +109,7 @@ const BlogContent = (props) => {
                     </Row>
                     <h2
                       style={{
-                        marginTop: "0px",
+                        marginTop: "15px",
                         fontFamily: "awesome",
                         fontSize: "26px",
                         //textAlign: "center",
@@ -137,7 +137,7 @@ const BlogContent = (props) => {
                           className="my-4"
                         />
                       )}
-                      {blog.description?.length > 500 && (
+                      {blog.description?.length > 700 && (
                         <p style={{ color: "blue", marginTop: "20px" }}>
                           {" "}
                           <a href={`/answer/${blog._id}`}>Read more{" >>"}</a>
