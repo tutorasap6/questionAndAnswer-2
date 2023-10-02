@@ -1,10 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { get } from "axios";
 import MainLayout from "../components/MainLayout";
 import { Breadcrumb, Layout } from "antd";
 import { Card, Col, Row } from "antd";
 
 const { Content } = Layout;
 const TermsPage = () => {
+
+  const [content, setContent] = useState("");
+
+  useEffect(
+    function () {
+      async function getPage() {
+        try {
+          console.log("789");
+          const response = await get(`${process.env.api_url}/api/page/`);
+          console.log("895");
+          // setTemp(response.data[0].about);
+          setContent(response.data[0].term);
+          console.log(response.data[0].term);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+      getPage();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+
   return (
     <MainLayout pageTitle="Home">
       <Content
@@ -49,8 +73,10 @@ const TermsPage = () => {
               <div className="container">
                 <div className="row">
                   <div className="col-lg-10 mx-auto">
-                    <div className="content">
-                      <h3 style={{ fontFamily: "awesome" }}>
+                    <div className="content" style={{ fontFamily:"awesome" }} dangerouslySetInnerHTML={{
+              __html: content,
+            }}>
+                      {/* <h3 style={{ fontFamily: "awesome" }}>
                         Terms and Conditions of Use
                       </h3>
                       <h4 style={{ fontFamily: "awesome" }}>
@@ -175,7 +201,7 @@ const TermsPage = () => {
                         ChamplainSolutions.com. Your continuing use of our
                         website and services implies your agreement of these
                         Terms, as well as any subsequent amendments or updates.
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                 </div>

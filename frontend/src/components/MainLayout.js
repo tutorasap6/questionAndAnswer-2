@@ -6,10 +6,10 @@ import { Link } from "gatsby";
 import backimg from "../assets/images/action.png";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
-import { CaretDownOutlined, SmileOutlined } from '@ant-design/icons';
+import { CaretDownOutlined } from '@ant-design/icons';
 import "react-toastify/dist/ReactToastify.css";
 
-const { Search } = Input;
+// const { Search } = Input;
 const { Header, Footer } = Layout;
 
 const MainLayout = ({ pageTitle, children }) => {

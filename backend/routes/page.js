@@ -1,5 +1,5 @@
 const {
-    addPage,
+   // addPage,
     getPage,
     page_update,
     
@@ -8,9 +8,9 @@ const {
   const router = require("express").Router();
   
   
-router.post("/", addPage);
-router.get("/:id", getPage);
-router.patch("/:id", page_update);
+//router.post("/", addPage);
+router.get("/", getPage);
+router.patch("/update/:id", page_update);
 
 module.exports = router;
     

@@ -6,12 +6,12 @@ import { Dropdown, Layout, Menu } from "antd";
 import { Col, Row } from "antd";
 import logocom from "../assets/images/logocom.png";
 import { Link } from "gatsby";
-import { ToastContainer } from "react-toastify";
-import { CaretDownOutlined, SmileOutlined } from '@ant-design/icons';
+// import { ToastContainer } from "react-toastify";
+import { CaretDownOutlined } from '@ant-design/icons';
 import "react-toastify/dist/ReactToastify.css";
 import '../css/style.css'
 
-const { Header, Footer } = Layout;
+const {  Footer } = Layout;
 
 const { Content } = Layout;
 

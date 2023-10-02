@@ -3,7 +3,7 @@ import { Layout } from "antd";
 import { Link } from "gatsby";
 import { Menu } from "antd";
 import { Col, Row, Dropdown } from "antd";
-import { CaretDownOutlined, SmileOutlined } from '@ant-design/icons';
+import { CaretDownOutlined } from '@ant-design/icons';
 import logocom from "../../../../assets/images/Logocom.png";
 import PostDelete from "../../../../components/PostDelete";
 

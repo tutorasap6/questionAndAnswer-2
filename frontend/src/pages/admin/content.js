@@ -6,16 +6,17 @@ import { Link, navigate } from "gatsby";
 import { Menu } from "antd";
 import { Col, Row } from "antd";
 import logocom from "../../assets/images/Logocom.png";
-import { getPostsRoute } from "../../utils/APIRoutes";
-import { CaretDownOutlined, DoubleRightOutlined } from '@ant-design/icons';
+// import { getPostsRoute } from "../../utils/APIRoutes";
+import { CaretDownOutlined,  DoubleLeftOutlined } from '@ant-design/icons';
 import { Space, Table } from "antd";
 
 const { Header } = Layout;
 
-const AdminPage = () => {
-  const [posts, setPosts] = useState([]);
-  const [user, setUser] = useState();
-  const [token, setToken] = useState(localStorage.token);
+const ContentPage = () => {
+    
+    const [user, setUser] = useState();
+    const [token, setToken] = useState(localStorage.token);
+
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -30,24 +31,6 @@ const AdminPage = () => {
     };
     if (token) fetchUser();
   }, []);
-
-  useEffect(function () {
-    async function getPosts() {
-      try {
-        const response = await axios.get(getPostsRoute);
-        console.log(response.data);
-        setPosts(response.data);
-        console.log("state: ");
-      } catch (error) {
-        console.log("error", error);
-      }
-    }
-    getPosts();
-  }, []);
-
-  useEffect(() => {
-    console.log("s", posts);
-  }, [posts]);
 
   const array = [
     {name: "Admin", url: "/admin/admin"},
@@ -64,9 +47,9 @@ const AdminPage = () => {
 
   const columns = [
     {
-      title: "Title",
-      dataIndex: "Title",
-      key: "Title",
+      title: "Pages",
+      dataIndex: "page",
+      key: "page",
     },
     // {
     //   title: "description",
@@ -74,65 +57,34 @@ const AdminPage = () => {
     //   key: "description",
     // },
     {
-      title: "CourseCode",
-      dataIndex: "CourseCode",
-      key: "CourseCode",
-    },
-    {
-      title: "CourseName",
-      dataIndex: "CourseName",
-      key: "CourseName",
-    },
-    {
-      title: "University",
-      dataIndex: "University",
-      key: "University",
-    },
-    {
-      title: "Category",
-      dataIndex: "Category",
-      key: "Category",
-    },
-    {
-      title: "Tags",
-      dataIndex: "insertTagsHere",
-      key: "insertTagsHere",
-    },
-    {
-      title: "Price",
-      dataIndex: "insertPrice",
-      key: "insertPrice",
-    },
-    {
-      title: "Date",
-      dataIndex: "date",
-      key: "date",
-    },
-    {
       title: "Action",
       key: "action",
       render: (_, record) => (
         <Space size="middle">
-          <a href={`/admin/posts/view/${record.key}`}>View</a>
-          <a href={`/admin/posts/edit/${record.key}`}>Edit</a>
-          <a href={`/admin/posts/delete/${record.key}`}>Delete</a>
+          <a href={`/admin/pages/${record.key}`}>Edit</a>
         </Space>
       ),
     },
   ];
 
-  const data = posts.map((post) => ({
-    key: post._id,
-    Title: post.questionTitle,
-    // description: post.description,
-    CourseCode: post.courseCode,
-    CourseName: post.courseName,
-    University: post.universityName,
-    Category: post.category,
-    insertTagsHere: post.insertTagsHere,
-    insertPrice: post.insertPrice,
-    date:<span>{(new Date(post.date)).getFullYear() + '-' + ((new Date(post.date)).getMonth() + 1) + '-' + (new Date(post.date)).getDate()}</span>
-  }));
+  const data = [
+    {
+      key: 1,
+      page: "About us",
+    },
+    {
+      key: 2,
+      page: "How it works",
+    },
+    {
+      key: 3,
+      page: "Services",
+    },
+    {
+      key: 4,
+      page: "Terms and Conditions",
+    },
+  ];
   if (!token) {
     navigate("/");
     return null;
@@ -220,19 +172,17 @@ const AdminPage = () => {
       <div className="container">
         <div>
           <Row>
-            <Col span={22}>
-          <h2 style={{ textAlign: "center" }}>Question Management</h2>
-          </Col>
             <Col span={2} style={{display:"flex",justifyContent:"center",alignItems:"center",fontSize:"large",paddingTop:"10px"}}>
-            <a href="/admin/content" style={{ margin: '0 auto' }}>
-            <DoubleRightOutlined />
+            <a href="/admin/admin" style={{ margin: '0 auto' }}>
+            <DoubleLeftOutlined />
             </a>
-            
-
             </Col>
+            <Col span={19} >
+          <h2 style={{ textAlign: "center" }}>Page Content Management</h2>
+            </Col>
+
           </Row>
-          {/* <hr /> */}
-         
+          <hr />
         </div>
 
         <Table columns={columns} dataSource={data} />
@@ -242,7 +192,7 @@ const AdminPage = () => {
 };
 
 // You'll learn about this in the next task, just copy it for now
-export const Head = () => <title>admin</title>;
+export const Head = () => <title>content</title>;
 
 // Step 3: Export your component
-export default AdminPage;
+export default ContentPage;

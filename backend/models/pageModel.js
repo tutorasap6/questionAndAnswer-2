@@ -1,23 +1,23 @@
 const mongoose = require("mongoose");
 
 const pageSchema = new mongoose.Schema({
-
- about: {
+    
+  about: {
     type: String,
-    required: [true,'page must have about']
- },
- how: {
+    required: true
+  },
+  how: {
     type: String,
-    required: [true,'page must have position']
- },
- service: {
+    required: true
+  },
+  service: {
     type: String,
-    required: [true,'service is required']
- },
- Term: {
+    required: true
+  },
+  term: {
     type: String,
-    required: [true,'Term is required']
- },
+    required: true
+  },
 });
 
 module.exports = mongoose.model("Pages", pageSchema);

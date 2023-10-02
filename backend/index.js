@@ -48,7 +48,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("DB Connetion Successfull");
+    console.log("DB Connetion Successfull"); 
   })
   .catch((err) => {
     console.log(err.message);
@@ -80,7 +80,7 @@ mongoose
 
 // addPage();
 const data = JSON.parse(fs.readFileSync('./page.json','utf-8'))
-console.log(data)
+// console.log(data)
 
 const importData = async () => {
   try {
@@ -91,7 +91,8 @@ const importData = async () => {
     console.log('error', error)
   }
 }
-importData();
+// importData();
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
