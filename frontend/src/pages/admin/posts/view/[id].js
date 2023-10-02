@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Card, Col, Row, Upload, Form, Button } from "antd";
+import { Card, Col, Row, Button } from "antd";
 import { Layout, Dropdown } from "antd";
 import { Link } from "gatsby";
 import { Menu } from "antd";

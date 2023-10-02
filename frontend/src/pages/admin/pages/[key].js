@@ -8,41 +8,76 @@ import { Layout, Dropdown } from "antd";
 import { Link } from "gatsby";
 import { Menu } from "antd";
 import { Col, Row } from "antd";
-import logocom from "../../../../assets/images/Logocom.png";
-import { CaretDownOutlined } from '@ant-design/icons';
-import { Button, Input } from "antd";
-
-const { TextArea } = Input;
+import logocom from "../../../assets/images/Logocom.png";
+import { CaretDownOutlined} from '@ant-design/icons';
+import { Button } from "antd";
+import ReactQuill from "react-quill";
 
 const { Header } = Layout;
-function PostEdit(params) {
-  const { id } = params;
-  console.log(id);
-  const [post, setPost] = useState({});
-  const [temp, setTemp] = useState({}); 
+function PageEdit(key) {
+
+  const num = key.params.key;
+  const id = "6651abbf3ad021c5b31117168";
+  // console.log(num);
+  // console.log(id);
+  // const [page, setPage] = useState({});
+  const [temp, setTemp] = useState({});
+  const [content, setContent] = useState("");
 
   useEffect(
     function () {
-      async function updatePost() {
+      async function getPage() {
         try {
-          const response = await get(`${process.env.api_url}/api/posts/${id}`);
-          setTemp(response.data);
-          setPost(response.data);
+          // console.log("456");
+          // console.log(num);
+          const response = await get(`${process.env.api_url}/api/page/`);
+          // console.log(response);
+          // console.log("334");
+          if( num == 1 ) {
+          setTemp(response.data[0].about);
+          setContent(response.data[0].about);
+          // console.log(response.data[0].about);
+          }
+          else if (num == 2 ) {
+            setTemp(response.data[0].how);
+            setContent(response.data[0].how);}
+          else if ( num == 3 ) {
+            setTemp(response.data[0].service);
+            setContent(response.data[0].service);
+          }
+          else if ( num == 4 ) {
+            setTemp(response.data[0].term);
+            setContent(response.data[0].term);
+          }
         } catch (error) {
           console.log(error);
         }
       }
-      updatePost();
+      getPage();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [num]
   );
 
   function handleSubmit(event) {
     event.preventDefault();
-    async function updatePost() {
+    async function updatePage() {
+      let description;
       try {
-        await patch(`${process.env.api_url}/api/posts/${id}`, post);
+        if( num == 1 ) {
+           description = {about:content}
+          }
+          else if (num == 2 ) {
+             description = {how:content}}
+          else if ( num == 3 ) {
+             description = {service:content}
+          }
+          else if ( num == 4 ) {
+             description = {term:content}
+          }
+        const res = await patch(`${process.env.api_url}/api/page/update/${id}`, description);
+        console.log(res.data);
+        console.log(description);
         toast.success("Updated Successfully", {
           position: "top-right",
           autoClose: 1000,
@@ -50,24 +85,23 @@ function PostEdit(params) {
           hideProgressBar: true,
         });
         setTimeout(() => {
-          navigate("/admin/admin");
+          navigate("/admin/content");
         }, 1500);
       } catch (error) {
         console.log(error);
         navigate('/404')
       }
     }
-    updatePost();
+    updatePage();
   }
 
-  function handleChange(e) {
-    setPost((post) => {
-      return { ...post, [e.target.name]: e.target.value };
-    });
-  }
+  const handleQuillChange = (value) => {
+    setContent(value);
+    // console.log(value);
+  };
 
   function handleCancel() {
-    navigate("/admin/admin");
+    navigate("/admin/content");
   }
   const array = [
     {name: "Admin", url: "/admin/admin"},
@@ -168,87 +202,19 @@ function PostEdit(params) {
             marginTop: "30px",
           }}
         >
-          <div>
-            <label>CourseCode:</label>
-
-            <Input
-              name="courseCode"
-              type="text"
-              value={post.courseCode}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div style={{ marginTop: "15px" }}>
-            <label>courseName:</label>
-
-            <Input
-              name="courseName"
-              value={post.courseName}
-              required
-              onChange={handleChange}
-            />
-          </div>
-
-          <div style={{ marginTop: "15px" }}>
-            <label>University:</label>
-
-            <Input
-              name="universityName"
-              value={post.universityName}
-              required
-              onChange={handleChange}
-            />
-          </div>
-
-          <div style={{ marginTop: "15px" }}>
-            <label>Category:</label>
-
-            <Input
-              name="category"
-              value={post.category}
-              type="text"
-              required
-              onChange={handleChange}
-            />
-          </div>
-
-          <div style={{ marginTop: "15px" }}>
-            <label>Price:</label>
-
-            <Input
-              name="insertPrice"
-              type="number"
-              value={post.insertPrice}
-              onChange={handleChange}
-              className="form-control"
-            />
-          </div>
-
-          <div style={{ marginTop: "15px" }}>
-            <label>Tag:</label>
-
-            <Input
-              name="insertTagsHere"
-              value={post.insertTagsHere}
-              type="url"
-              onChange={handleChange}
-              className="form-control"
-            />
-          </div>
-
           <div style={{ marginTop: "15px" }}>
             <label>Description:</label>
 
-            <TextArea
-              style={{ height: "400px" }}
-              name="description"
-              value={post.description}
-              onChange={handleChange}
-              className="form-control"
-            />
+            <ReactQuill
+            placeholder="Content"
+            value={content}
+            onChange={handleQuillChange}
+            style={{
+              height: '800px',fontFamily:"awesome",
+            }}
+          />
           </div>
-          <div style={{ marginTop: "15px" }}>
+          <div style={{ marginTop: "60px" }}>
             <Button type="primary" onClick={handleSubmit}>
               Update
             </Button>
@@ -266,4 +232,4 @@ function PostEdit(params) {
   );
 }
 
-export default PostEdit;
+export default PageEdit;

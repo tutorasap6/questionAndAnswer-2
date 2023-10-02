@@ -1,5 +1,6 @@
 // Step 1: Import React
-import * as React from "react";
+import  React, { useState, useEffect } from "react";
+import { get } from "axios";
 import MainLayout from "../components/MainLayout";
 import { Breadcrumb, Layout } from "antd";
 import { Card, Col, Row } from "antd";
@@ -7,6 +8,29 @@ import { Card, Col, Row } from "antd";
 // Step 2: Define your component
 const { Content } = Layout;
 const HowPage = () => {
+
+  const [content, setContent] = useState("");
+
+  useEffect(
+    function () {
+      async function getPage() {
+        try {
+          console.log("456");
+          const response = await get(`${process.env.api_url}/api/page/`);
+          console.log("334");
+          // setTemp(response.data[0].about);
+          console.log(response.data);
+          setContent(response.data[0].how);
+          console.log(content);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+      getPage();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
   return (
     <MainLayout pageTitle="About us">
       <Content
@@ -53,8 +77,10 @@ const HowPage = () => {
               <div className="container">
                 <div className="row">
                   <div className="col-lg-10 mx-auto">
-                    <div className="content">
-                      <h4 style={{ fontFamily: "awesome" }}>
+                    <div className="content"  dangerouslySetInnerHTML={{
+              __html: content,
+            }} >
+                      {/* <h4 style={{ fontFamily: "awesome" }}>
                         How It Works - Your Guide to ChamplainSolutions.com
                         Success
                       </h4>
@@ -165,7 +191,7 @@ const HowPage = () => {
                         joining the countless students who have benefited from
                         our services. It's never been easier to achieve your
                         educational goals with ChamplainSolutions.com.
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                 </div>
