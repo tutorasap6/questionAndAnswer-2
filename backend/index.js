@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
 const postRoutes = require("./routes/post");
 const pageRoutes = require("./routes/page");
+const emailRoutes = require("./routes/email");
 const multer = require("multer");
 const path = require("path");
 const Post = require("./models/postModel");
@@ -97,6 +98,7 @@ const importData = async () => {
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/page", pageRoutes);
+app.use("/api/email", emailRoutes);
 app.post("/api/file/:id", upload1.single("file"), async (req, res) => {
   try {
     const { id } = req.params;

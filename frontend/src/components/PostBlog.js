@@ -33,6 +33,12 @@ const PostBlog = () => {
     console.log(values);
   };
 
+  const handleTagsChange = (event) => {
+    const tags = event.target.value.replace(/\s/g, ",");
+    setValues({ ...values, insertTagsHere: tags });
+    console.log(values);
+  };
+
   const handleFile = (e) => setFile(e.target.files[0]);
 
   const onSubmit = async (event) => {
@@ -228,7 +234,8 @@ const PostBlog = () => {
               type="text"
               placeholder="Insert Tags here"
               name="insertTagsHere"
-              onChange={(e) => handleChange(e)}
+              value={values.insertTagsHere}
+              onChange={(e) => handleTagsChange(e)}
               style={{
                 width: "100%",
 
@@ -240,11 +247,7 @@ const PostBlog = () => {
               }}
             />
           </div>
-          <Button
-            type="primary"
-            size="large"
-            onClick={onSubmit}
-          >
+          <Button type="primary" size="large" onClick={onSubmit}>
             Submit
           </Button>
           {/* </Col> */}
