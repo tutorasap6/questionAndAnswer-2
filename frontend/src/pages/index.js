@@ -240,160 +240,140 @@ const IndexPage = () => {
     </Layout>
     <Footer
         style={{
-          // textAlign: "center",
-           margin: "-8px",
+          textAlign: "center",
+          margin: "-8px",
           width:"100vw",
           background: "rgb(26,28,33)",
+          padding: "1px"
         }}
-      >
-        <Row
-          style={{
-            // background: "rgb(66,180,186)",
-           
-            display: "flex",
-            justifyContent: "center",
-            height: "315px",
-            paddingTop: "40px",
-          }}
-        >
-          {/* <Col
-            span={5}
+      >     
+      
+          <Row
             style={{
-              paddingTop: "100px",
               display: "flex",
-              justifyContent: "center"
+              justifyContent: "center",
+              height: "300px",
+              paddingTop: "3px",
             }}
           >
-            <img src={logocom} alt="logo" height="40%" />
-          </Col> */}
-          {/* <Col xs={{span: 0}} xl={{span: 5}} style={{ paddingLeft: "0px", paddingTop: "65px" }}>
-            <p
-              style={{
-                fontSize: "15px",
-                fontFamily: "awesome",
-                color: "#707885",
-              }}
-            >
-              Online education has become an essential component of our academic
-              path in the fast-paced world of today. However, it frequently
-              presents its own special difficulties. Students frequently have
-              overwhelming workloads due to managing many online courses and
-              keeping up with assignments, exams, lab reports, and essays. This
-              is where ChamplainSolutions.com comes in to help you have a more
-              effective and seamless experience when learning online.
-            </p>
-          </Col> */}
-          <Col xs={{span: 24}} md = {{ span: 4}} xl={{span: 4}} style={{ paddingLeft: "40px" }}>
-            <h4
-              style={{
-                fontFamily: "awesome",
-                color: "white",
-                fontSize: "18px",
-                // paddingLeft: "30px",
-              }}
-            >
-              About us
-            </h4>
-            <ul style={{ listStyleType: "none" }}>
-              <li>
-                <a
-                  href="/"
-                  style={{
-                    fontFamily: "awesome",
-                    color: "#707885",
-                  }}
-                >
-                  How it works
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/about"
-                  style={{ fontFamily: "awesome", color: "#707885" }}
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/service"
-                  style={{ fontFamily: "awesome", color: "#707885" }}
-                >
-                  Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/terms"
-                  style={{ fontFamily: "awesome", color: "#707885" }}
-                >
-                  Terms & Conditions
-                </a>
-              </li>
-            </ul>
-          </Col>
-          <Col xs={{span: 24}} md = {{ span: 4}} xl={{span: 4}} style={{ paddingLeft: "40px" }}>
-            <h4
-              style={{
-                fontFamily: "awesome",
-                color: "white",
-                fontSize: "18px",
-                // paddingLeft: "30px",
-              }}
-            >
-              Legal Stuff
-            </h4>
-            <ul style={{ listStyleType: "none" }}>
-              <li>
-                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
-                  Team of Use
-                </a>
-              </li>
-              <li>
-                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/pricing"
-                  style={{ fontFamily: "awesome", color: "#707885" }}
-                >
-                  Pricing
-                </a>
-              </li>
-            </ul>
-          </Col>
-          <Col xs={{span: 24}} md = {{ span: 4}} xl={{span: 4}} style={{ paddingLeft: "40px" }}>
-            <h4
-              style={{
-                fontFamily: "awesome",
-                color: "white",
-                fontSize: "18px",
-                // paddingLeft: "50px",
-              }}
-            >
-              Help
-            </h4>
-            <ul style={{ listStyleType: "none" }}>
-              <li>
-                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
-                  knowledge Base
-                </a>
-              </li>
-              <li>
-                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
-                  Support
-                </a>
-              </li>
-              <li>
-                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
-                  Advanced Payment
-                </a>
-              </li>
-            </ul>
-          </Col>
-        </Row>
+            
+            <Col xs={{span: 24}} md = {{ span: 6}} xl={{span: 6}}  >
+              <h4
+                style={{
+                  fontFamily: "awesome",
+                  color: "white",
+                  fontSize: "20px",
+                  // paddingLeft: "30px",
+                }}
+              >
+                About us
+              </h4>
+              <ul style={{ listStyleType: "none" }}>
+                <li>
+                  <a
+                    href="/"
+                    style={{
+                      fontFamily: "awesome",
+                      color: "#707885",
+                    }}
+                  >
+                    How it works
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/about"
+                    style={{ fontFamily: "awesome", color: "#707885",fontSize:"14px" }}
+                  >
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/service"
+                    style={{ fontFamily: "awesome", color: "#707885" ,fontSize:"14px" }}
+                  >
+                    Services
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/terms"
+                    style={{ fontFamily: "awesome", color: "#707885" ,fontSize:"14px" }}
+                  >
+                    Terms & Conditions
+                  </a>
+                </li>
+              </ul>
+            </Col>
+            <Col xs={{span: 24}} md = {{ span: 6}} xl={{span: 6}} >
+              <h4
+                style={{
+                  fontFamily: "awesome",
+                  color: "white",
+                  fontSize: "20px",
+                  // paddingLeft: "30px",
+                }}
+              >
+                Legal Stuff
+              </h4>
+              <ul style={{ listStyleType: "none" }}>
+                <li>
+                  <a href="#" 
+                     style={{ fontFamily: "awesome", color: "#707885" ,fontSize:"14px"}}>
+                    Team of Use
+                  </a>
+                </li>
+                <li>
+                  <a href="#" 
+                     style={{ fontFamily: "awesome", color: "#707885" ,fontSize:"14px"}}>
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/pricing"
+                    style={{ fontFamily: "awesome", color: "#707885" ,fontSize:"14px"}}
+                  >
+                    Pricing
+                  </a>
+                </li>
+              </ul>
+            </Col>
+            <Col xs={{span: 24}} md = {{ span: 6}} xl={{span: 6}} >
+              <h4
+                style={{
+                  fontFamily: "awesome",
+                  color: "white",
+                  fontSize: "20px",
+                  // paddingLeft: "50px",
+                }}
+              >
+                Help
+              </h4>
+              <ul style={{ listStyleType: "none" }}>
+                <li>
+                  <a href="#" 
+                     style={{ fontFamily: "awesome", color: "#707885", fontSize:"14px"}}>
+                    knowledge Base
+                  </a>
+                </li>
+                <li>
+                  <a href="#" 
+                     style={{ fontFamily: "awesome", color: "#707885" ,fontSize:"14px"}}>
+                    Support
+                  </a>
+                </li>
+                <li>
+                  <a href="#" 
+                     style={{ fontFamily: "awesome", color: "#707885" ,fontSize:"14px"}}>
+                    Advanced Payment
+                  </a>
+                </li>
+              </ul>
+            </Col>
+          </Row>
+        
         <div
           style={{
             background: "rgb(26,28,33)",

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Col, Row, Button } from "antd";
+import { Card, Col, Row, Button,Select } from "antd";
 import "react-quill/dist/quill.snow.css";
 import { navigate } from "gatsby";
 import ReactQuill from "react-quill";
@@ -90,6 +90,13 @@ const PostBlog = () => {
       console.log(errors);
     }
   };
+
+  const options = [];
+  
+  const selectHandleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
+
 
   return (
     <Card
@@ -230,22 +237,18 @@ const PostBlog = () => {
             />
           </div>
           <div style={{ paddingBottom: "9px" }}>
-            <input
-              type="text"
-              placeholder="Insert Tags here"
-              name="insertTagsHere"
-              value={values.insertTagsHere}
-              onChange={(e) => handleTagsChange(e)}
+            <Select
+              mode="tags"
               style={{
-                width: "100%",
-
-                fontSize: "15px",
-                color: "black !important",
-                border: "1px solid #d9d9d9",
-                padding: "8px",
-                fontFamily: "awesome",
+                width: '100%',
+                fontSize:"15px",
+                fontFamily: "awesome"
               }}
-            />
+              placeholder = "Fix Tags Here"
+              onChange={selectHandleChange}
+              tokenSeparators={[',']}
+              options={options}
+              />
           </div>
           <Button type="primary" size="large" onClick={onSubmit}>
             Submit
