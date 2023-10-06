@@ -17,7 +17,12 @@ const BlogContent = (props) => {
     if (!props.filter) fetchBlogs();
   }, [props.filter]);
   const setUniversity = (univ) => {
-    const filteredBlogs = blogs.filter((blog) => blog.universityName === univ);
+    const filteredBlogs = blogs.filter((blog) => {
+      const universityName = blog.universityName
+        .replace(/\s/g, "")
+        .toLowerCase();
+      return universityName === univ;
+    });
     setFilteredBlogs(filteredBlogs);
     setCurrent(1);
     props.onFilterChange(univ);
@@ -48,22 +53,25 @@ const BlogContent = (props) => {
                 >
                   <div style={{ marginBottom: "15px", marginTop: "-10px" }}>
                     <Row>
-                      <Col xs={{span: 24}} md={{span: 12}} xl={{span: 8}}>
-                      <span>
+                      <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                        <span>
                           <strong>University:</strong>
                         </span>
                         <span>
                           <a
                             onClick={() => {
-                              setUniversity(blog.universityName);
+                              const univ = blog.universityName
+                                .replace(/\s/g, "")
+                                .toLowerCase();
+                              setUniversity(univ);
                             }}
                           >
                             {blog.universityName}
                           </a>
                         </span>
                       </Col>
-                      <Col xs={{span: 24}} md={{span: 12}} xl={{span: 8}}>
-                      <span>
+                      <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                        <span>
                           <strong>Category:</strong>
                         </span>
                         <span>
@@ -76,8 +84,8 @@ const BlogContent = (props) => {
                           </a>
                         </span>
                       </Col>
-                      <Col xs={{span: 24}} md={{span: 12}} xl={{span: 8}}>
-                      <span>
+                      <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                        <span>
                           <strong>Date:</strong>
                         </span>
                         <span>
@@ -88,20 +96,20 @@ const BlogContent = (props) => {
                             new Date(blog.date).getDate()}
                         </span>
                       </Col>
-                      <Col xs={{span: 24}} md={{span: 12}} xl={{span: 8}}>
-                      <span>
+                      <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                        <span>
                           <strong>Course code:</strong>
                         </span>
                         <span>{blog.courseCode}</span>
                       </Col>
-                      <Col xs={{span: 24}} md={{span: 12}} xl={{span: 8}}>
-                      <span>
+                      <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                        <span>
                           <strong>Course name:</strong>
                         </span>
                         <span>{blog.courseName}</span>
                       </Col>
-                      <Col xs={{span: 24}} md={{span: 12}} xl={{span: 8}}>
-                      <span>
+                      <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                        <span>
                           <strong>Price:</strong>
                         </span>
                         <span>{blog.insertPrice}</span>
