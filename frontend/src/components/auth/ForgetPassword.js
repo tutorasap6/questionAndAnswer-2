@@ -4,49 +4,39 @@ import axios from "axios";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
 import logocom from "../../assets/images/logocom.png";
-import { loginRoute } from "../../utils/APIRoutes";
+import { resetRoute } from "../../utils/APIRoutes";
+import ForgetPasswordPage from "../../pages/auth/forgetpassword";
 
-const Login = () => {
-  const [values, setValues] = useState({ email: "", password: "" });
-  const [errors, setErrors] = useState("");
 
-  const handleChange = (event) => {
-    setValues({ ...values, [event.target.name]: event.target.value });
-  };
+const ForgetPassword=()=> {
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    // if (validateForm()) {
-    const { email, password } = values;
-    const { data } = await axios.post(loginRoute, {
-      email,
-      password,
-    });
-    if (data.status === false) {
-      setErrors(data.errors);
+    const [values, setValues] = useState({ username: "", email: "" });
+    const [loading, setLoading] = useState(false);
+    
+    const handleChange = (e) => {
+        setValues({...values, [e.target.name]: e.target.value });
     }
-    if (data.status === true) {
-      console.log(data.token);
-      localStorage.setItem("token", data.token);
-      const res = await axios({
-        method: "GET",
-        url: `${process.env.api_url}/api/auth`,
-        headers: {
-          "x-auth-token": data.token,
-        },
-      });
-      if (res.data.role === "admin") navigate("/admin/admin");
-      else navigate("/");
+    const handleSubmit = async (e) => {
+        setLoading(true);
+        e.preventDefault();
+        console.log("clicked", values.email);
+        axios
+            .post(`${process.env.api_url}/api/email/reset-email`, values)
+            .then((res) => {
+                setLoading(false);
+            })
+            .catch((err) => console.log(err));
+        console.log(values);
     }
-  };
+
   return (
     <FormContainer style={{ margin: "-8px" }}>
-      <form action="" onSubmit={(event) => handleSubmit(event)}>
+      <div className="form-class">
         <div className="brand">
           <img src={logocom} alt="logo" />
           <h1>Champlain</h1>
         </div>
-        {errors && (
+        {/* {errors && (
           <div>
             <p
               style={{
@@ -58,30 +48,19 @@ const Login = () => {
               {errors ? errors : ""}
             </p>
           </div>
-        )}
+        )} */}
+       
         <input
           type="text"
-          placeholder="Email"
-          onChange={(e) => handleChange(e)}
+          placeholder="Your Email"
           name="email"
-          min="3"
+          onChange={handleChange}
+          loading = {loading}
         />
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          onChange={(e) => handleChange(e)}
-        />
-        <Link to = "/auth/forgetpassword">Forgot Password</Link>
         <div>
-          <button type="submit">Log In</button>
+          <button onClick={handleSubmit}>Send Email</button>
         </div>
-        
-        <span style={{ textAlign: "center" }}>
-          Don't have an account ? <Link to="/auth/register">Create One.</Link>
-        </span>
-
-      </form>
+      </div>
     </FormContainer>
   );
 };
@@ -108,7 +87,7 @@ const FormContainer = styled.div`
     }
   }
 
-  form {
+  .form-class {
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -153,5 +132,6 @@ const FormContainer = styled.div`
     }
   }
 `;
+export default ForgetPassword;
+  
 
-export default Login;

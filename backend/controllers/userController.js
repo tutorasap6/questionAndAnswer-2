@@ -2,6 +2,8 @@ const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
 const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
+const crypto = require("crypto");
 
 module.exports.login = async (req, res, next) => {
   try {
@@ -94,6 +96,43 @@ module.exports.register = async (req, res, next) => {
   }
 };
 
+module.exports.reset = async (req, res, next) => {
+  try {
+    const errors = "";
+    const {password, confirmPassword, token} = req.body;
+    console.log('token', token)
+    
+    if (validator.isEmpty(password)) {
+      return res.json({
+        errors: "Password is required.",
+        status: false,
+      });
+    }
+
+    if (!validator.equals(password, confirmPassword)) {
+      return res.json({
+        errors: "Password is not matched.",
+        status: false,
+      });
+    }
+    const user = await User.findOne({ password: token });
+    if (!user) {
+      return res.json({ errors: "User doesn't exist", status: false });
+    }
+    console.log(user)
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await User.findOneAndUpdate(
+      { password: token },
+      { password: hashedPassword },
+      { new: true }
+    );
+    return res.json({status: true });
+  } catch (ex) {
+    next(ex);
+  }
+};
+
+
 module.exports.getAllUsers = async (req, res, next) => {
   try {
     const users = await User.find({});
@@ -102,6 +141,52 @@ module.exports.getAllUsers = async (req, res, next) => {
     next(ex);
   }
 };
+
+// module.exports.forgetPassword = async (req, res, next) => {
+  
+// }
+//   try {
+//     console.log("email -> ", req.body.email);
+
+//     const transporter = nodemailer.createTransport({
+//       // Configure the email transporter (e.g., Gmail, SMTP server)
+//       // ...
+//       host: "smtp.gmail.com",
+//       port: 587,
+//       secure: false,
+//       auth: {
+//         user: "ngyentuandev@gmail.com",
+//         pass: "flztqkcsxpgxgdtc",
+//       },
+//     });
+
+//     const token = crypto.randomBytes(20).toString("hex"); // Generate a random token
+
+//     // Send the verification email
+//     const mailOptions = {
+//       from: "chenel@service.com",
+//       to: req.body.email,
+//       subject: "Email Verification",
+//       text: `Click the following link to verify your email: http://localhost:5000/verify-email/${token}`,
+//     };
+
+//     transporter.sendMail(mailOptions, (error, info) => {
+//       if (error) {
+//         console.log(error);
+//         res.status(500).send("Email sending failed.");
+//       } else {
+//         console.log("Email sent: " + info.response);
+//         res.status(200).send("Verification email sent.");
+//       }
+//     });
+
+//     return res.status(200).json({
+//       success: true,
+//     });
+//   } catch (ex) {
+//     next(ex);
+//   }
+// };
 
 module.exports.getUser = async (req, res) => {
   try {
