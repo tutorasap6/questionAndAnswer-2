@@ -152,10 +152,7 @@ app.get("/file/:id", async (req, res) => {
     return res.status(400).send(e.message)
   }
 });
-// Call the function with the desired parameters
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "build", "index.html"));
-});
+
 
 app.listen(process.env.PORT, () => 
   console.log(`Server started on ${process.env.PORT}`)
