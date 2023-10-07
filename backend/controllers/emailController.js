@@ -24,7 +24,7 @@ module.exports.resetpassword = async (req, res) => {
             <div>
               <p>🙋🏻‍♀️ Do you forgot yourpassword.</p>
               <p>Don't worry</p>
-              <a href = "http://localhost:8000/auth/reset/?token=${user.password}">
+              <a href = "http://Champlainsolutions.com/auth/reset/?token=${user.password}">
                 <button>Reset Password</button>
               </a>
             </div>`,

@@ -6,7 +6,7 @@ require("dotenv").config({
 });
 module.exports = {
   siteMetadata: {
-    siteUrl: `http://localhost:8000`,
+    siteUrl: `http://Champlainsolutions.com`,
   },
   plugins: [],
 };
