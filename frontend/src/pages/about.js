@@ -34,7 +34,7 @@ const AboutPage = () => {
     <MainLayout pageTitle="About us">
       <Content
         style={{
-          padding: "120px",
+         // padding: "120px",
           paddingTop: "10px",
           paddingBottom: "3px",
         }}
@@ -49,32 +49,41 @@ const AboutPage = () => {
             borderBottom: "0.2px solid rgba(111,111,110,.8)",
           }}
         >
+          <Row>
+        <Col 
+        xs={{span:22,offset:1}}
+        sm={{ span: 15, offset: 2 }}
+        md={{ span:15, offset:3 }}
+        lg={{ span: 15, offset: 4 }} 
+        >
           <Breadcrumb
             style={{
-              //   margin: "16px 0",
-              paddingLeft: "200px",
               paddingTop: "10px",
             }}
           >
             <Breadcrumb.Item>
               <p style={{ fontFamily: "awesome", marginTop: "0px" }}>Home</p>
             </Breadcrumb.Item>
-            {/* <Breadcrumb.Item>list</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item> */}
 
             <Breadcrumb.Item>
               <p style={{ fontFamily: "awesome", marginTop: "0px" }}>about</p>
             </Breadcrumb.Item>
           </Breadcrumb>
+          </Col>
+          </Row>
         </div>
         <Row>
-          <Col span={4}></Col>
-          <Col span={16}>
+          <Col 
+          xs={{span:22,offset:1}}
+          sm={{ span: 20, offset: 2 }}
+          md={{ span:18, offset:3 }}
+          lg={{ span: 16, offset: 4 }}
+          >
             <Card style={{ padding: "5px" }}>
               <div className="container">
                 <div className="row">
                   <div className="col-lg-10 mx-auto">
-                    <div className="content" style={{ fontSize:"awesome" }} dangerouslySetInnerHTML={{
+                    <div className="content" style={{ fontFamily:"awesome" }} dangerouslySetInnerHTML={{
               __html: content,
             }}>
                     

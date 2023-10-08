@@ -30,10 +30,9 @@ const TermsPage = () => {
   );
 
   return (
-    <MainLayout pageTitle="Home">
+    <MainLayout pageTitle="Terms">
       <Content
         style={{
-          padding: "120px",
           paddingTop: "10px",
           paddingBottom: "10px",
         }}
@@ -48,11 +47,17 @@ const TermsPage = () => {
             borderBottom: "0.2px solid rgba(111,111,110,.8)",
           }}
         >
+          <Row>
+        <Col 
+        xs={{span:22,offset:1}}
+        sm={{ span: 15, offset: 2 }}
+        md={{ span:15, offset:3 }}
+        lg={{ span: 15, offset: 4 }} 
+        >
           <Breadcrumb
             style={{
               //   margin: "16px 0",
-              paddingLeft: "200px",
-              paddingTop: "10px",
+             paddingTop: "10px",
             }}
           >
             <Breadcrumb.Item>
@@ -65,10 +70,16 @@ const TermsPage = () => {
               <p style={{ fontFamily: "awesome", marginTop: "0px" }}>Terms</p>
             </Breadcrumb.Item>
           </Breadcrumb>
+          </Col>
+          </Row>
         </div>
         <Row>
-          <Col span={4}></Col>
-          <Col span={16}>
+          <Col
+          xs={{span:22,offset:1}}
+          sm={{ span: 20, offset: 2 }}
+          md={{ span:18, offset:3 }}
+          lg={{ span: 16, offset: 4 }}
+          >
             <Card style={{ padding: "5px" }}>
               <div className="container">
                 <div className="row">
@@ -207,7 +218,7 @@ const TermsPage = () => {
                 </div>
               </div>
             </Card>
-          </Col>
+            </Col>
           <Col span={4}></Col>
         </Row>
 

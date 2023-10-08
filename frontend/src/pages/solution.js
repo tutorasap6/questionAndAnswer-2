@@ -16,7 +16,7 @@ const SolutionPage = () => {
           // padding: "120px",
           paddingTop: "0px",
           paddingBottom: "3px",
-          borderBottom: "0.2px solid rgba(111,111,110,.8)",
+          //borderBottom: "0.2px solid rgba(111,111,110,.8)",
         }}
       >
        

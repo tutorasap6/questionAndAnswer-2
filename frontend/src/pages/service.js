@@ -35,7 +35,6 @@ const ServicePage = () => {
     <MainLayout pageTitle="About us">
       <Content
         style={{
-          padding: "120px",
           paddingTop: "10px",
           paddingBottom: "3px",
         }}
@@ -50,10 +49,16 @@ const ServicePage = () => {
             borderBottom: "0.2px solid rgba(111,111,110,.8)",
           }}
         >
+          <Row>
+        <Col 
+        xs={{span:22,offset:1}}
+        sm={{ span: 15, offset: 2 }}
+        md={{ span:15, offset:3 }}
+        lg={{ span: 15, offset: 4 }} 
+        >
           <Breadcrumb
             style={{
               //   margin: "16px 0",
-              paddingLeft: "200px",
               paddingTop: "10px",
             }}
           >
@@ -69,10 +74,15 @@ const ServicePage = () => {
               </p>
             </Breadcrumb.Item>
           </Breadcrumb>
+          </Col>
+        </Row>
         </div>
         <Row>
-          <Col span={4}></Col>
-          <Col span={16}>
+          <Col 
+          xs={{span:22,offset:1}}
+          sm={{ span: 20, offset: 2 }}
+          md={{ span:18, offset:3 }}
+          lg={{ span: 16, offset: 4 }}>
             <Card style={{ padding: "5px" }}>
               <div className="container">
                 <div className="row">
