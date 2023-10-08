@@ -353,10 +353,51 @@ a:focus {
   padding-right: 30px;
 }
 
+.blotitle {
+ font-family: "awesome";
+}
+
+.bloquotitle {
+  margin-Top: 15px;
+ font-Family: "awesome";
+}
+
+.blogdes {
+  font-family: "awesome";
+}
+
+.blotitleb {
+  font-family: "awesome";
+}
+
+.readmo {
+  color: "blue";
+  font-family: "awesome";
+}
+
 @media (max-width: 370px) {
   .font-sie-28 {
     font-size: 15px;
   }
+  .blotitle {
+    font-size: 12px;
+   }
+
+   .blotitleb {
+    font-size: 13px
+   }
+   .readmo {
+    font-size: 13px;
+   }
+
+   .bloquotitle{
+    font-size: 18px;
+   }
+
+   .blogdes {
+    font-size: 13px;
+   }
+
   .h-siz {
     font-size: 25px;
   }
@@ -366,8 +407,24 @@ a:focus {
   .font-sie-28 {
     font-size: calc(18px + 2 * ((100vw - 370px) / 870));
   }
+  .blotitle {
+    font-size: calc(12px + 2 * ((100vw - 370px) / 870));
+   }
+   .blotitleb {
+    font-size: calc(13px + 2 * ((100vw - 370px) / 870));
+   }
+   .readmo {
+    font-size: calc(13px + 2 * ((100vw - 370px) / 870));
+   }
+
   .h-siz {
     font-size: calc(30px + 10 * ((100vw - 370px) / 870));
+  }
+  .bloquotitle{
+    font-size: calc(18px + 10 * ((100vw - 370px) / 870));
+   }
+  .blogdes {
+    font-size: calc(13px + 10 * ((100vw - 370px) / 870));
   }
 }
 
@@ -376,9 +433,29 @@ a:focus {
     font-size: 25px;
     color:black;
   }
+  .blotitle {
+    font-size: 17px;
+   }
+
+   .blotitleb {
+    font-size: 18px;
+   }
+   .readmo {
+    font-size: 18px;
+   }
+
   .h-siz {
     font-size: 60px;
   }
+
+  .bloquotitle{
+    font-size: 28px;
+   }
+  
+  .blogdes {
+    font-size: 18px;
+  }
+
   .pt-30 {
     padding-top: 20px;
   }
@@ -391,6 +468,23 @@ a:focus {
   .font-sie-28 {
     font-size: 25px;
   }
+  .blotitle {
+    font-size: 20px;
+   }
+   .blotitleb {
+    font-size: 20px;
+   }
+   .readmo {
+    font-size: 20px;
+   }
+   .bloquotitle{
+    font-size: 30px;
+   }
+
+   .blogdes {
+    font-size: 20px;
+  }
+
   .h-siz {
     font-size: 60px;
   }

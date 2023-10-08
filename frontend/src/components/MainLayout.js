@@ -75,7 +75,7 @@ const MainLayout = ({ pageTitle, children }) => {
       >
         <Row>
           <Col
-            xs={{span:2,offset:3}}
+            xs={{span:2,offset:1}}
             sm={{ span: 2, offset: 3 }}
             md={{ span:2, offset:3 }}
             lg={{ span: 2 , offset: 3 }}
@@ -159,7 +159,7 @@ const MainLayout = ({ pageTitle, children }) => {
             )}
           </Col>
           <Col
-            xs={{ span:2, offset: 16 }}
+            xs={{ span:2, offset: 17 }}
             sm={{ span: 2, offset: 16 }}
             md={{ span: 2, offset: 16 }}
             lg={{ span: 0 }}

@@ -48,16 +48,16 @@ const BlogContent = (props) => {
                     padding: "5px",
                     paddingTop: "0px",
                     fontFamily: "'Heebo', sans-serif",
-                    marginBottom: "15px",
+                   // marginBottom: "15px",
                   }}
                 >
-                  <div style={{ marginBottom: "15px", marginTop: "-10px" }}>
+                  <div style={{ marginTop: "-10px" }}>
                     <Row>
                       <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
-                        <span>
-                          <strong>University:</strong>
+                        <span className="blotitle">
+                          <strong >University:</strong>
                         </span>
-                        <span>
+                        <span className="blotitleb">
                           <a
                             onClick={() => {
                               const univ = blog.universityName
@@ -71,10 +71,10 @@ const BlogContent = (props) => {
                         </span>
                       </Col>
                       <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
-                        <span>
-                          <strong>Category:</strong>
+                        <span className="blotitle">
+                          <strong >Category:</strong>
                         </span>
-                        <span>
+                        <span className="blotitleb">
                           <a
                             onClick={() => {
                               setCategory(blog.category);
@@ -85,10 +85,10 @@ const BlogContent = (props) => {
                         </span>
                       </Col>
                       <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
-                        <span>
-                          <strong>Date:</strong>
+                        <span className="blotitle">
+                          <strong >Date:</strong>
                         </span>
-                        <span>
+                        <span className="blotitleb">
                           {new Date(blog.date).getFullYear() +
                             "-" +
                             (new Date(blog.date).getMonth() + 1) +
@@ -97,31 +97,32 @@ const BlogContent = (props) => {
                         </span>
                       </Col>
                       <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
-                        <span>
-                          <strong>Course code:</strong>
+                        <span className="blotitle">
+                          <strong >Course code:</strong>
                         </span>
-                        <span>{blog.courseCode}</span>
+                        <span className="blotitleb">{blog.courseCode}</span>
                       </Col>
                       <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
-                        <span>
-                          <strong>Course name:</strong>
+                        <span className="blotitle">
+                          <strong >Course name:</strong>
                         </span>
-                        <span>{blog.courseName}</span>
+                        <span className="blotitleb">{blog.courseName}</span>
                       </Col>
                       <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
-                        <span>
-                          <strong>Price:</strong>
+                        <span className="blotitle">
+                          <strong >Price:</strong>
                         </span>
-                        <span>{blog.insertPrice}</span>
+                        <span className="blotitleb">{blog.insertPrice}</span>
                       </Col>
                     </Row>
                     <h2
                       style={{
-                        marginTop: "15px",
-                        fontFamily: "awesome",
-                        fontSize: "26px",
+                        // marginTop: "15px",
+                        // fontFamily: "awesome",
+                        //fontSize: "26px",
                         //textAlign: "center",
                       }}
+                      className="bloquotitle"
                     >
                       <a href={`/answer/${blog._id}`}>{blog.questionTitle}</a>
                     </h2>
@@ -137,19 +138,20 @@ const BlogContent = (props) => {
                               .slice(0, 500)
                               .concat("..."),
                           }}
-                          className="my-4"
+                          className="blogdes"
                         ></div>
                       ) : (
                         <div
                           dangerouslySetInnerHTML={{ __html: blog.description }}
-                          className="my-4"
+                          className="blogdes"
                         />
                       )}
-                      {blog.description?.length > 700 && (
-                        <p style={{ color: "blue", marginTop: "20px" }}>
+                      {blog.description?.length > 700 && (<div style={{ marginTop:"10px" }}>
+                        <p  className="readmo">
                           {" "}
                           <a href={`/answer/${blog._id}`}>Read more{" >>"}</a>
                         </p>
+                        </div>
                       )}
                     </div>
                   </div>

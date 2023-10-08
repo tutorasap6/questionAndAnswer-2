@@ -19,6 +19,7 @@ const SolutionPage = () => {
           borderBottom: "0.2px solid rgba(111,111,110,.8)",
         }}
       >
+       
         <div
           style={{
             height: "40px",
@@ -28,11 +29,18 @@ const SolutionPage = () => {
             //   borderBottom: "0.2px solid rgba(52,120,255,.8)",
             borderBottom: "0.2px solid rgba(111,111,110,.8)",
           }}
+        > 
+        <Row>
+        <Col 
+        xs={{span:22,offset:1}}
+        sm={{ span: 15, offset: 2 }}
+        md={{ span:15, offset:3 }}
+        lg={{ span: 15, offset: 4 }} 
         >
           <Breadcrumb
             style={{
               //   margin: "16px 0",
-              paddingLeft: "200px",
+             // paddingLeft: "200px",
               paddingTop: "10px",
             }}
           >
@@ -51,9 +59,16 @@ const SolutionPage = () => {
             </Breadcrumb.Item>
             {filter ? <Breadcrumb.Item>{filter}</Breadcrumb.Item> : null}
           </Breadcrumb>
+          </Col>
+         </Row>
         </div>
+        
         <Row>
-          <Col xs={{ span: 18, offset: 3 }} lg={{ span: 14, offset: 5 }}>
+          <Col 
+          xs={{span:22,offset:1}}
+          sm={{ span: 20, offset: 2 }}
+          md={{ span:18, offset:3 }}
+          lg={{ span: 16, offset: 4 }} >
             <BlogContent filter={filter} onFilterChange={setFilter} />
           </Col>
         </Row>

@@ -85,7 +85,7 @@ const IndexPage = () => {
       >
         <Row>
           <Col
-            xs={{span:2,offset:3}}
+            xs={{span:2,offset:2}}
             sm={{ span: 2, offset: 3 }}
             md={{ span:2, offset:3 }}
             lg={{ span: 2 , offset: 3 }}

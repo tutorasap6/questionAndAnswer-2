@@ -43,7 +43,9 @@ const Login = () => {
     <FormContainer style={{ margin: "-8px" }}>
       <form action="" onSubmit={(event) => handleSubmit(event)}>
         <div className="brand">
+        <a href="/" style={{ margin: '0 auto' }}>
           <img src={logocom} alt="logo" />
+          </a>
           <h1>Champlain</h1>
         </div>
         {errors && (
