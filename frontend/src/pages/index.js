@@ -7,9 +7,9 @@ import { Col, Row } from "antd";
 import logocom from "../assets/images/logocom.png";
 import { Link } from "gatsby";
 // import { ToastContainer } from "react-toastify";
-import { CaretDownOutlined } from '@ant-design/icons';
+import { CaretDownOutlined, MenuOutlined } from '@ant-design/icons';
 import "react-toastify/dist/ReactToastify.css";
-import '../css/style.css'
+import '../css/style.css';
 
 const {  Footer } = Layout;
 
@@ -85,9 +85,10 @@ const IndexPage = () => {
       >
         <Row>
           <Col
+            xs={{span:2,offset:3}}
+            sm={{ span: 2, offset: 3 }}
             md={{ span:2, offset:3 }}
             lg={{ span: 2 , offset: 3 }}
-            xs={{span:2,offset:3}}
             style={{
               display: "flex",
               paddingTop: "15px",
@@ -97,7 +98,12 @@ const IndexPage = () => {
               <img src={logocom} alt="logo" height="40%" />
             </a>
           </Col>
-          <Col md={{ span: 0 }}  xl={{ span: 19 }} style={{ paddingTop: "30px" }}>
+          <Col 
+            xs={0}
+            sm={0}
+            md={{ span: 0 }}
+            lg={19}
+            xl={{ span: 19 }} style={{ paddingTop: "30px" }}>
             {authorized ? (
               <Menu
                 theme="white"
@@ -152,7 +158,12 @@ const IndexPage = () => {
               />
             )}
           </Col>
-          <Col xs={{ span:3, offset:8}} md={{ span: 3, offset: 15 }}  xl={{ span: 0 }} className="pt-30">
+          <Col xs={{ span:2, offset: 16 }}
+            sm={{ span: 2, offset: 16 }}
+            md={{ span: 2, offset: 16 }}
+            lg={{ span: 0 }}
+            xl={{ span: 0 }}
+            style={{ paddingTop: "30px" }}>
             {authorized ? (
               <Dropdown
                 trigger={['click']}
@@ -170,8 +181,17 @@ const IndexPage = () => {
                   </Link>
                 }))}}
               >
-                <a onClick={(e) => e.preventDefault()}>
-                  <CaretDownOutlined />
+                <a onClick={(e) => e.preventDefault()}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  color: "white",
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  textDecoration: "none",
+                }}
+                >
+                 <MenuOutlined />
                 </a>
               </Dropdown>
             ) : (
@@ -197,9 +217,20 @@ const IndexPage = () => {
                     ),
                   };
                 })}}
-              ><a onClick={(e) => e.preventDefault()}>
-                  <CaretDownOutlined />
-                </a></Dropdown>
+              ><a
+              onClick={(e) => e.preventDefault()}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                color: "white",
+                fontSize: "24px",
+                fontWeight: "bold",
+                textDecoration: "none",
+              }}
+            >
+              <MenuOutlined />
+            </a>
+            </Dropdown>
             )}
           </Col>
           <Col md={{ span:2 }}
@@ -209,9 +240,9 @@ const IndexPage = () => {
       </header>
       <Content>
         <Row>
-          <Col span={8}></Col>
+          <Col xs={{span: 4}} sm={{ span:4 }} md = {{ span: 8}} xl={{span: 8}}></Col>
 
-          <Col span={12}>
+          <Col xs={{span: 16}} sm={{ span:16 }} md = {{ span: 12}} xl={{span: 12}}>
             <div className="ind-div" >
               <h2 className="h-siz"
               >
@@ -220,7 +251,7 @@ const IndexPage = () => {
               <p className="font-sie-28"
                 style={{
                   // fontSize: "28px",
-                  color: "white",
+                  //
                   //color: "black",
                   fontFamily: "awesome",
                 }}
@@ -233,7 +264,6 @@ const IndexPage = () => {
               </p>
             </div>
           </Col>
-          <Col span={4}></Col>
         </Row>
       </Content>
       
@@ -252,12 +282,12 @@ const IndexPage = () => {
             style={{
               display: "flex",
               justifyContent: "center",
-              height: "300px",
+              // height: "300px",
               paddingTop: "3px",
             }}
           >
             
-            <Col xs={{span: 24}} md = {{ span: 6}} xl={{span: 6}}  >
+            <Col xs={{span: 24}} sm={{ span:24 }} md = {{ span: 6}} xl={{span: 6}}  >
               <h4
                 style={{
                   fontFamily: "awesome",
@@ -306,7 +336,7 @@ const IndexPage = () => {
                 </li>
               </ul>
             </Col>
-            <Col xs={{span: 24}} md = {{ span: 6}} xl={{span: 6}} >
+            <Col xs={{span: 24}} sm={{ span:24 }} md = {{ span: 6}} xl={{span: 6}} style={{background: "rgb(26,28,33)"}}>
               <h4
                 style={{
                   fontFamily: "awesome",
@@ -340,7 +370,7 @@ const IndexPage = () => {
                 </li>
               </ul>
             </Col>
-            <Col xs={{span: 24}} md = {{ span: 6}} xl={{span: 6}} >
+            <Col xs={{span: 24}} sm={{ span:24 }} md = {{ span: 6}} xl={{span: 6}} style={{background: "rgb(26,28,33)"}}>
               <h4
                 style={{
                   fontFamily: "awesome",
@@ -372,9 +402,8 @@ const IndexPage = () => {
                 </li>
               </ul>
             </Col>
-          </Row>
-        
-        <div
+            <Col xs={{span: 24}} sm={{ span:24 }} md = {{ span: 24 }} xl={{span: 24}} style={{background: "rgb(26,28,33)"}}>
+            <div
           style={{
             background: "rgb(26,28,33)",
             display: "flex",
@@ -397,6 +426,10 @@ const IndexPage = () => {
             ©2023 Champlain Solutions
           </h2>
         </div>
+            </Col>
+          </Row>
+          
+        
       </Footer>
   </>
   );

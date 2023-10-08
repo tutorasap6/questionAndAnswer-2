@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Layout, Menu, Dropdown } from "antd";
+import { Layout, Menu, Dropdown, Space } from "antd";
 import { Col, Row, Input } from "antd";
 import logocom from "../assets/images/logocom.png";
 import { Link } from "gatsby";
 import backimg from "../assets/images/action.png";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
-import { CaretDownOutlined } from '@ant-design/icons';
+import { CaretDownOutlined, MenuOutlined } from "@ant-design/icons";
 import "react-toastify/dist/ReactToastify.css";
 
 // const { Search } = Input;
@@ -23,7 +23,6 @@ const MainLayout = ({ pageTitle, children }) => {
       const token = localStorage.token;
       const fetchUser = async () => {
         try {
-
           const res = await axios.get(`${process.env.api_url}/api/auth`, {
             headers: { "x-auth-token": token },
           });
@@ -31,7 +30,7 @@ const MainLayout = ({ pageTitle, children }) => {
           setAuthorized(true);
         } catch (e) {
           console.log(e);
-          localStorage.removeItem('token');
+          localStorage.removeItem("token");
         }
       };
       fetchUser();
@@ -76,25 +75,37 @@ const MainLayout = ({ pageTitle, children }) => {
       >
         <Row>
           <Col
-
-            lg={{ span: 2 , offset:3 }}
+            xs={{span:2,offset:3}}
+            sm={{ span: 2, offset: 3 }}
+            md={{ span:2, offset:3 }}
+            lg={{ span: 2 , offset: 3 }}
             style={{
               display: "flex",
               paddingTop: "10px",
-             
             }}
           >
-            <a href="/" style={{ margin: '0 auto' }}>
-              <img src={logocom} alt="logo" height="40%"  />
+            <a href="/" style={{ margin: "0 auto" }}>
+              <img src={logocom} alt="logo" height="40%" />
             </a>
           </Col>
-          <Col md={{ span: 0 }} xl={{ span: 19 }} style={{ paddingTop: "30px", paddingRight:"30px" }}>
+          <Col
+            xs={0}
+            sm={0}
+            md={{ span: 0 }}
+            lg={19}
+            xl={{ span: 19 }}
+            style={{ paddingTop: "30px", paddingRight: "30px" }}
+          >
             {authorized ? (
               <Menu
                 theme="white"
                 mode="horizontal"
-                style={{ minWidth: 0, flex: "auto", justifyContent: "flex-end" }}
-                md={{ gap: '3px' }}
+                style={{
+                  minWidth: 0,
+                  flex: "auto",
+                  justifyContent: "flex-end",
+                }}
+                md={{ gap: "3px" }}
                 items={authorizedArray.map((item, index) => {
                   const key = index + 1;
                   return {
@@ -119,7 +130,11 @@ const MainLayout = ({ pageTitle, children }) => {
               <Menu
                 theme="white"
                 mode="horizontal"
-                style={{ minWidth: 0, flex: "auto", justifyContent: "space-evenly" }}
+                style={{
+                  minWidth: 0,
+                  flex: "auto",
+                  justifyContent: "space-evenly",
+                }}
                 items={unauthorizedArray.map((item, index) => {
                   const key = index + 1;
                   return {
@@ -143,40 +158,24 @@ const MainLayout = ({ pageTitle, children }) => {
               />
             )}
           </Col>
-          <Col md={{ span: 3, offset: 10 }} lg={{offset: 17}} xl={{ span: 0 }}style={{ paddingTop: "30px" }}>
+          <Col
+            xs={{ span:2, offset: 16 }}
+            sm={{ span: 2, offset: 16 }}
+            md={{ span: 2, offset: 16 }}
+            lg={{ span: 0 }}
+            xl={{ span: 0 }}
+            style={{ paddingTop: "30px" }}
+          >
             {authorized ? (
               <Dropdown
-                trigger={['click']}
-                menu={{items: authorizedArray.map((item, index) => ({
-                  key: index + 1, label: <Link to={item.url}>
-                    <span
-                      style={{
-                        fontFamily: "awesome",
-                        color: "black",
-                        fontSize: "16px",
-                      }}
-                    >
-                      {item.name}
-                    </span>
-                  </Link>
-                }))}}
-              >
-                <a onClick={(e) => e.preventDefault()}>
-                  <CaretDownOutlined />
-                </a>
-              </Dropdown>
-            ) : (
-              <Dropdown
-                trigger={['click']}
-                menu={{items: unauthorizedArray.map((item, index) => {
-                  const key = index + 1;
-                  return {
-                    key,
+                trigger={["click"]}
+                menu={{
+                  items: authorizedArray.map((item, index) => ({
+                    key: index + 1,
                     label: (
                       <Link to={item.url}>
                         <span
                           style={{
-                            marginLeft: "5px",
                             fontFamily: "awesome",
                             color: "black",
                             fontSize: "16px",
@@ -186,11 +185,63 @@ const MainLayout = ({ pageTitle, children }) => {
                         </span>
                       </Link>
                     ),
-                  };
-                })}}
-              ><a onClick={(e) => e.preventDefault()}>
-                  <CaretDownOutlined />
-                </a></Dropdown>
+                  })),
+                }}
+              >
+                 <a
+                  onClick={(e) => e.preventDefault()}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    color: "white",
+                    fontSize: "24px",
+                    fontWeight: "bold",
+                    textDecoration: "none",
+                  }}
+                >
+                  <MenuOutlined />
+                </a>
+              </Dropdown>
+            ) : (
+              <Dropdown
+                trigger={["click"]}
+                menu={{
+                  items: unauthorizedArray.map((item, index) => {
+                    const key = index + 1;
+                    return {
+                      key,
+                      label: (
+                        <Link to={item.url}>
+                          <span
+                            style={{
+                              marginLeft: "5px",
+                              fontFamily: "awesome",
+                              color: "black",
+                              fontSize: "16px",
+                            }}
+                          >
+                            {item.name}
+                          </span>
+                        </Link>
+                      ),
+                    };
+                  }),
+                }}
+              >
+                <a
+                  onClick={(e) => e.preventDefault()}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    color: "white",
+                    fontSize: "24px",
+                    fontWeight: "bold",
+                    textDecoration: "none",
+                  }}
+                >
+                  <MenuOutlined />
+                </a>
+              </Dropdown>
             )}
           </Col>
           <Col span={2}></Col>
@@ -229,185 +280,7 @@ const MainLayout = ({ pageTitle, children }) => {
         </Row>
       </div>
       <div style={{ marginTop: "30px", marginBottom: "30px" }}>{children}</div>
-      {/* <Footer
-        style={{
-          // textAlign: "center",
-          padding: "0px",
-        }}
-      >
-        <Row
-          style={{
-            // background: "rgb(66,180,186)",
-            background: "rgb(26,28,33)",
-            display: "flex",
-            justifyContent: "center",
-            height: "315px",
-            paddingTop: "40px",
-          }}
-        >
-          <Col
-            span={5}
-            style={{
-              paddingTop: "100px",
-              display: "flex",
-              justifyContent: "center"
-            }}
-          >
-            <img src={logocom} alt="logo" height="40%" />
-          </Col>
-          <Col xs={{span: 0}} xl={{span: 5}} style={{ paddingLeft: "0px", paddingTop: "65px" }}>
-            <p
-              style={{
-                fontSize: "15px",
-                fontFamily: "awesome",
-                color: "#707885",
-              }}
-            >
-              Online education has become an essential component of our academic
-              path in the fast-paced world of today. However, it frequently
-              presents its own special difficulties. Students frequently have
-              overwhelming workloads due to managing many online courses and
-              keeping up with assignments, exams, lab reports, and essays. This
-              is where ChamplainSolutions.com comes in to help you have a more
-              effective and seamless experience when learning online.
-            </p>
-          </Col>
-          <Col xs={{span: 6}} xl={{span: 3}} style={{ paddingLeft: "40px" }}>
-            <h4
-              style={{
-                fontFamily: "awesome",
-                color: "white",
-                fontSize: "18px",
-                // paddingLeft: "40px",
-              }}
-            >
-              About us
-            </h4>
-            <ul style={{ listStyleType: "none" }}>
-              <li>
-                <a
-                  href="/"
-                  style={{
-                    fontFamily: "awesome",
-                    color: "#707885",
-                  }}
-                >
-                  How it works
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/about"
-                  style={{ fontFamily: "awesome", color: "#707885" }}
-                >
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/service"
-                  style={{ fontFamily: "awesome", color: "#707885" }}
-                >
-                  Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/terms"
-                  style={{ fontFamily: "awesome", color: "#707885" }}
-                >
-                  Terms & Conditions
-                </a>
-              </li>
-            </ul>
-          </Col>
-          <Col xs={{span: 6}} xl={{span: 3}} style={{ paddingLeft: "40px" }}>
-            <h4
-              style={{
-                fontFamily: "awesome",
-                color: "white",
-                fontSize: "18px",
-                // paddingLeft: "30px",
-              }}
-            >
-              Legal Stuff
-            </h4>
-            <ul style={{ listStyleType: "none" }}>
-              <li>
-                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
-                  Team of Use
-                </a>
-              </li>
-              <li>
-                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/pricing"
-                  style={{ fontFamily: "awesome", color: "#707885" }}
-                >
-                  Pricing
-                </a>
-              </li>
-            </ul>
-          </Col>
-          <Col xs={{span: 6}} xl={{span: 3}} style={{ paddingLeft: "40px" }}>
-            <h4
-              style={{
-                fontFamily: "awesome",
-                color: "white",
-                fontSize: "18px",
-                // paddingLeft: "50px",
-              }}
-            >
-              Help
-            </h4>
-            <ul style={{ listStyleType: "none" }}>
-              <li>
-                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
-                  knowledge Base
-                </a>
-              </li>
-              <li>
-                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
-                  Support
-                </a>
-              </li>
-              <li>
-                <a href="#" style={{ fontFamily: "awesome", color: "#707885" }}>
-                  Advanced Payment
-                </a>
-              </li>
-            </ul>
-          </Col>
-        </Row>
-        <div
-          style={{
-            background: "rgb(26,28,33)",
-            display: "flex",
-            justifyContent: "center",
-            height: "100px",
-            borderTop: "1px solid #212328",
-            marginTop: "0.2px",
-          }}
-        >
-          <h2
-            style={{
-              fontFamily: "awesome",
-              color: "#707885",
-              fontSize: "18px",
-              margin: "30px",
-              marginLeft: "0px",
-              textAlign: "center",
-            }}
-          >
-            ©2023 Champlain Solutions
-          </h2>
-        </div>
-      </Footer> */}
-       <Footer
+      <Footer
         style={{
           textAlign: "center",
           margin: "-8px",
@@ -421,12 +294,12 @@ const MainLayout = ({ pageTitle, children }) => {
             style={{
               display: "flex",
               justifyContent: "center",
-              height: "300px",
+              // height: "300px",
               paddingTop: "3px",
             }}
           >
             
-            <Col xs={{span: 24}} md = {{ span: 6}} xl={{span: 6}}  >
+            <Col xs={{span: 24}} sm={{ span:24 }} md = {{ span: 6}} xl={{span: 6}}  >
               <h4
                 style={{
                   fontFamily: "awesome",
@@ -475,7 +348,7 @@ const MainLayout = ({ pageTitle, children }) => {
                 </li>
               </ul>
             </Col>
-            <Col xs={{span: 24}} md = {{ span: 6}} xl={{span: 6}} >
+            <Col xs={{span: 24}} sm={{ span:24 }} md = {{ span: 6}} xl={{span: 6}} style={{background: "rgb(26,28,33)"}}>
               <h4
                 style={{
                   fontFamily: "awesome",
@@ -509,7 +382,7 @@ const MainLayout = ({ pageTitle, children }) => {
                 </li>
               </ul>
             </Col>
-            <Col xs={{span: 24}} md = {{ span: 6}} xl={{span: 6}} >
+            <Col xs={{span: 24}} sm={{ span:24 }} md = {{ span: 6}} xl={{span: 6}} style={{background: "rgb(26,28,33)"}}>
               <h4
                 style={{
                   fontFamily: "awesome",
@@ -541,9 +414,8 @@ const MainLayout = ({ pageTitle, children }) => {
                 </li>
               </ul>
             </Col>
-          </Row>
-        
-        <div
+            <Col xs={{span: 24}} sm={{ span:24 }} md = {{ span: 24 }} xl={{span: 24}} style={{background: "rgb(26,28,33)"}}>
+            <div
           style={{
             background: "rgb(26,28,33)",
             display: "flex",
@@ -566,6 +438,10 @@ const MainLayout = ({ pageTitle, children }) => {
             ©2023 Champlain Solutions
           </h2>
         </div>
+            </Col>
+          </Row>
+          
+        
       </Footer>
     </Layout>
   );

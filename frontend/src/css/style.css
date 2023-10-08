@@ -340,71 +340,58 @@ a:focus {
 
 .font-sie-28 {
   font-size: 28px;
+  color: white;
 }
 
 .h-siz {
-  font-size: "45px";
-  color: "white";
-  font-Family: "awesome";
+  color: rgb(16, 15, 15);
+  font-family: "awesome";
 }
 
 .ind-div {
-  padding-Top: "30px";
-  padding-right:"30px";
+  padding-top: 30px;
+  padding-right: 30px;
 }
-@media (max-width: 320px) {
+
+@media (max-width: 370px) {
   .font-sie-28 {
-    font-size: 18px;
+    font-size: 15px;
   }
   .h-siz {
-    font-size: "25px";
-  }
-  .pt-30 {
-    padding-top: 30px;
-  }
-  .ind-div {
-    padding-right:"30px";
+    font-size: 25px;
   }
 }
-@media (max-width: 1190px) {
+
+@media (min-width: 371px) and (max-width: 1190px) {
   .font-sie-28 {
-    font-size: 20px;
+    font-size: calc(18px + 2 * ((100vw - 370px) / 870));
   }
   .h-siz {
-    font-size: "35px";
-  }
-  .pt-30 {
-    padding-top: 30px;
-  }
-  .ind-div {
-    padding-right:"35px";
+    font-size: calc(30px + 10 * ((100vw - 370px) / 870));
   }
 }
-@media (max-width: 1300px) {
+
+@media (min-width: 1191px) and (max-width: 1434px) {
   .font-sie-28 {
-    font-size: 20px;
+    font-size: 25px;
+    color:black;
   }
   .h-siz {
-    font-size: "40px";
+    font-size: 60px;
   }
   .pt-30 {
-    padding-top: 30px;
+    padding-top: 20px;
   }
   .ind-div {
-    padding-right:"40px";
+    padding-right: 45px;
   }
 }
-@media (max-width: 1500px) {
+
+@media (min-width: 1435px) {
   .font-sie-28 {
-    font-size: 20px;
+    font-size: 25px;
   }
   .h-siz {
-    font-size: "50px";
-  }
-  .pt-30 {
-    padding-top: 30px;
-  }
-  .ind-div {
-    padding-right:"45px";
+    font-size: 60px;
   }
 }
