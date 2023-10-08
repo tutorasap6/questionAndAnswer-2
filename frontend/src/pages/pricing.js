@@ -9,10 +9,9 @@ const { Content } = Layout;
 
 const PricingPage = () => {
   return (
-    <MainLayout pageTitle="Home">
+    <MainLayout pageTitle="Pricing">
       <Content
         style={{
-          padding: "120px",
           paddingTop: "10px",
           paddingBottom: "3px",
         }}
@@ -27,26 +26,34 @@ const PricingPage = () => {
             borderBottom: "0.2px solid rgba(111,111,110,.8)",
           }}
         >
+          <Row>
+        <Col 
+        xs={{span:22,offset:1}}
+        sm={{ span: 15, offset: 2 }}
+        md={{ span:15, offset:3 }}
+        lg={{ span: 15, offset: 4 }} 
+        >
           <Breadcrumb
             style={{
-              //   margin: "16px 0",
-              paddingLeft: "200px",
               paddingTop: "10px",
             }}
           >
             <Breadcrumb.Item>
               <p style={{ fontFamily: "awesome", marginTop: "0px" }}>Home</p>
             </Breadcrumb.Item>
-            {/* <Breadcrumb.Item>list</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item> */}
-
             <Breadcrumb.Item>
               <p style={{ fontFamily: "awesome", marginTop: "0px" }}>pricing</p>
             </Breadcrumb.Item>
           </Breadcrumb>
+          </Col>
+          </Row>
         </div>
-        <Row style={{ marginTop: "0px" }}>
-          <Col span={20} offset={2}>
+        <Row>
+          <Col 
+          xs={{span:22,offset:1}}
+          sm={{ span: 20, offset: 2 }}
+          md={{ span:18, offset:3 }}
+          lg={{ span: 16, offset: 4 }}>
             <Card style={{ padding: "5px" }}>
               <Row>
                 <Col xs={24} md={12} lg={8} xl={8} style={{ padding: "10px" }}>
@@ -76,7 +83,7 @@ const PricingPage = () => {
                     </p>
                   </SubPricingBlog>
                 </Col>
-                <Col span={8} style={{ padding: "10px" }}>
+                <Col xs={24} md={12} lg={8} xl={8} style={{ padding: "10px" }}>
                   <SubPricingBlog price="Full classes">
                     <h2
                       className="title h4"
@@ -107,7 +114,7 @@ const PricingPage = () => {
                     </p>
                   </SubPricingBlog>
                 </Col>
-                <Col span={8} style={{ padding: "10px" }}>
+                <Col xs={24} md={12} lg={8} xl={8} style={{ padding: "10px" }}>
                   <SubPricingBlog price="Full classes">
                     <h2
                       className="title h4"
@@ -140,7 +147,7 @@ const PricingPage = () => {
                 </Col>
               </Row>
               <Row>
-                <Col span={8} style={{ padding: "10px" }}>
+                <Col xs={24} md={12} lg={8} xl={8}  style={{ padding: "10px" }}>
                   <SubPricingBlog price="Full classes">
                     <h2
                       className="title h4"
@@ -174,7 +181,7 @@ const PricingPage = () => {
                     </p>
                   </SubPricingBlog>
                 </Col>
-                <Col span={8} style={{ padding: "10px" }}>
+                <Col xs={24} md={12} lg={8} xl={8}  style={{ padding: "10px" }}>
                   <SubPricingBlog price="Full classes">
                     <h2
                       className="title h4"
@@ -205,7 +212,7 @@ const PricingPage = () => {
                     </p>
                   </SubPricingBlog>
                 </Col>
-                <Col span={8} style={{ padding: "10px" }}>
+                <Col xs={24} md={12} lg={8} xl={8} style={{ padding: "10px" }}>
                   <SubPricingBlog price="Full classes">
                     <h2
                       className="title h4"
