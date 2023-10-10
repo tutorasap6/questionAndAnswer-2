@@ -361,6 +361,9 @@ a:focus {
   margin-Top: 15px;
  font-Family: "awesome";
 }
+.admintitle {
+  font-Family: "awesome";
+}
 
 .blogdes {
   font-family: "awesome";
@@ -393,6 +396,9 @@ a:focus {
    .bloquotitle{
     font-size: 18px;
    }
+   .admintitle {
+    font-size: 28px;
+   }
 
    .blogdes {
     font-size: 13px;
@@ -423,6 +429,9 @@ a:focus {
   .bloquotitle{
     font-size: calc(18px + 10 * ((100vw - 370px) / 870));
    }
+  .admintitle {
+    font-size: calc(30px + 10 * ((100vw - 370px) / 870));
+  }
   .blogdes {
     font-size: calc(13px + 10 * ((100vw - 370px) / 870));
   }
@@ -451,6 +460,10 @@ a:focus {
   .bloquotitle{
     font-size: 28px;
    }
+   
+  .admintitle {
+    font-size: 40px;
+  }
   
   .blogdes {
     font-size: 18px;
@@ -479,6 +492,10 @@ a:focus {
    }
    .bloquotitle{
     font-size: 30px;
+   }
+
+   .admintitle {
+    font-size: 45px;
    }
 
    .blogdes {

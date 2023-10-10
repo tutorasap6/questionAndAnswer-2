@@ -20,7 +20,7 @@ function PostDelete(props) {
           setPost(response.data);
         } catch (error) {
           console.log("error", error);
-          navigate('/404')
+          navigate("/404");
         }
       }
       deletePostById();
@@ -50,132 +50,80 @@ function PostDelete(props) {
           }}
         >
           <div style={{ marginBottom: "15px", marginTop: "-10px" }}>
-            <ul
-              style={{
-                listStyleType: "none",
-                display: "flex",
-                borderTop: "0.2px solid rgba(0,0,0,0.2)",
-                borderBottom: "0.2px solid rgba(0,0,0,0.2)",
-                marginTop: "0.2px",
-                marginBottom: "0px",
-                paddingTop: "3px",
-                height: "35px",
-                paddingLeft: "10px",
-              }}
-            >
-              <li
-                style={{
-                  marginRight: "10px",
-                  borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                  paddingRight: "5px",
-                  margin: "5px",
-                }}
-              >
-                <span>
-                  <strong>ID</strong>: <span>{post._id}</span>
-                </span>
-                <span>
+            <Row>
+              <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                <span className="blotitle">
                   <strong>University:</strong>
                 </span>
-                <span>{post.universityName}</span>
-              </li>
-              <li
-                style={{
-                  borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                  paddingRight: "5px",
-                  margin: "5px",
-                }}
-              >
-                <span>
+                <span className="blotitleb">{post.universityName}</span>
+              </Col>
+              <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                <span className="blotitle">
                   <strong>Category:</strong>
                 </span>
-                <span>{post.category}</span>
-              </li>
-
-              <li
-                style={{
-                  paddingRight: "5px",
-                  margin: "5px",
-                }}
-              >
+                <span className="blotitleb">{post.category}</span>
+              </Col>
+              <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
                 <span>
-                  <strong>Tags:</strong>
+                  <strong className="blotitle">Date:</strong>
                 </span>
-                <span>{post.insertTagsHere}</span>
-              </li>
-            </ul>
-            <ul
-              style={{
-                listStyleType: "none",
-                display: "flex",
-                borderBottom: "0.2px solid rgba(0,0,0,0.2)",
-                marginTop: "0.2px",
-                paddingTop: "3px",
-                height: "35px",
-                paddingLeft: "10px",
-              }}
-            >
-              <li
-                style={{
-                  marginRight: "10px",
-                  borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                  paddingRight: "5px",
-                  margin: "5px",
-                }}
-              >
-                <span>
+                <span className="blotitleb">
+                  {new Date(post.date).getFullYear() +
+                    "-" +
+                    (new Date(post.date).getMonth() + 1) +
+                    "-" +
+                    new Date(post.date).getDate()}
+                </span>
+              </Col>
+              <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                <span className="blotitle">
                   <strong>Course code:</strong>
                 </span>
                 <span>{post.courseCode}</span>
-              </li>
-              <li
-                style={{
-                  borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                  paddingRight: "5px",
-                  margin: "5px",
-                }}
-              >
-                <span>
+              </Col>
+              <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                <span className="blotitle">
                   <strong>Course name:</strong>
                 </span>
-                <span>{post.courseName}</span>
-              </li>
-              <li
-                style={{
-                  paddingRight: "5px",
-                  margin: "5px",
-                }}
-              >
-                <span>
+                <span className="blotitleb">{post.courseName}</span>
+              </Col>
+              <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                <span className="blotitle">
                   <strong>Price:</strong>
                 </span>
-                <span>{post.insertPrice}</span>
-              </li>
-            </ul>
+                <span className="blotitleb">{post.insertPrice}</span>
+              </Col>
+            </Row>
             <h2
-              style={{
-                marginTop: "-15px",
-                fontFamily: "awesome",
-                fontSize: "26px",
-                // textAlign: "center",
-              }}
+              // style={{
+              //   marginTop: "-15px",
+              //   fontFamily: "awesome",
+              //   fontSize: "26px",
+              //   // textAlign: "center",
+              // }}
+              className="bloquotitle"
             >
               {post.questionTitle}
             </h2>
           </div>
-          <div style={{ marginTop: "-15px" }}>
+          <div style={{ marginTop: "15px" }}>
             <div
               dangerouslySetInnerHTML={{
                 __html: post.description,
               }}
+              className="blogdes"
             ></div>
           </div>
         </div>
       </Card>
       <div style={{ marginTop: "15px" }}>
         <Row>
-          <Col span={18}></Col>
-          <Col span={3} style={{ paddingLeft: "70px", paddingBottom: "10px" }}>
+          <Col
+            xs={{ span: 22, offset: 2 }}
+            md={{ span: 10, offset: 13 }}
+            lg={{ span: 9, offset: 15 }}
+            xl={{ span: 7, offset: 17 }}
+          >
             <Button
               type="primary"
               onClick={handleDelete}
@@ -183,13 +131,13 @@ function PostDelete(props) {
                 // width: "70px",
                 // height: "40px",
                 // fontSize: "20px",
+                fontWeight: "bold",
                 fontFamily: "awesome",
               }}
             >
               Delete
             </Button>
-          </Col>
-          <Col span={3} style={{ paddingLeft: "25px" }}>
+
             <Button
               type="primary"
               onClick={handleCancel}
@@ -198,6 +146,7 @@ function PostDelete(props) {
                 // height: "40px",
                 // fontSize: "20px",
                 fontFamily: "awesome",
+                margin: "20px",
               }}
             >
               Cancel

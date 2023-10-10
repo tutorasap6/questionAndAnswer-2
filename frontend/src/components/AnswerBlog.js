@@ -85,22 +85,22 @@ const AnswerBlog = ({ post }) => {
         <div style={{ marginBottom: "15px", marginTop: "-10px" }}>
           <Row>
             <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
-              <span>
+              <span className="blotitle">
                 <strong>University:</strong>
               </span>
-              <span>{post.universityName}</span>
+              <span className="blotitleb">{post.universityName}</span>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
-              <span>
+              <span className="blotitle">
                 <strong>Category:</strong>
               </span>
-              <span>{post.category}</span>
+              <span className="blotitleb">{post.category}</span>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
               <span>
-                <strong>Date:</strong>
+                <strong className="blotitle">Date:</strong>
               </span>
-              <span>
+              <span className="blotitleb">
                 {new Date(post.date).getFullYear() +
                   "-" +
                   (new Date(post.date).getMonth() + 1) +
@@ -109,54 +109,33 @@ const AnswerBlog = ({ post }) => {
               </span>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
-              <span>
+              <span className="blotitle">
                 <strong>Course code:</strong>
               </span>
               <span>{post.courseCode}</span>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
-              <span>
+              <span className="blotitle">
                 <strong>Course name:</strong>
               </span>
-              <span>{post.courseName}</span>
+              <span className="blotitleb">{post.courseName}</span>
             </Col>
             <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
-              <span>
+              <span className="blotitle">
                 <strong>Price:</strong>
               </span>
-              <span>{post.insertPrice}</span>
+              <span className="blotitleb">{post.insertPrice}</span>
             </Col>
           </Row>
-          <h2
-            style={{
-              marginTop: "15px",
-              fontFamily: "awesome",
-              fontSize: "26px",
-              // textAlign: "center",
-            }}
-          >
-            {post.questionTitle}
-          </h2>
+          <h2 className="bloquotitle">{post.questionTitle}</h2>
         </div>
         <div style={{ marginTop: "15px" }}>
           <div
             dangerouslySetInnerHTML={{
               __html: post.description,
             }}
+            className="blogdes"
           ></div>
-          {/* <div style={{ marginTop: "-15px", paddingLeft: "680px" }}>
-            <button
-              type="submit"
-              style={{
-                width: "100%",
-                height: "30px",
-                fontSize: "20px",
-                fontFamily: "awesome",
-              }}
-            >
-              Answer
-            </button>
-          </div> */}
         </div>
       </div>
     </Card>
@@ -173,19 +152,17 @@ const AnswerBlog = ({ post }) => {
             marginBottom: "15px",
           }}
         >
-          <div style={{ marginBottom: "15px" }}>
+          <div style={{ marginBottom: "2vh" }}>
             <h2
               style={{
-                marginTop: "-20px",
-                fontFamily: "awesome",
-                fontSize: "26px",
                 textAlign: "center",
               }}
+              className="bloquotitle"
             >
               Answer Details
             </h2>
           </div>
-          <div style={{ marginTop: "-20px" }}>
+          <div>
             <div style={{ borderTop: "1px solid #dedede" }}>
               <img
                 src={screenimg}
@@ -195,17 +172,19 @@ const AnswerBlog = ({ post }) => {
               />
             </div>
             <div>
-              {/* <a href="/homework-solution-details/632507/accn-2010-quiz-1-tulane-university">
-              Read more <i></i>
-            </a> */}
               <Checkout post={post} />
-              <div style={{ marginTop: "5px" }}>
+              <div style={{ marginTop: "1vh" }}>
                 <Button
                   block
-                  style={{ fontWeight: "bold" }}
+                  style={{
+                    fontWeight: "bold",
+                    weidth: "100%",
+                  }}
                   onClick={showQuoteModal}
                 >
-                  Get a quote of a new original/Human generated paper
+                  <span className="blotitle">
+                    <strong> Get a quote of Human generated paper</strong>
+                  </span>
                 </Button>
               </div>
             </div>

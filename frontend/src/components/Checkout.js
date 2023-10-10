@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { Button } from "antd";
-import { toast } from 'react-toastify'
+import { toast } from "react-toastify";
 import { navigate } from "gatsby";
 import axios from "axios";
 
@@ -13,7 +13,7 @@ const Checkout = ({ post }) => {
 
   useEffect(() => {
     if (localStorage.token) setAuthorized(true);
-  }, [])
+  }, []);
 
   // creates a paypal order
   const createOrder = (data, actions) => {
@@ -39,7 +39,7 @@ const Checkout = ({ post }) => {
   const onClick = () => {
     if (authorized) setShow(true);
     else navigate("/auth/login");
-  }
+  };
 
   // check Approval
   const onApprove = (data, actions) => {
@@ -61,7 +61,7 @@ const Checkout = ({ post }) => {
 
   useEffect(() => {
     if (success) {
-      toast.success('Success', {
+      toast.success("Success", {
         position: "top-right",
         autoClose: 1000,
         theme: "colored",
@@ -70,8 +70,13 @@ const Checkout = ({ post }) => {
       const fetchFile = async () => {
         try {
           const token = localStorage.token;
-          await axios.get(`${process.env.api_url}/check`, { headers: { 'x-auth-token': token } });
-          const res = await axios.get(`${process.env.api_url}/file/${post.answer}`, { responseType: "blob", headers: { 'x-auth-token': token } });
+          await axios.get(`${process.env.api_url}/check`, {
+            headers: { "x-auth-token": token },
+          });
+          const res = await axios.get(
+            `${process.env.api_url}/file/${post.answer}`,
+            { responseType: "blob", headers: { "x-auth-token": token } }
+          );
 
           const url = window.URL.createObjectURL(res.data);
           const link = document.createElement("a");
@@ -99,12 +104,13 @@ const Checkout = ({ post }) => {
               <br></br>
 
               <div>
-                <Button
-                  block
-                  onClick={onClick}
-                  style={{ fontWeight: "bold" }}
-                >
-                  Download this answer instantly at {post.insertPrice}$
+                <Button block onClick={onClick} style={{ fontWeight: "bold" }}>
+                  <span className="blotitle">
+                    <strong>
+                      {" "}
+                      Download this answer instantly at {post.insertPrice}$
+                    </strong>
+                  </span>
                 </Button>
               </div>
             </div>
@@ -113,21 +119,20 @@ const Checkout = ({ post }) => {
         <br></br>
         {show ? (
           <div style={{ width: "80%", margin: "auto" }}>
-
-              <PayPalButtons
-                style={{ layout: "vertical" }}
-                fundingSource='paypal'
-                createOrder={createOrder}
-                onApprove={onApprove}
-                onError={onError}
-              />
-              <PayPalButtons
-                style={{ layout: "vertical" }}
-                fundingSource='card'
-                createOrder={createOrder}
-                onApprove={onApprove}
-                onError={onError}
-              />
+            <PayPalButtons
+              style={{ layout: "vertical" }}
+              fundingSource="paypal"
+              createOrder={createOrder}
+              onApprove={onApprove}
+              onError={onError}
+            />
+            <PayPalButtons
+              style={{ layout: "vertical" }}
+              fundingSource="card"
+              createOrder={createOrder}
+              onApprove={onApprove}
+              onError={onError}
+            />
           </div>
         ) : null}
       </div>

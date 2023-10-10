@@ -6,7 +6,7 @@ import { Link } from "gatsby";
 import { Menu } from "antd";
 import logocom from "../../../../assets/images/Logocom.png";
 import { navigate } from "gatsby";
-import { CaretDownOutlined, SmileOutlined } from '@ant-design/icons';
+import { MenuOutlined } from "@ant-design/icons";
 import FileViewer from "react-file-viewer";
 
 const normFile = (e) => {
@@ -33,7 +33,7 @@ function CrudDetails(params) {
           setCrud(response.data);
         } catch (error) {
           console.log("error", error);
-          navigate('/404')
+          navigate("/404");
         }
       }
       getCrudById();
@@ -64,7 +64,7 @@ function CrudDetails(params) {
   };
 
   const array = [
-    {name: "Admin", url: "/admin/admin"},
+    { name: "Admin", url: "/admin/admin" },
     { name: "Home", url: "/" },
     { name: "Solutions", url: "/solution" },
     { name: "Post Questions", url: "/post" },
@@ -73,93 +73,122 @@ function CrudDetails(params) {
     { name: "Services", url: "/service" },
     { name: "Pricing", url: "/pricing" },
     { name: "Terms and Conditions", url: "/terms" },
-    { name: "Logout", url: "/logout" }
+    { name: "Logout", url: "/logout" },
   ];
   return (
     <>
-      <Header
+      <header
         style={{
           padding: "0",
-          height: "96px",
+          height: "90px",
           background: "#272930",
           margin: "-8px",
         }}
       >
         <Row>
           <Col
-
-            lg={{ span: 3 }}
+            xs={{ span: 2, offset: 1 }}
+            sm={{ span: 2, offset: 1 }}
+            md={{ span: 2, offset: 1 }}
+            lg={{ span: 2, offset: 1 }}
             style={{
               display: "flex",
               paddingTop: "10px",
             }}
           >
-            <a href="/" style={{ margin: '0 auto' }}>
+            <a href="/" style={{ margin: "0 auto" }}>
               <img src={logocom} alt="logo" height="40%" />
             </a>
           </Col>
-          <Col md={{ span: 0 }} xl={{ span: 21 }} style={{ paddingTop: "30px" }}>
-              <Menu
-                theme="white"
-                mode="horizontal"
-                style={{ minWidth: 0, flex: "auto", justifyContent: "flex-end" }}
-                md={{ gap: '3px' }}
-                items={array.map((item, index) => {
-                  const key = index + 1;
-                  return {
-                    key,
-                    label: (
-                      <Link to={item.url}>
-                        <span
-                          style={{
-                            fontFamily: "awesome",
-                            color: "white",
-                            fontSize: "16px",
-                          }}
-                        >
-                          {item.name}
-                        </span>
-                      </Link>
-                    ),
-                  };
-                })}
-              />
+          <Col
+            xs={0}
+            sm={0}
+            md={{ span: 0 }}
+            lg={19}
+            xl={{ span: 19 }}
+            style={{ paddingTop: "30px", paddingRight: "30px" }}
+          >
+            <Menu
+              theme="white"
+              mode="horizontal"
+              style={{ minWidth: 0, flex: "auto", justifyContent: "flex-end" }}
+              md={{ gap: "3px" }}
+              items={array.map((item, index) => {
+                const key = index + 1;
+                return {
+                  key,
+                  label: (
+                    <Link to={item.url}>
+                      <span
+                        style={{
+                          fontFamily: "awesome",
+                          color: "white",
+                          fontSize: "16px",
+                        }}
+                      >
+                        {item.name}
+                      </span>
+                    </Link>
+                  ),
+                };
+              })}
+            />
           </Col>
-          <Col md={{ span: 3, offset: 10 }} lg={{offset: 17}} xl={{ span: 0 }} style={{ paddingTop: "30px" }}>
-              <Dropdown
-                trigger={['click']}
-                menu={{items: array.map((item, index) => ({
-                  key: index + 1, label: <Link to={item.url}>
-                    <span
-                      style={{
-                        fontFamily: "awesome",
-                        color: "black",
-                        fontSize: "16px",
-                      }}
-                    >
-                      {item.name}
-                    </span>
-                  </Link>
-                }))}}
+          <Col
+            xs={{ span: 2, offset: 17 }}
+            sm={{ span: 2, offset: 16 }}
+            md={{ span: 2, offset: 16 }}
+            lg={{ span: 0 }}
+            xl={{ span: 0 }}
+            style={{ paddingTop: "30px" }}
+          >
+            <Dropdown
+              trigger={["click"]}
+              menu={{
+                items: array.map((item, index) => ({
+                  key: index + 1,
+                  label: (
+                    <Link to={item.url}>
+                      <span
+                        style={{
+                          fontFamily: "awesome",
+                          color: "black",
+                          fontSize: "16px",
+                        }}
+                      >
+                        {item.name}
+                      </span>
+                    </Link>
+                  ),
+                })),
+              }}
+            >
+              <a
+                onClick={(e) => e.preventDefault()}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  color: "white",
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  textDecoration: "none",
+                }}
               >
-                <a onClick={(e) => e.preventDefault()}>
-                  <CaretDownOutlined />
-                </a>
-              </Dropdown>
-            
+                <MenuOutlined />
+              </a>
+            </Dropdown>
           </Col>
           <Col span={2}></Col>
         </Row>
-      </Header>
+      </header>
       <Content style={{ paddingTop: "70px" }}>
-        <Row
-        // style={{ marginTop: "40px" }}
-        >
+        <Row>
           <Col
-            span={4}
-          // style={{ borderRight: "0.1px solid rgba(111,111,110,.8)" }}
-          ></Col>
-          <Col span={16}>
+            xs={{ span: 22, offset: 1 }}
+            sm={{ span: 20, offset: 2 }}
+            md={{ span: 18, offset: 3 }}
+            lg={{ span: 16, offset: 4 }}
+          >
             <Card style={{ height: "100%", padding: "5px", marginTop: "5px" }}>
               <div
                 style={{
@@ -170,121 +199,68 @@ function CrudDetails(params) {
                 }}
               >
                 <div style={{ marginBottom: "15px", marginTop: "-10px" }}>
-                  <ul
-                    style={{
-                      listStyleType: "none",
-                      display: "flex",
-                      borderTop: "0.2px solid rgba(0,0,0,0.2)",
-                      borderBottom: "0.2px solid rgba(0,0,0,0.2)",
-                      marginTop: "0.2px",
-                      marginBottom: "0px",
-                      paddingTop: "3px",
-                      height: "35px",
-                      paddingLeft: "10px",
-                    }}
-                  >
-                    <li
-                      style={{
-                        marginRight: "10px",
-                        borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                        paddingRight: "5px",
-                        margin: "5px",
-                      }}
-                    >
-                      <span>
+                  <Row>
+                    <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                      <span className="blotitle">
                         <strong>University:</strong>
                       </span>
-                      <span>{crud.universityName}</span>
-                    </li>
-                    <li
-                      style={{
-                        borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                        paddingRight: "5px",
-                        margin: "5px",
-                      }}
-                    >
-                      <span>
+                      <span className="blotitleb">{crud.universityName}</span>
+                    </Col>
+                    <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                      <span className="blotitle">
                         <strong>Category:</strong>
                       </span>
-                      <span>{crud.category}</span>
-                    </li>
-
-                    <li
-                      style={{
-                        paddingRight: "5px",
-                        margin: "5px",
-                      }}
-                    >
+                      <span className="blotitleb">{crud.category}</span>
+                    </Col>
+                    <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
                       <span>
-                        <strong>Tag</strong>
+                        <strong className="blotitle">Date:</strong>
                       </span>
-                      <span>{crud.insertTagsHere}</span>
-                    </li>
-                  </ul>
-                  <ul
-                    style={{
-                      listStyleType: "none",
-                      display: "flex",
-                      borderBottom: "0.2px solid rgba(0,0,0,0.2)",
-                      marginTop: "0.2px",
-                      paddingTop: "3px",
-                      height: "35px",
-                      paddingLeft: "10px",
-                    }}
-                  >
-                    <li
-                      style={{
-                        marginRight: "10px",
-                        borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                        paddingRight: "5px",
-                        margin: "5px",
-                      }}
-                    >
-                      <span>
+                      <span className="blotitleb">
+                        {new Date(crud.date).getFullYear() +
+                          "-" +
+                          (new Date(crud.date).getMonth() + 1) +
+                          "-" +
+                          new Date(crud.date).getDate()}
+                      </span>
+                    </Col>
+                    <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                      <span className="blotitle">
                         <strong>Course code:</strong>
                       </span>
                       <span>{crud.courseCode}</span>
-                    </li>
-                    <li
-                      style={{
-                        borderRight: "1px solid rgba(0, 0, 0, 0.2)",
-                        paddingRight: "5px",
-                        margin: "5px",
-                      }}
-                    >
-                      <span>
+                    </Col>
+                    <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                      <span className="blotitle">
                         <strong>Course name:</strong>
                       </span>
-                      <span>{crud.courseName}</span>
-                    </li>
-                    <li
-                      style={{
-                        paddingRight: "5px",
-                        margin: "5px",
-                      }}
-                    >
-                      <span>
+                      <span className="blotitleb">{crud.courseName}</span>
+                    </Col>
+                    <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
+                      <span className="blotitle">
                         <strong>Price:</strong>
                       </span>
-                      <span> {crud.insertPrice}</span>
-                    </li>
-                  </ul>
+                      <span className="blotitleb">{crud.insertPrice}</span>
+                    </Col>
+                  </Row>
                   <h2
-                    style={{
-                      marginTop: "-15px",
-                      fontFamily: "awesome",
-                      fontSize: "26px",
-                      // textAlign: "center",
-                    }}
+                    // style={{
+                    //   marginTop: "-15px",
+                    //   fontFamily: "awesome",
+                    //   fontSize: "26px",
+                    //   // textAlign: "center",
+                    // }}
+                    className="bloquotitle"
                   >
                     {crud.questionTitle}
                   </h2>
                 </div>
-                <div style={{ marginTop: "-15px" }}>
+                <div style={{ marginTop: "15px" }}>
                   <div
                     dangerouslySetInnerHTML={{
-                      __html: crud.description
+                      __html: crud.description,
                     }}
+                    className="blogdes"
                   ></div>
                 </div>
               </div>
@@ -301,49 +277,55 @@ function CrudDetails(params) {
             </Card>
             <div>
               <Row style={{ paddingTop: "35px" }}>
-                <Col md={{ span: 3, offset: 3 }} lg={{ offset: 5, span: 3 }} xxl={{ span: 3, offset: 6 }}>
+                <Col
+                  xs={{ span: 22, offset: 2 }}
+                  md={{ span: 9, offset: 3 }}
+                  lg={{ span: 9, offset: 3 }}
+                  xl={{ span: 9, offset: 3 }}
+                >
                   <input type="file" onChange={handleFile} />
                 </Col>
-                <Col md={{ span: 6 }} xl={{ span: 2, offset: 16 }} />
                 <Col
-                  md={{ span: 4 }} lg={{ span: 3 }} xl={{ span: 2 }}
+                  xs={{ span: 22, offset: 2 }}
+                  md={{ span: 9, offset: 3 }}
+                  lg={{ span: 9, offset: 3 }}
+                  xl={{ span: 9, offset: 3 }}
                 >
                   {" "}
-                  <Button
-                    type="primary"
-                    disabled={!file}
-                    onClick={handlePush}
-                    style={{
-                      width: "100%",
-                      height: "40px",
-                      fontSize: "20px",
-                      fontFamily: "awesome",
-                      padding: "3px",
-                    }}
-                  >
-                    Push
-                  </Button>
-                </Col>
-                <Col md={{ span: 2 }} xl={{ span: 1 }} />
-                <Col md={{ span: 4 }} lg={{ span: 3 }} xl={{ span: 2 }}>
-                  <Button
-                    type="primary"
-                    onClick={handleCancel}
-                    style={{
-                      width: "100%",
-                      height: "40px",
-                      fontSize: "20px",
-                      fontFamily: "awesome",
-                      padding: "3px",
-                    }}
-                  >
-                    Cancel
-                  </Button>
+                  <div>
+                    <Button
+                      type="primary"
+                      disabled={!file}
+                      onClick={handlePush}
+                      style={{
+                        // height: "40px",
+                        // fontSize: "20px",
+                        // fontFamily: "awesome",
+                        // padding: "3px",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Push
+                    </Button>
+
+                    <Button
+                      type="primary"
+                      onClick={handleCancel}
+                      style={{
+                        // height: "40px",
+                        // fontSize: "20px",
+                        // fontFamily: "awesome",
+                        // padding: "3px",
+                        margin: "20px",
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
                 </Col>
               </Row>
             </div>
           </Col>
-          <Col span={4}></Col>
         </Row>
       </Content>
     </>

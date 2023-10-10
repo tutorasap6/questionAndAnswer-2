@@ -35,7 +35,6 @@ const AnswerPage = (params) => {
     <MainLayout pageTitle="Answer">
       <Content
         style={{
-          padding: "120px",
           paddingTop: "10px",
           paddingBottom: "10px",
         }}
@@ -50,26 +49,43 @@ const AnswerPage = (params) => {
             borderBottom: "0.2px solid rgba(111,111,110,.8)",
           }}
         >
-          <Breadcrumb
-            style={{
-              //   margin: "16px 0",
-              paddingLeft: "200px",
-              paddingTop: "10px",
-            }}
-          >
-            <Breadcrumb.Item>
-              <p style={{ fontFamily: "awesome", marginTop: "0px" }}>Home</p>
-            </Breadcrumb.Item>
-            {/* <Breadcrumb.Item>list</Breadcrumb.Item>
+          <Row>
+            <Col
+              xs={{ span: 22, offset: 1 }}
+              sm={{ span: 15, offset: 2 }}
+              md={{ span: 15, offset: 3 }}
+              lg={{ span: 15, offset: 4 }}
+            >
+              <Breadcrumb
+                style={{
+                  paddingTop: "10px",
+                }}
+              >
+                <Breadcrumb.Item>
+                  <p style={{ fontFamily: "awesome", marginTop: "0px" }}>
+                    Home
+                  </p>
+                </Breadcrumb.Item>
+                {/* <Breadcrumb.Item>list</Breadcrumb.Item>
           <Breadcrumb.Item>App</Breadcrumb.Item> */}
 
-            <Breadcrumb.Item>
-              <p style={{ fontFamily: "awesome", marginTop: "0px" }}>answer</p>
-            </Breadcrumb.Item>
-          </Breadcrumb>
+                <Breadcrumb.Item>
+                  <p style={{ fontFamily: "awesome", marginTop: "0px" }}>
+                    answer
+                  </p>
+                </Breadcrumb.Item>
+              </Breadcrumb>
+            </Col>
+          </Row>
         </div>
+
         <Row style={{ marginTop: "10px" }}>
-          <Col span={16} offset={4}>
+          <Col
+            xs={{ span: 22, offset: 1 }}
+            sm={{ span: 20, offset: 2 }}
+            md={{ span: 18, offset: 3 }}
+            lg={{ span: 16, offset: 4 }}
+          >
             <AnswerBlog post={post}></AnswerBlog>
           </Col>
         </Row>

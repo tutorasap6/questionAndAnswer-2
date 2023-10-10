@@ -7,8 +7,8 @@ import { Menu } from "antd";
 import { Col, Row } from "antd";
 import logocom from "../../assets/images/Logocom.png";
 import { getPostsRoute } from "../../utils/APIRoutes";
-import { CaretDownOutlined, DoubleRightOutlined } from '@ant-design/icons';
-import { Space, Table } from "antd";
+import { MenuOutlined, DoubleRightOutlined } from "@ant-design/icons";
+import { Space, Table, Button } from "antd";
 
 const { Header } = Layout;
 
@@ -50,7 +50,7 @@ const AdminPage = () => {
   }, [posts]);
 
   const array = [
-    {name: "Admin", url: "/admin/admin"},
+    { name: "Admin", url: "/admin/admin" },
     { name: "Home", url: "/" },
     { name: "Solutions", url: "/solution" },
     { name: "Post Questions", url: "/post" },
@@ -59,7 +59,7 @@ const AdminPage = () => {
     { name: "Services", url: "/service" },
     { name: "Pricing", url: "/pricing" },
     { name: "Terms and Conditions", url: "/terms" },
-    {name: "Logout", url: "/logout"}
+    { name: "Logout", url: "/logout" },
   ];
 
   const columns = [
@@ -113,9 +113,18 @@ const AdminPage = () => {
       key: "action",
       render: (_, record) => (
         <Space size="middle">
-          <a href={`/admin/posts/view/${record.key}`}>View</a>
+          {/* <a href={`/admin/posts/view/${record.key}`}>View</a>
           <a href={`/admin/posts/edit/${record.key}`}>Edit</a>
-          <a href={`/admin/posts/delete/${record.key}`}>Delete</a>
+          <a href={`/admin/posts/delete/${record.key}`}>Delete</a> */}
+          <Button type="link" href={`/admin/posts/view/${record.key}`}>
+            View
+          </Button>
+          <Button type="link" href={`/admin/posts/edit/${record.key}`}>
+            Edit
+          </Button>
+          <Button type="link" href={`/admin/posts/delete/${record.key}`}>
+            Delete
+          </Button>
         </Space>
       ),
     },
@@ -131,7 +140,15 @@ const AdminPage = () => {
     Category: post.category,
     insertTagsHere: post.insertTagsHere,
     insertPrice: post.insertPrice,
-    date:<span>{(new Date(post.date)).getFullYear() + '-' + ((new Date(post.date)).getMonth() + 1) + '-' + (new Date(post.date)).getDate()}</span>
+    date: (
+      <span>
+        {new Date(post.date).getFullYear() +
+          "-" +
+          (new Date(post.date).getMonth() + 1) +
+          "-" +
+          new Date(post.date).getDate()}
+      </span>
+    ),
   }));
   if (!token) {
     navigate("/");
@@ -143,99 +160,141 @@ const AdminPage = () => {
   }
   return (
     <>
-      <Header
+      <header
         style={{
           padding: "0",
-          height: "96px",
+          height: "90px",
           background: "#272930",
           margin: "-8px",
         }}
       >
         <Row>
           <Col
-
-            lg={{ span: 3 }}
+            xs={{ span: 2, offset: 1 }}
+            sm={{ span: 2, offset: 1 }}
+            md={{ span: 2, offset: 1 }}
+            lg={{ span: 2, offset: 1 }}
             style={{
               display: "flex",
               paddingTop: "10px",
             }}
           >
-            <a href="/" style={{ margin: '0 auto' }}>
+            <a href="/" style={{ margin: "0 auto" }}>
               <img src={logocom} alt="logo" height="40%" />
             </a>
           </Col>
-          <Col md={{ span: 0 }} xl={{ span: 21 }} style={{ paddingTop: "30px",paddingRight:"30px" }}>
-              <Menu
-                theme="white"
-                mode="horizontal"
-                style={{ minWidth: 0, flex: "auto", justifyContent: "flex-end" }}
-                md={{ gap: '3px' }}
-                items={array.map((item, index) => {
-                  const key = index + 1;
-                  return {
-                    key,
-                    label: (
-                      <Link to={item.url}>
-                        <span
-                          style={{
-                            fontFamily: "awesome",
-                            color: "white",
-                            fontSize: "16px",
-                          }}
-                        >
-                          {item.name}
-                        </span>
-                      </Link>
-                    ),
-                  };
-                })}
-              />
+          <Col
+            xs={0}
+            sm={0}
+            md={{ span: 0 }}
+            lg={19}
+            xl={{ span: 19 }}
+            style={{ paddingTop: "30px", paddingRight: "30px" }}
+          >
+            <Menu
+              theme="white"
+              mode="horizontal"
+              style={{ minWidth: 0, flex: "auto", justifyContent: "flex-end" }}
+              md={{ gap: "3px" }}
+              items={array.map((item, index) => {
+                const key = index + 1;
+                return {
+                  key,
+                  label: (
+                    <Link to={item.url}>
+                      <span
+                        style={{
+                          fontFamily: "awesome",
+                          color: "white",
+                          fontSize: "16px",
+                        }}
+                      >
+                        {item.name}
+                      </span>
+                    </Link>
+                  ),
+                };
+              })}
+            />
           </Col>
-          <Col md={{ span: 3, offset: 10 }} lg={{offset: 17}} xl={{ span: 0 }} style={{ paddingTop: "30px" }}>
-              <Dropdown
-                trigger={['click']}
-                menu={{items: array.map((item, index) => ({
-                  key: index + 1, label: <Link to={item.url}>
-                    <span
-                      style={{
-                        fontFamily: "awesome",
-                        color: "black",
-                        fontSize: "16px",
-                      }}
-                    >
-                      {item.name}
-                    </span>
-                  </Link>
-                }))}}
+          <Col
+            xs={{ span: 2, offset: 17 }}
+            sm={{ span: 2, offset: 16 }}
+            md={{ span: 2, offset: 16 }}
+            lg={{ span: 0 }}
+            xl={{ span: 0 }}
+            style={{ paddingTop: "30px" }}
+          >
+            <Dropdown
+              trigger={["click"]}
+              menu={{
+                items: array.map((item, index) => ({
+                  key: index + 1,
+                  label: (
+                    <Link to={item.url}>
+                      <span
+                        style={{
+                          fontFamily: "awesome",
+                          color: "black",
+                          fontSize: "16px",
+                        }}
+                      >
+                        {item.name}
+                      </span>
+                    </Link>
+                  ),
+                })),
+              }}
+            >
+              <a
+                onClick={(e) => e.preventDefault()}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  color: "white",
+                  fontSize: "24px",
+                  fontWeight: "bold",
+                  textDecoration: "none",
+                }}
               >
-                <a onClick={(e) => e.preventDefault()}>
-                  <CaretDownOutlined />
-                </a>
-              </Dropdown>
-            
+                <MenuOutlined />
+              </a>
+            </Dropdown>
           </Col>
           <Col span={2}></Col>
         </Row>
-      </Header>
-      <div className="container">
+      </header>
+      <div className="container" style={{ overflowX: "auto" }}>
         <div>
           <Row>
             <Col span={22}>
-          <h2 style={{ textAlign: "center" }}>Question Management</h2>
-          </Col>
-            <Col span={2} style={{display:"flex",justifyContent:"center",alignItems:"center",fontSize:"large",paddingTop:"10px"}}>
-            <a href="/admin/content" style={{ margin: '0 auto' }}>
-            <DoubleRightOutlined />
-            </a>
-            
-
+              <h2 style={{ textAlign: "center" }} className="admintitle">
+                Question Management
+              </h2>
+            </Col>
+            <Col
+              span={2}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: "large",
+                paddingTop: "3vh",
+              }}
+            >
+              <a href="/admin/content" style={{ margin: "0 auto" }}>
+                <DoubleRightOutlined />
+              </a>
             </Col>
           </Row>
           {/* <hr /> */}
-         
         </div>
 
-        <Table columns={columns} dataSource={data} />
+        <Table
+          columns={columns}
+          dataSource={data}
+          style={{ clear: "both", display: "table", width: "100%" }}
+        />
       </div>
     </>
   );

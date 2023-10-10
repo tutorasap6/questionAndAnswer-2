@@ -48,14 +48,14 @@ const BlogContent = (props) => {
                     padding: "5px",
                     paddingTop: "0px",
                     fontFamily: "'Heebo', sans-serif",
-                   // marginBottom: "15px",
+                    // marginBottom: "15px",
                   }}
                 >
                   <div style={{ marginTop: "-10px" }}>
                     <Row>
                       <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
                         <span className="blotitle">
-                          <strong >University:</strong>
+                          <strong>University:</strong>
                         </span>
                         <span className="blotitleb">
                           <a
@@ -72,7 +72,7 @@ const BlogContent = (props) => {
                       </Col>
                       <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
                         <span className="blotitle">
-                          <strong >Category:</strong>
+                          <strong>Category:</strong>
                         </span>
                         <span className="blotitleb">
                           <a
@@ -86,7 +86,7 @@ const BlogContent = (props) => {
                       </Col>
                       <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
                         <span className="blotitle">
-                          <strong >Date:</strong>
+                          <strong>Date:</strong>
                         </span>
                         <span className="blotitleb">
                           {new Date(blog.date).getFullYear() +
@@ -98,32 +98,24 @@ const BlogContent = (props) => {
                       </Col>
                       <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
                         <span className="blotitle">
-                          <strong >Course code:</strong>
+                          <strong>Course code:</strong>
                         </span>
                         <span className="blotitleb">{blog.courseCode}</span>
                       </Col>
                       <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
                         <span className="blotitle">
-                          <strong >Course name:</strong>
+                          <strong>Course name:</strong>
                         </span>
                         <span className="blotitleb">{blog.courseName}</span>
                       </Col>
                       <Col xs={{ span: 24 }} md={{ span: 12 }} xl={{ span: 8 }}>
                         <span className="blotitle">
-                          <strong >Price:</strong>
+                          <strong>Price:</strong>
                         </span>
                         <span className="blotitleb">{blog.insertPrice}</span>
                       </Col>
                     </Row>
-                    <h2
-                      style={{
-                        // marginTop: "15px",
-                        // fontFamily: "awesome",
-                        //fontSize: "26px",
-                        //textAlign: "center",
-                      }}
-                      className="bloquotitle"
-                    >
+                    <h2 className="bloquotitle">
                       <a href={`/answer/${blog._id}`}>{blog.questionTitle}</a>
                     </h2>
                   </div>
@@ -146,11 +138,12 @@ const BlogContent = (props) => {
                           className="blogdes"
                         />
                       )}
-                      {blog.description?.length > 700 && (<div style={{ marginTop:"10px" }}>
-                        <p  className="readmo">
-                          {" "}
-                          <a href={`/answer/${blog._id}`}>Read more{" >>"}</a>
-                        </p>
+                      {blog.description?.length > 700 && (
+                        <div style={{ marginTop: "10px" }}>
+                          <p className="readmo">
+                            {" "}
+                            <a href={`/answer/${blog._id}`}>Read more{" >>"}</a>
+                          </p>
                         </div>
                       )}
                     </div>
