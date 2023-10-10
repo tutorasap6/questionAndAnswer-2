@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Col, Row, Button,Select } from "antd";
+import { Card, Col, Row, Button, Select } from "antd";
 import "react-quill/dist/quill.snow.css";
 import { navigate } from "gatsby";
 import ReactQuill from "react-quill";
@@ -92,171 +92,179 @@ const PostBlog = () => {
   };
 
   const options = [];
-  
+
   const selectHandleChange = (value) => {
     console.log(`selected ${value}`);
   };
 
-
   return (
-    <Card
-      style={{
-        marginTop: "20px",
-        marginBottom: "20px"
-      }}
-    >
-      <ToastContainer />
-      <h3
-        style={{
-          fontFamily: "awesome",
-          textAlign: "center",
-          fontSize: "30px",
-        }}
-      >
-        Assignment Help
-      </h3>
-      <Row style={{paddingBottom: "30px", marginBottom: "80px"}}>
-        <Col span={12} style={{ paddingRight: "10px" }}>
-          <div style={{ marginBottom: "9px" }}>
-            <input
-              type="text"
-              placeholder="Question Title"
-              name="questionTitle"
-              onChange={(e) => handleChange(e)}
-              style={{
-                width: "100%",
-                fontSize: "15px",
-                color: "black !important",
-                border: "1px solid #d9d9d9",
-                padding: "8px",
-                fontFamily: "awesome",
-              }}
-            />
-          </div>
-          <ReactQuill
-            placeholder="Content"
-            value={content}
-            onChange={handleQuillChange}
-            style={{
-              height: '400px'
-            }}
-          />
-        </Col>
-        {/* <Col span={12}> */}
-        <Col span={6} style={{ paddingRight: "10px" }}>
-          <div style={{ paddingBottom: "9px" }}>
-            <input
-              type="text"
-              placeholder="Course Code"
-              name="courseCode"
-              onChange={(e) => handleChange(e)}
-              style={{
-                width: "100%",
-                fontSize: "15px",
-                color: "black !important",
-                border: "1px solid #d9d9d9",
-                padding: "8px",
-                fontFamily: "awesome",
-              }}
-            />
-          </div>
-
-          <div style={{ paddingBottom: "9px" }}>
-            <input
-              type="text"
-              placeholder="University name"
-              name="universityName"
-              onChange={(e) => handleChange(e)}
-              style={{
-                width: "100%",
-                fontSize: "15px",
-                color: "black !important",
-                border: "1px solid #d9d9d9",
-                padding: "8px",
-                fontFamily: "awesome",
-              }}
-            />
-          </div>
-
-          <div style={{ paddingBottom: "9px" }}>
-            <input
-              type="text"
-              placeholder="Category"
-              name="category"
-              onChange={(e) => handleChange(e)}
-              style={{
-                width: "100%",
-
-                fontSize: "15px",
-                color: "black !important",
-                border: "1px solid #d9d9d9",
-                padding: "8px",
-                fontFamily: "awesome",
-              }}
-            />
-          </div>
-          <input
-            type="file"
-            onChange={handleFile}
-            accept=".pptx, .doc, .docx, .pdf, .xls"
-          />
-        </Col>
-        <Col span={6}>
-          <div style={{ paddingBottom: "9px" }}>
-            <input
-              type="text"
-              placeholder="Course Name"
-              name="courseName"
-              onChange={(e) => handleChange(e)}
-              style={{
-                width: "100%",
-
-                fontSize: "15px",
-                color: "black !important",
-                border: "1px solid #d9d9d9",
-                padding: "8px",
-                fontFamily: "awesome",
-              }}
-            />
-          </div>
-          <div style={{ paddingBottom: "9px" }}>
-            <input
-              type="number"
-              placeholder="Insert Price"
-              name="insertPrice"
-              onChange={(e) => handleChange(e)}
-              style={{
-                width: "100%",
-
-                fontSize: "15px",
-                color: "black !important",
-                border: "1px solid #d9d9d9",
-                padding: "8px",
-                fontFamily: "awesome",
-              }}
-            />
-          </div>
-          <div style={{ paddingBottom: "9px" }}>
-            <Select
-              mode="tags"
-              style={{
-                width: '100%',
-                fontSize:"15px",
-                fontFamily: "awesome"
-              }}
-              placeholder = "Fix Tags Here"
-              onChange={selectHandleChange}
-              tokenSeparators={[',']}
-              options={options}
+    <Card>
+      <div>
+        <h2
+          style={{
+            fontFamily: "awesome",
+            textAlign: "center",
+          }}
+        >
+          Champlainsolutions &nbsp; Assignment Help
+        </h2>
+      </div>
+      <div>
+        <Row>
+          <Col
+            xs={23}
+            md={11}
+            lg={11}
+            xl={11}
+            offset={1}
+            style={{ height: "45vh", marginBottom: "1vh" }}
+          >
+            <div style={{ marginBottom: "9px" }}>
+              <input
+                type="text"
+                placeholder="Question Title"
+                name="questionTitle"
+                onChange={(e) => handleChange(e)}
+                style={{
+                  width: "100%",
+                  fontSize: "15px",
+                  color: "black !important",
+                  border: "1px solid #d9d9d9",
+                  padding: "8px",
+                  fontFamily: "awesome",
+                }}
               />
-          </div>
-          <Button type="primary" size="large" onClick={onSubmit}>
-            Submit
-          </Button>
-          {/* </Col> */}
-        </Col>
+            </div>
+            <div>
+              <ReactQuill
+                placeholder="Content"
+                value={content}
+                onChange={handleQuillChange}
+                style={{
+                  height: "30vh",
+                }}
+              />
+            </div>
+          </Col>
+          {/* <Col span={12}> */}
+          <Col xs={24} md={10} lg={10} xl={10} style={{ paddingLeft: "3vw" }}>
+            <div style={{ paddingBottom: "9px" }}>
+              <input
+                type="text"
+                placeholder="Course Code"
+                name="courseCode"
+                onChange={(e) => handleChange(e)}
+                style={{
+                  width: "100%",
+                  fontSize: "15px",
+                  color: "black !important",
+                  border: "1px solid #d9d9d9",
+                  padding: "8px",
+                  fontFamily: "awesome",
+                }}
+              />
+            </div>
 
-      </Row>
+            <div style={{ paddingBottom: "9px" }}>
+              <input
+                type="text"
+                placeholder="University name"
+                name="universityName"
+                onChange={(e) => handleChange(e)}
+                style={{
+                  width: "100%",
+                  fontSize: "15px",
+                  color: "black !important",
+                  border: "1px solid #d9d9d9",
+                  padding: "8px",
+                  fontFamily: "awesome",
+                }}
+              />
+            </div>
+
+            <div style={{ paddingBottom: "9px" }}>
+              <input
+                type="text"
+                placeholder="Category"
+                name="category"
+                onChange={(e) => handleChange(e)}
+                style={{
+                  width: "100%",
+
+                  fontSize: "15px",
+                  color: "black !important",
+                  border: "1px solid #d9d9d9",
+                  padding: "8px",
+                  fontFamily: "awesome",
+                }}
+              />
+            </div>
+            <div style={{ paddingBottom: "9px" }}>
+              <input
+                type="text"
+                placeholder="Course Name"
+                name="courseName"
+                onChange={(e) => handleChange(e)}
+                style={{
+                  width: "100%",
+
+                  fontSize: "15px",
+                  color: "black !important",
+                  border: "1px solid #d9d9d9",
+                  padding: "8px",
+                  fontFamily: "awesome",
+                }}
+              />
+            </div>
+            <div style={{ paddingBottom: "9px" }}>
+              <input
+                type="number"
+                placeholder="Insert Price"
+                name="insertPrice"
+                onChange={(e) => handleChange(e)}
+                style={{
+                  width: "100%",
+
+                  fontSize: "15px",
+                  color: "black !important",
+                  border: "1px solid #d9d9d9",
+                  padding: "8px",
+                  fontFamily: "awesome",
+                }}
+              />
+            </div>
+            <div style={{ paddingBottom: "9px" }}>
+              <Select
+                mode="tags"
+                style={{
+                  width: "100%",
+                  fontSize: "15px",
+                  fontFamily: "awesome",
+                }}
+                placeholder="Fix Tags Here"
+                onChange={selectHandleChange}
+                tokenSeparators={[","]}
+                options={options}
+              />
+            </div>
+            <div>
+              <input
+                type="file"
+                onChange={handleFile}
+                accept=".pptx, .doc, .docx, .pdf, .xls"
+              />
+              <Button
+                type="primary"
+                size="large"
+                onClick={onSubmit}
+                style={{ margin: "20px" }}
+              >
+                Submit
+              </Button>
+            </div>
+          </Col>
+        </Row>
+      </div>
     </Card>
   );
 };
