@@ -1,5 +1,5 @@
-import React from "react"
-import { Card } from "antd"
+import React from "react";
+import { Card } from "antd";
 
 const SubPricingBlog = ({ price, children }) => {
   return (
@@ -22,7 +22,7 @@ const SubPricingBlog = ({ price, children }) => {
         </div>
       </div>
     </Card>
-  )
-}
+  );
+};
 
-export default SubPricingBlog
+export default SubPricingBlog;

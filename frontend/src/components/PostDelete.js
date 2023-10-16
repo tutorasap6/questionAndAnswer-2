@@ -128,9 +128,6 @@ function PostDelete(props) {
               type="primary"
               onClick={handleDelete}
               style={{
-                // width: "70px",
-                // height: "40px",
-                // fontSize: "20px",
                 fontWeight: "bold",
                 fontFamily: "awesome",
               }}
@@ -142,9 +139,6 @@ function PostDelete(props) {
               type="primary"
               onClick={handleCancel}
               style={{
-                // width: "70px",
-                // height: "40px",
-                // fontSize: "20px",
                 fontFamily: "awesome",
                 margin: "20px",
               }}

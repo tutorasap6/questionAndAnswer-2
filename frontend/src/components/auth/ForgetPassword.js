@@ -1,33 +1,28 @@
 import { useState } from "react";
 import * as React from "react";
 import axios from "axios";
-import { Link, navigate } from "gatsby";
 import styled from "styled-components";
 import logocom from "../../assets/images/logocom.png";
-import { resetRoute } from "../../utils/APIRoutes";
-import ForgetPasswordPage from "../../pages/auth/forgetpassword";
 
+const ForgetPassword = () => {
+  const [values, setValues] = useState({ username: "", email: "" });
+  const [loading, setLoading] = useState(false);
 
-const ForgetPassword=()=> {
-
-    const [values, setValues] = useState({ username: "", email: "" });
-    const [loading, setLoading] = useState(false);
-    
-    const handleChange = (e) => {
-        setValues({...values, [e.target.name]: e.target.value });
-    }
-    const handleSubmit = async (e) => {
-        setLoading(true);
-        e.preventDefault();
-        console.log("clicked", values.email);
-        axios
-            .post(`${process.env.api_url}/api/email/reset-email`, values)
-            .then((res) => {
-                setLoading(false);
-            })
-            .catch((err) => console.log(err));
-        console.log(values);
-    }
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+    console.log("clicked", values.email);
+    axios
+      .post(`${process.env.api_url}/api/email/reset-email`, values)
+      .then((res) => {
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
+    console.log(values);
+  };
 
   return (
     <FormContainer style={{ margin: "-8px" }}>
@@ -36,26 +31,13 @@ const ForgetPassword=()=> {
           <img src={logocom} alt="logo" />
           <h1>Champlain</h1>
         </div>
-        {/* {errors && (
-          <div>
-            <p
-              style={{
-                color: "red",
-                textAlign: "center",
-                justifyContent: "center",
-              }}
-            >
-              {errors ? errors : ""}
-            </p>
-          </div>
-        )} */}
-       
+
         <input
           type="text"
           placeholder="Your Email"
           name="email"
           onChange={handleChange}
-          loading = {loading}
+          loading={loading}
         />
         <div>
           <button onClick={handleSubmit}>Send Email</button>
@@ -133,5 +115,3 @@ const FormContainer = styled.div`
   }
 `;
 export default ForgetPassword;
-  
-

@@ -4,7 +4,6 @@ import styled from "styled-components";
 import logocom from "../../assets/images/logocom.png";
 import axios from "axios";
 import { registerRoute } from "../../utils/APIRoutes";
-// import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   // const navigate = useNavigate();

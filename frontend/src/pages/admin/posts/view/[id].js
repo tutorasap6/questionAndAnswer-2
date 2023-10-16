@@ -9,19 +9,11 @@ import { navigate } from "gatsby";
 import { MenuOutlined } from "@ant-design/icons";
 import FileViewer from "react-file-viewer";
 
-const normFile = (e) => {
-  console.log("Upload event:", e);
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
-
 function CrudDetails(params) {
   const [crud, setCrud] = useState({});
   const [file, setFile] = useState(null);
   const { id } = params;
-  const { Header, Content } = Layout;
+  const { Content } = Layout;
 
   useEffect(
     function () {

@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Dropdown } from "antd";
+import { Dropdown } from "antd";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, navigate } from "gatsby";
@@ -9,8 +9,6 @@ import logocom from "../../assets/images/Logocom.png";
 import { getPostsRoute } from "../../utils/APIRoutes";
 import { MenuOutlined, DoubleRightOutlined } from "@ant-design/icons";
 import { Space, Table, Button } from "antd";
-
-const { Header } = Layout;
 
 const AdminPage = () => {
   const [posts, setPosts] = useState([]);

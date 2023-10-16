@@ -5,7 +5,6 @@ import { navigate } from "gatsby";
 import ReactQuill from "react-quill";
 import { postRoute } from "../utils/APIRoutes";
 import { toast } from "react-toastify";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
@@ -33,11 +32,11 @@ const PostBlog = () => {
     console.log(values);
   };
 
-  const handleTagsChange = (event) => {
-    const tags = event.target.value.replace(/\s/g, ",");
-    setValues({ ...values, insertTagsHere: tags });
-    console.log(values);
-  };
+  // const handleTagsChange = (event) => {
+  //   const tags = event.target.value.replace(/\s/g, ",");
+  //   setValues({ ...values, insertTagsHere: tags });
+  //   console.log(values);
+  // };
 
   const handleFile = (e) => setFile(e.target.files[0]);
 

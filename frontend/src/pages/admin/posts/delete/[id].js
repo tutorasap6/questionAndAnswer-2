@@ -7,7 +7,7 @@ import { MenuOutlined } from "@ant-design/icons";
 import logocom from "../../../../assets/images/Logocom.png";
 import PostDelete from "../../../../components/PostDelete";
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 const DeletePage = (params) => {
   const { id } = params;

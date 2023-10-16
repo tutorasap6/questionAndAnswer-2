@@ -9,12 +9,11 @@ import { Link } from "gatsby";
 import { Menu } from "antd";
 import { Col, Row } from "antd";
 import logocom from "../../../../assets/images/Logocom.png";
-import { MenuOutlined, CaretDownOutlined } from "@ant-design/icons";
+import { MenuOutlined } from "@ant-design/icons";
 import { Button, Input } from "antd";
 
 const { TextArea } = Input;
 
-const { Header } = Layout;
 function PostEdit(params) {
   const { id } = params;
   console.log(id);

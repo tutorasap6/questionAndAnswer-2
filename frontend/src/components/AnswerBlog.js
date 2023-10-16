@@ -3,7 +3,6 @@ import { renderToString } from "react-dom/server";
 import { Card, Button, Row, Col, Modal, Form, Input, InputNumber } from "antd";
 import screenimg from "../assets/images/answer.png";
 import Checkout from "./Checkout";
-import { navigate } from "gatsby";
 import axios from "axios";
 
 const AnswerBlog = ({ post }) => {
@@ -11,7 +10,6 @@ const AnswerBlog = ({ post }) => {
   const [open, setOpen] = useState(false);
   const [token, setToken] = useState(localStorage.token);
   const [user, setUser] = useState();
-  const [quotes, setQuotes] = useState();
   const [form] = Form.useForm();
   const name = Form.useWatch("name", form);
   const email = Form.useWatch("email", form);
@@ -60,8 +58,6 @@ const AnswerBlog = ({ post }) => {
       span: 16,
     },
   };
-
-  /* eslint-disable no-template-curly-in-string */
   const validateMessages = {
     required: "${label} is required!",
     types: {

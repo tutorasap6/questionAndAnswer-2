@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { Link, navigate } from "gatsby";
+import { navigate } from "gatsby";
 import styled from "styled-components";
 import logocom from "../../assets/images/logocom.png";
 import axios from "axios";
-import { registerRoute, resetRoute } from "../../utils/APIRoutes";
+import { resetRoute } from "../../utils/APIRoutes";
 
 // import { useNavigate } from "react-router-dom";
 
-const Reset = ({token}) => {
+const Reset = ({ token }) => {
   // const navigate = useNavigate();
   const [values, setValues] = useState({
     password: "",
@@ -22,15 +22,14 @@ const Reset = ({token}) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const {password, confirmPassword } = values;
+    const { password, confirmPassword } = values;
     const { data } = await axios.post(resetRoute, {
       password,
       confirmPassword,
-      token
+      token,
     });
 
     navigate("/auth/login");
-    
   };
   return (
     <>
@@ -66,9 +65,10 @@ const Reset = ({token}) => {
             onChange={(e) => handleChange(e)}
           />
           <div style={{ paddingLeft: "115px" }}>
-            <button onClick = {handleSubmit} type="submit">Update Password</button>
+            <button onClick={handleSubmit} type="submit">
+              Update Password
+            </button>
           </div>
-
         </div>
       </FormContainer>
     </>
