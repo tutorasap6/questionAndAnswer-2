@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { navigate } from "gatsby";
 import styled from "styled-components";
-import logocom from "../../assets/images/logocom.png";
+import logocom from "../../assets/images/Logocom.png";
 import axios from "axios";
 import { resetRoute } from "../../utils/APIRoutes";
 

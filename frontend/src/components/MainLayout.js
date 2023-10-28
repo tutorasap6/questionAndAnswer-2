@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Layout, Menu, Dropdown } from "antd";
 import { Col, Row } from "antd";
-import logocom from "../assets/images/logocom.png";
+import logocom from "../assets/images/Logocom.png";
 import { Link } from "gatsby";
 import backimg from "../assets/images/action.png";
 import axios from "axios";

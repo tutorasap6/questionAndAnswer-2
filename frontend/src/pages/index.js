@@ -4,7 +4,7 @@ import backimg from "../assets/images/back.jpg";
 import { useEffect, useState } from "react";
 import { Dropdown, Layout, Menu } from "antd";
 import { Col, Row } from "antd";
-import logocom from "../assets/images/logocom.png";
+import logocom from "../assets/images/Logocom.png";
 import { Link } from "gatsby";
 // import { ToastContainer } from "react-toastify";
 import { MenuOutlined } from "@ant-design/icons";

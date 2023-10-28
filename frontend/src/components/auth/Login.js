@@ -3,7 +3,7 @@ import * as React from "react";
 import axios from "axios";
 import { Link, navigate } from "gatsby";
 import styled from "styled-components";
-import logocom from "../../assets/images/logocom.png";
+import logocom from "../../assets/images/Logocom.png";
 import { loginRoute } from "../../utils/APIRoutes";
 
 const Login = () => {

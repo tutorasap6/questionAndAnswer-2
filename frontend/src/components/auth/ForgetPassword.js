@@ -2,7 +2,7 @@ import { useState } from "react";
 import * as React from "react";
 import axios from "axios";
 import styled from "styled-components";
-import logocom from "../../assets/images/logocom.png";
+import logocom from "../../assets/images/Logocom.png";
 
 const ForgetPassword = () => {
   const [values, setValues] = useState({ username: "", email: "" });

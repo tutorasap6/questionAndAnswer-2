@@ -92,7 +92,7 @@ const importData = async () => {
     console.log('error', error)
   }
 }
-// importData();
+//importData();
 
 
 app.use("/api/auth", authRoutes);
