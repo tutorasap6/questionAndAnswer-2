@@ -6,7 +6,9 @@ require("dotenv").config({
 });
 module.exports = {
   siteMetadata: {
-    siteUrl: `http://Champlainsolutions.com`,
+    siteUrl: `https://Champlainsolutions.com`,
   },
-  plugins: [],
+  plugins: ['gatsby-plugin-react-helmet'],
 };
+
+

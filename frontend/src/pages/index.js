@@ -10,6 +10,13 @@ import { Link } from "gatsby";
 import { MenuOutlined } from "@ant-design/icons";
 import "react-toastify/dist/ReactToastify.css";
 import "../css/style.css";
+import Helmet from 'react-helmet';
+
+<Helmet>
+  <html lang="en" />
+  <title>champlainsolutions.com Homepage</title>
+  <meta name="google-site-verification" content="CZoH798myn9I-xIFEsRMHfTJSj3HbZiTSEkR32Z1-eM" />
+</Helmet>
 
 const { Footer } = Layout;
 
@@ -510,6 +517,7 @@ const IndexPage = () => {
 
 // You'll learn about this in the next task, just copy it for now
 export const Head = () => <title>Home</title>;
+
 
 // Step 3: Export your component
 export default IndexPage;

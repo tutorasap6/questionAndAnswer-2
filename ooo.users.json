@@ -1,0 +1,96 @@
+[{
+  "_id": {
+    "$oid": "650bac69b2531a7acda70931"
+  },
+  "username": "admin",
+  "email": "donattervin@gmail.com",
+  "password": "$2b$10$HTLRW3nom/RTdmhuFlOYo./FshLO/aYp8qa4um4WWVb2//JB5Q21i",
+  "role": "admin",
+  "state": 0,
+  "downloadable": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650bb1a8b2531a7acda70999"
+  },
+  "username": "dev",
+  "email": "sim@gmail.com",
+  "password": "$2b$10$7/R9Fju484dbuYnFgUBMG.DxQBUarsTqeNgCh39obPvQ5Rc1BWDr.",
+  "role": "user",
+  "state": 0,
+  "downloadable": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "650c9964b2531a7acda70a9b"
+  },
+  "username": "tom",
+  "email": "tom@gmail.com",
+  "password": "$2b$10$qCDAgetJfRxqyeIAPfR1/.9gflUUJhzigNRHfY0KPc1ddeJEB6Ux.",
+  "role": "user",
+  "state": 0,
+  "downloadable": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6511ec5f9675be8694bdd19a"
+  },
+  "username": "dev",
+  "email": "dev@gmail.com",
+  "password": "$2b$10$mHYTqOrhMMQPOUZw6tePyej/D3QKS7oUGJ18xiMnufQeXs9ZlH.4a",
+  "role": "user",
+  "state": 0,
+  "downloadable": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6516d76c7c255a3ffd5e245d"
+  },
+  "username": "qwe",
+  "email": "simqwe@gmail.com",
+  "password": "$2b$10$nSreLDwNvpkXb2lhS7I9u.aZ1zaaQAe.8PGrdCdf/xaoUAAm11a7S",
+  "role": "user",
+  "state": 0,
+  "downloadable": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6516e415529913832d0ecf92"
+  },
+  "username": "dragongold0808@gmail.com",
+  "email": "dragongold0808@gmail.com",
+  "password": "$2b$10$HeCF.kgkvgmMyBhm8BbKQ.t1fMq7UPf5xsZ5XNrylvwSTHfK3EKgm",
+  "role": "user",
+  "state": 0,
+  "downloadable": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "651ea704d79cc0a8978b1bbf"
+  },
+  "username": "sim",
+  "email": "simq@gmail.com",
+  "password": "$2b$10$P8TLuv4yGAE4uw0MunbJ8uc4q6W9xgW9Lr4l9rhoLcT09MccWHhyO",
+  "role": "user",
+  "state": 0,
+  "downloadable": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "652158252c11a4f6c59fb91e"
+  },
+  "username": "uniquewriters36@gmail.com",
+  "email": "uniquewriters36@gmail.com",
+  "password": "$2b$10$vQQAyr/Up7WqOWQDe48dNOsi5UttNlwBvgrbLwDlRzGmeDWXES8o2",
+  "role": "user",
+  "state": 0,
+  "downloadable": false,
+  "__v": 0
+}]
